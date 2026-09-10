@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCambiarClave));
             panelContenedor = new Panel();
             lblTitulo = new Label();
             lblClaveActual = new Label();
@@ -51,19 +52,21 @@
             panelContenedor.Controls.Add(lblNuevaClave);
             panelContenedor.Controls.Add(txtNuevaClave);
             panelContenedor.Controls.Add(btnGuardar);
-            panelContenedor.Location = new Point(40, 30);
+            panelContenedor.Location = new Point(97, 82);
+            panelContenedor.Margin = new Padding(7, 8, 7, 8);
             panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(520, 320);
+            panelContenedor.Size = new Size(1263, 875);
             panelContenedor.TabIndex = 0;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(20, 70, 120);
-            lblTitulo.Location = new Point(35, 25);
+            lblTitulo.ForeColor = Color.FromArgb(120, 20, 40);
+            lblTitulo.Location = new Point(85, 68);
+            lblTitulo.Margin = new Padding(7, 0, 7, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(245, 32);
+            lblTitulo.Size = new Size(601, 81);
             lblTitulo.TabIndex = 0;
             lblTitulo.Tag = "lbl_TituloCambiarContraseña";
             lblTitulo.Text = "Cambiar Contraseña";
@@ -72,10 +75,11 @@
             // 
             lblClaveActual.AutoSize = true;
             lblClaveActual.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblClaveActual.ForeColor = Color.FromArgb(15, 45, 75);
-            lblClaveActual.Location = new Point(40, 95);
+            lblClaveActual.ForeColor = Color.FromArgb(60, 60, 60);
+            lblClaveActual.Location = new Point(97, 260);
+            lblClaveActual.Margin = new Padding(7, 0, 7, 0);
             lblClaveActual.Name = "lblClaveActual";
-            lblClaveActual.Size = new Size(106, 19);
+            lblClaveActual.Size = new Size(249, 46);
             lblClaveActual.TabIndex = 1;
             lblClaveActual.Tag = "lbl_ClaveAnterior";
             lblClaveActual.Text = "Clave Anterior";
@@ -84,20 +88,22 @@
             // 
             txtClaveActual.BorderStyle = BorderStyle.FixedSingle;
             txtClaveActual.Font = new Font("Segoe UI", 10F);
-            txtClaveActual.Location = new Point(44, 120);
+            txtClaveActual.Location = new Point(107, 328);
+            txtClaveActual.Margin = new Padding(7, 8, 7, 8);
             txtClaveActual.Name = "txtClaveActual";
             txtClaveActual.PasswordChar = '●';
-            txtClaveActual.Size = new Size(420, 25);
+            txtClaveActual.Size = new Size(1017, 52);
             txtClaveActual.TabIndex = 2;
             // 
             // lblNuevaClave
             // 
             lblNuevaClave.AutoSize = true;
             lblNuevaClave.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblNuevaClave.ForeColor = Color.FromArgb(15, 45, 75);
-            lblNuevaClave.Location = new Point(40, 170);
+            lblNuevaClave.ForeColor = Color.FromArgb(60, 60, 60);
+            lblNuevaClave.Location = new Point(97, 465);
+            lblNuevaClave.Margin = new Padding(7, 0, 7, 0);
             lblNuevaClave.Name = "lblNuevaClave";
-            lblNuevaClave.Size = new Size(93, 19);
+            lblNuevaClave.Size = new Size(215, 46);
             lblNuevaClave.TabIndex = 3;
             lblNuevaClave.Tag = "lbl_NuevaClave";
             lblNuevaClave.Text = "Nueva Clave";
@@ -106,22 +112,24 @@
             // 
             txtNuevaClave.BorderStyle = BorderStyle.FixedSingle;
             txtNuevaClave.Font = new Font("Segoe UI", 10F);
-            txtNuevaClave.Location = new Point(44, 195);
+            txtNuevaClave.Location = new Point(107, 533);
+            txtNuevaClave.Margin = new Padding(7, 8, 7, 8);
             txtNuevaClave.Name = "txtNuevaClave";
             txtNuevaClave.PasswordChar = '●';
-            txtNuevaClave.Size = new Size(420, 25);
+            txtNuevaClave.Size = new Size(1017, 52);
             txtNuevaClave.TabIndex = 4;
             // 
             // btnGuardar
             // 
-            btnGuardar.BackColor = Color.FromArgb(18, 87, 150);
+            btnGuardar.BackColor = Color.FromArgb(120, 20, 40);
             btnGuardar.FlatAppearance.BorderSize = 0;
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(323, 252);
+            btnGuardar.Location = new Point(784, 689);
+            btnGuardar.Margin = new Padding(7, 8, 7, 8);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(140, 40);
+            btnGuardar.Size = new Size(340, 109);
             btnGuardar.TabIndex = 5;
             btnGuardar.Tag = "btn_Guardar";
             btnGuardar.Text = "Guardar";
@@ -130,13 +138,14 @@
             // 
             // panelInferior
             // 
-            panelInferior.BackColor = Color.FromArgb(18, 87, 150);
+            panelInferior.BackColor = Color.FromArgb(120, 20, 40);
             panelInferior.Controls.Add(lblUsuarioValor);
             panelInferior.Controls.Add(lblUsuarioActivo);
             panelInferior.Dock = DockStyle.Bottom;
-            panelInferior.Location = new Point(0, 348);
+            panelInferior.Location = new Point(0, 952);
+            panelInferior.Margin = new Padding(7, 8, 7, 8);
             panelInferior.Name = "panelInferior";
-            panelInferior.Size = new Size(638, 40);
+            panelInferior.Size = new Size(1549, 109);
             panelInferior.TabIndex = 1;
             // 
             // lblUsuarioValor
@@ -144,9 +153,10 @@
             lblUsuarioValor.AutoSize = true;
             lblUsuarioValor.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblUsuarioValor.ForeColor = Color.White;
-            lblUsuarioValor.Location = new Point(123, 12);
+            lblUsuarioValor.Location = new Point(299, 33);
+            lblUsuarioValor.Margin = new Padding(7, 0, 7, 0);
             lblUsuarioValor.Name = "lblUsuarioValor";
-            lblUsuarioValor.Size = new Size(180, 15);
+            lblUsuarioValor.Size = new Size(459, 41);
             lblUsuarioValor.TabIndex = 2;
             lblUsuarioValor.Tag = "";
             lblUsuarioValor.Text = "Maria Lopez-Usuario Operativo";
@@ -156,28 +166,31 @@
             lblUsuarioActivo.AutoSize = true;
             lblUsuarioActivo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblUsuarioActivo.ForeColor = Color.White;
-            lblUsuarioActivo.Location = new Point(20, 12);
+            lblUsuarioActivo.Location = new Point(49, 33);
+            lblUsuarioActivo.Margin = new Padding(7, 0, 7, 0);
             lblUsuarioActivo.Name = "lblUsuarioActivo";
-            lblUsuarioActivo.Size = new Size(92, 15);
+            lblUsuarioActivo.Size = new Size(235, 41);
             lblUsuarioActivo.TabIndex = 0;
             lblUsuarioActivo.Tag = "lbl_Usuario";
             lblUsuarioActivo.Text = "Usuario activo: ";
             // 
             // FormCambiarClave
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 246, 248);
-            ClientSize = new Size(638, 388);
+            BackColor = Color.FromArgb(240, 238, 235);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(1549, 1061);
             Controls.Add(panelInferior);
             Controls.Add(panelContenedor);
             Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(7, 8, 7, 8);
             MaximizeBox = false;
             Name = "FormCambiarClave";
             StartPosition = FormStartPosition.CenterScreen;
             Tag = "lbl_FormCambiarClave";
-            Text = "CuentaClara - Cambiar Contraseña";
+            Text = "TeatroLux - Cambiar Contraseña";
             FormClosed += FormCambiarClave_FormClosed;
             Load += FormCambiarClave_Load_1;
             panelContenedor.ResumeLayout(false);

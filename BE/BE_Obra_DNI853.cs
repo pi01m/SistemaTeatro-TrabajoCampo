@@ -1,0 +1,33 @@
+﻿using Servicio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BE
+{
+    public class BE_Obra_DNI853 : IVerificable
+    {
+        public string IdObra_DNI853 { get; set; }
+        public string NombreObra_DNI853 { get; set; }
+        public string DescripcionObra_DNI853 { get; set; }
+
+        public BE_Obra_DNI853() { }
+
+        public string ObtenerIdentificadorFila()
+        {
+            return this.IdObra_DNI853;
+        }
+
+        public string ObtenerCadenaParaHash()
+        {
+            return $"{IdObra_DNI853}|{NombreObra_DNI853}|{DescripcionObra_DNI853}";
+        }
+
+        public override string ToString()
+        {
+            return NombreObra_DNI853;
+        }
+    }
+}

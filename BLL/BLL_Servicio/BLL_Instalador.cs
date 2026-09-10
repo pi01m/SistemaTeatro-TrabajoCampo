@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace BLL.BLL_Servicio
 {
     public class BLL_Instalador
     {

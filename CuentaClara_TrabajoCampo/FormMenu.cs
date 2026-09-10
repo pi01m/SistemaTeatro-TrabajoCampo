@@ -1,4 +1,4 @@
-using BLL;
+using BLL.BLL_Servicio;
 using IU;
 using Servicio;
 using System.Diagnostics;
@@ -68,13 +68,11 @@ namespace CuentaClara_TrabajoCampo
             button2.Enabled = false;
             button3.Enabled = false;
             btnInicio.Enabled = false;
-            btnCategorias.Enabled = false;
-            btnGraficos.Enabled = false;
-            btnNuevoEgreso.Enabled = false;
-            btnNuevoIngreso.Enabled = false;
-            btnVencimientos.Enabled = false;
-            btnTransacciones.Enabled = false;
-            btnSaldos.Enabled = false;
+            btn_Funciones_DNI853.Enabled = false;
+            btnGraficos_DNI853.Enabled = false;
+            btn_Obras_DNI853.Enabled = false;
+            btn_Ventas_DNI853.Enabled = false;
+           
             button7.Enabled = false;
         }
 
@@ -115,13 +113,12 @@ namespace CuentaClara_TrabajoCampo
             button2.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P43");
             button5.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P44");
             btnInicio.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "InicioMenu");
-            btnCategorias.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Categorias");
-            btnGraficos.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Graficos");
-            btnNuevoEgreso.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Egreso");
-            btnNuevoIngreso.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Ingreso");
-            btnVencimientos.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Vencimientos");
-            btnTransacciones.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Transacciones");
-            btnSaldos.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "SaldosCruzados");
+            btn_Funciones_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Categorias");
+            btnGraficos_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Graficos");
+
+            btn_Obras_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Vencimientos");
+            btn_Ventas_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Transacciones");
+           
             button7.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P36");
         }
 
@@ -333,10 +330,6 @@ namespace CuentaClara_TrabajoCampo
             frm.ShowDialog();
         }
 
-        private void btnVencimientos_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void panelUsuario_Paint(object sender, PaintEventArgs e)
         {
@@ -374,6 +367,41 @@ namespace CuentaClara_TrabajoCampo
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void btn_Ventas_DNI853_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGraficos_DNI853_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Obras_DNI853_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_SalasySectores_DNI853_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Funciones_DNI853_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Promociones_DNI853_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Clientes_DNI853_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

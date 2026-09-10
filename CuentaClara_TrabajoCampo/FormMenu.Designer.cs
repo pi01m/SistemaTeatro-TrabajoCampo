@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             panelMenu = new Panel();
+            btn_SalasySectores_DNI853 = new Button();
+            btn_Clientes_DNI853 = new Button();
+            btn_Promociones_DNI853 = new Button();
             button8 = new Button();
             button7 = new Button();
             button6 = new Button();
@@ -40,13 +42,12 @@
             button5 = new Button();
             button4 = new Button();
             btnCerrarSesion = new Button();
-            btnSaldos = new Button();
             btnInicio = new Button();
-            btnTransacciones = new Button();
-            btnCategorias = new Button();
-            btnVencimientos = new Button();
+            btn_Ventas_DNI853 = new Button();
+            btn_Funciones_DNI853 = new Button();
+            btn_Obras_DNI853 = new Button();
             button3 = new Button();
-            btnGraficos = new Button();
+            btnGraficos_DNI853 = new Button();
             button1 = new Button();
             panelUsuario = new Panel();
             label1 = new Label();
@@ -54,29 +55,20 @@
             lblUsuarioValor = new Label();
             lblUsuario = new Label();
             lblBD = new Label();
-            panelMovimientos = new Panel();
-            dgvMovimientos = new DataGridView();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            btnNuevoIngreso = new Button();
-            lblSaldoGeneral = new Label();
-            lblEstadoSaldos = new Label();
-            btnNuevoEgreso = new Button();
-            lblHistorial = new Label();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             panelUsuario.SuspendLayout();
-            panelMovimientos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvMovimientos).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
             // 
-            panelMenu.BackColor = Color.White;
+            panelMenu.BackColor = Color.FromArgb(245, 243, 240);
+            panelMenu.Controls.Add(btn_SalasySectores_DNI853);
+            panelMenu.Controls.Add(btn_Clientes_DNI853);
+            panelMenu.Controls.Add(btn_Promociones_DNI853);
             panelMenu.Controls.Add(button8);
             panelMenu.Controls.Add(button7);
             panelMenu.Controls.Add(button6);
@@ -86,32 +78,85 @@
             panelMenu.Controls.Add(button5);
             panelMenu.Controls.Add(button4);
             panelMenu.Controls.Add(btnCerrarSesion);
-            panelMenu.Controls.Add(btnSaldos);
             panelMenu.Controls.Add(btnInicio);
-            panelMenu.Controls.Add(btnTransacciones);
-            panelMenu.Controls.Add(btnCategorias);
-            panelMenu.Controls.Add(btnVencimientos);
+            panelMenu.Controls.Add(btn_Ventas_DNI853);
+            panelMenu.Controls.Add(btn_Funciones_DNI853);
+            panelMenu.Controls.Add(btn_Obras_DNI853);
             panelMenu.Controls.Add(button3);
-            panelMenu.Controls.Add(btnGraficos);
+            panelMenu.Controls.Add(btnGraficos_DNI853);
             panelMenu.Controls.Add(button1);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Margin = new Padding(0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(204, 849);
+            panelMenu.Size = new Size(495, 2108);
             panelMenu.TabIndex = 2;
+            // 
+            // btn_SalasySectores_DNI853
+            // 
+            btn_SalasySectores_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_SalasySectores_DNI853.FlatAppearance.BorderSize = 0;
+            btn_SalasySectores_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_SalasySectores_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_SalasySectores_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_SalasySectores_DNI853.Location = new Point(27, 712);
+            btn_SalasySectores_DNI853.Margin = new Padding(2, 3, 2, 3);
+            btn_SalasySectores_DNI853.Name = "btn_SalasySectores_DNI853";
+            btn_SalasySectores_DNI853.Size = new Size(387, 124);
+            btn_SalasySectores_DNI853.TabIndex = 19;
+            btn_SalasySectores_DNI853.Tag = "btn_SalasySectores_DNI853";
+            btn_SalasySectores_DNI853.Text = "Gestion de Salas y Sectores";
+            btn_SalasySectores_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_SalasySectores_DNI853.UseVisualStyleBackColor = false;
+            btn_SalasySectores_DNI853.Click += btn_SalasySectores_DNI853_Click;
+            // 
+            // btn_Clientes_DNI853
+            // 
+            btn_Clientes_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_Clientes_DNI853.FlatAppearance.BorderSize = 0;
+            btn_Clientes_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_Clientes_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_Clientes_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_Clientes_DNI853.Location = new Point(44, 1006);
+            btn_Clientes_DNI853.Margin = new Padding(5, 8, 5, 8);
+            btn_Clientes_DNI853.Name = "btn_Clientes_DNI853";
+            btn_Clientes_DNI853.Size = new Size(406, 96);
+            btn_Clientes_DNI853.TabIndex = 18;
+            btn_Clientes_DNI853.Tag = "btn_Clientes_DNI853";
+            btn_Clientes_DNI853.Text = "Gestion de Clientes";
+            btn_Clientes_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Clientes_DNI853.UseVisualStyleBackColor = false;
+            btn_Clientes_DNI853.Click += btn_Clientes_DNI853_Click;
+            // 
+            // btn_Promociones_DNI853
+            // 
+            btn_Promociones_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_Promociones_DNI853.FlatAppearance.BorderSize = 0;
+            btn_Promociones_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_Promociones_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_Promociones_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_Promociones_DNI853.Location = new Point(34, 926);
+            btn_Promociones_DNI853.Margin = new Padding(5, 8, 5, 8);
+            btn_Promociones_DNI853.Name = "btn_Promociones_DNI853";
+            btn_Promociones_DNI853.Size = new Size(430, 96);
+            btn_Promociones_DNI853.TabIndex = 17;
+            btn_Promociones_DNI853.Tag = "btn_Promociones_DNI853";
+            btn_Promociones_DNI853.Text = "Gestion de Promociones";
+            btn_Promociones_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Promociones_DNI853.UseVisualStyleBackColor = false;
+            btn_Promociones_DNI853.Click += btn_Promociones_DNI853_Click;
             // 
             // button8
             // 
-            button8.BackColor = Color.White;
+            button8.BackColor = Color.FromArgb(245, 243, 240);
             button8.FlatAppearance.BorderSize = 0;
             button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button8.ForeColor = Color.FromArgb(18, 87, 150);
-            button8.Location = new Point(20, 762);
+            button8.Font = new Font("Segoe UI", 11F);
+            button8.ForeColor = Color.FromArgb(60, 60, 60);
+            button8.Location = new Point(49, 2083);
             button8.Margin = new Padding(0);
             button8.Name = "button8";
-            button8.Size = new Size(159, 34);
+            button8.Size = new Size(386, 93);
             button8.TabIndex = 16;
             button8.Tag = "btn_Ayuda";
             button8.Text = "AYUDA";
@@ -121,14 +166,15 @@
             // 
             // button7
             // 
-            button7.BackColor = Color.White;
+            button7.BackColor = Color.FromArgb(245, 243, 240);
             button7.FlatAppearance.BorderSize = 0;
             button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button7.Location = new Point(11, 604);
+            button7.Font = new Font("Segoe UI", 11F);
+            button7.ForeColor = Color.FromArgb(60, 60, 60);
+            button7.Location = new Point(27, 1651);
             button7.Margin = new Padding(0);
             button7.Name = "button7";
-            button7.Size = new Size(180, 34);
+            button7.Size = new Size(437, 93);
             button7.TabIndex = 15;
             button7.Tag = "btn_GestionDeRespaldo";
             button7.Text = "Gestión de Respaldo\r\n";
@@ -139,14 +185,15 @@
             // button6
             // 
             button6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button6.BackColor = Color.White;
+            button6.BackColor = Color.FromArgb(245, 243, 240);
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button6.Location = new Point(11, 638);
+            button6.Font = new Font("Segoe UI", 11F);
+            button6.ForeColor = Color.FromArgb(60, 60, 60);
+            button6.Location = new Point(27, 1531);
             button6.Margin = new Padding(0);
             button6.Name = "button6";
-            button6.Size = new Size(170, 52);
+            button6.Size = new Size(413, 142);
             button6.TabIndex = 14;
             button6.Tag = "btn_CambiarIdioma";
             button6.Text = "Cambiar Idioma Actual";
@@ -158,24 +205,25 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.ForeColor = Color.FromArgb(20, 70, 120);
-            lblTitulo.Location = new Point(10, 74);
-            lblTitulo.Margin = new Padding(1, 0, 1, 0);
+            lblTitulo.ForeColor = Color.FromArgb(120, 20, 40);
+            lblTitulo.Location = new Point(24, 202);
+            lblTitulo.Margin = new Padding(2, 0, 2, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(152, 32);
+            lblTitulo.Size = new Size(313, 81);
             lblTitulo.TabIndex = 1;
-            lblTitulo.Text = "CuentaClara";
+            lblTitulo.Text = "TeatroLux";
             // 
             // button2
             // 
-            button2.BackColor = Color.White;
+            button2.BackColor = Color.FromArgb(245, 243, 240);
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button2.Location = new Point(11, 528);
-            button2.Margin = new Padding(2, 3, 2, 3);
+            button2.Font = new Font("Segoe UI", 11F);
+            button2.ForeColor = Color.FromArgb(60, 60, 60);
+            button2.Location = new Point(27, 1443);
+            button2.Margin = new Padding(5, 8, 5, 8);
             button2.Name = "button2";
-            button2.Size = new Size(180, 30);
+            button2.Size = new Size(437, 82);
             button2.TabIndex = 9;
             button2.Tag = "btn_GestionDeBitacora";
             button2.Text = "Gestión de Bitácora";
@@ -186,25 +234,26 @@
             // picLogo
             // 
             picLogo.BorderStyle = BorderStyle.FixedSingle;
-            picLogo.Image = IU.Properties.Resources.logo;
-            picLogo.Location = new Point(15, 9);
+            picLogo.Image = (Image)resources.GetObject("picLogo.Image");
+            picLogo.Location = new Point(36, 25);
             picLogo.Margin = new Padding(0);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(71, 57);
+            picLogo.Size = new Size(170, 152);
             picLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
             // 
             // button5
             // 
-            button5.BackColor = Color.White;
+            button5.BackColor = Color.FromArgb(245, 243, 240);
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button5.Location = new Point(10, 564);
-            button5.Margin = new Padding(2, 3, 2, 3);
+            button5.Font = new Font("Segoe UI", 11F);
+            button5.ForeColor = Color.FromArgb(60, 60, 60);
+            button5.Location = new Point(24, 1542);
+            button5.Margin = new Padding(5, 8, 5, 8);
             button5.Name = "button5";
-            button5.Size = new Size(175, 37);
+            button5.Size = new Size(425, 101);
             button5.TabIndex = 13;
             button5.Tag = "btn_GestionDeIdioma";
             button5.Text = "Gestión de Idioma";
@@ -214,31 +263,33 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.White;
+            button4.BackColor = Color.FromArgb(245, 243, 240);
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button4.Location = new Point(12, 377);
-            button4.Margin = new Padding(1, 1, 1, 1);
+            button4.Font = new Font("Segoe UI", 11F);
+            button4.ForeColor = Color.FromArgb(60, 60, 60);
+            button4.Location = new Point(36, 1112);
+            button4.Margin = new Padding(2, 3, 2, 3);
             button4.Name = "button4";
-            button4.Size = new Size(181, 46);
+            button4.Size = new Size(440, 126);
             button4.TabIndex = 12;
             button4.Tag = "btn_CambiarClave";
-            button4.Text = "CAMBIAR CLAVE";
+            button4.Text = "Cambiar Clave";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // btnCerrarSesion
             // 
-            btnCerrarSesion.BackColor = Color.White;
+            btnCerrarSesion.BackColor = Color.FromArgb(245, 243, 240);
             btnCerrarSesion.FlatAppearance.BorderSize = 0;
             btnCerrarSesion.FlatStyle = FlatStyle.Flat;
-            btnCerrarSesion.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnCerrarSesion.Location = new Point(20, 706);
-            btnCerrarSesion.Margin = new Padding(1, 1, 1, 1);
+            btnCerrarSesion.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCerrarSesion.ForeColor = Color.FromArgb(120, 20, 40);
+            btnCerrarSesion.Location = new Point(49, 1930);
+            btnCerrarSesion.Margin = new Padding(2, 3, 2, 3);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(153, 31);
+            btnCerrarSesion.Size = new Size(372, 85);
             btnCerrarSesion.TabIndex = 10;
             btnCerrarSesion.Tag = "btn_CerrarSesion";
             btnCerrarSesion.Text = "CERRAR SESIÓN";
@@ -246,97 +297,88 @@
             btnCerrarSesion.UseVisualStyleBackColor = false;
             btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
-            // btnSaldos
-            // 
-            btnSaldos.BackColor = Color.White;
-            btnSaldos.FlatAppearance.BorderSize = 0;
-            btnSaldos.FlatStyle = FlatStyle.Flat;
-            btnSaldos.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnSaldos.Location = new Point(15, 305);
-            btnSaldos.Margin = new Padding(1, 1, 1, 1);
-            btnSaldos.Name = "btnSaldos";
-            btnSaldos.Size = new Size(158, 29);
-            btnSaldos.TabIndex = 6;
-            btnSaldos.Tag = "btn_SaldosCruzados";
-            btnSaldos.Text = "SALDOS CRUZADOS";
-            btnSaldos.TextAlign = ContentAlignment.MiddleLeft;
-            btnSaldos.UseVisualStyleBackColor = false;
-            // 
             // btnInicio
             // 
-            btnInicio.BackColor = Color.White;
+            btnInicio.BackColor = Color.FromArgb(245, 243, 240);
             btnInicio.FlatAppearance.BorderSize = 0;
             btnInicio.FlatStyle = FlatStyle.Flat;
-            btnInicio.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnInicio.Location = new Point(15, 147);
-            btnInicio.Margin = new Padding(2, 3, 2, 3);
+            btnInicio.Font = new Font("Segoe UI", 11F);
+            btnInicio.ForeColor = Color.FromArgb(60, 60, 60);
+            btnInicio.Location = new Point(36, 402);
+            btnInicio.Margin = new Padding(5, 8, 5, 8);
             btnInicio.Name = "btnInicio";
-            btnInicio.Size = new Size(143, 32);
+            btnInicio.Size = new Size(347, 87);
             btnInicio.TabIndex = 2;
             btnInicio.Tag = "btn_Inicio";
             btnInicio.Text = "INICIO";
             btnInicio.TextAlign = ContentAlignment.MiddleLeft;
             btnInicio.UseVisualStyleBackColor = false;
             // 
-            // btnTransacciones
+            // btn_Ventas_DNI853
             // 
-            btnTransacciones.BackColor = Color.White;
-            btnTransacciones.FlatAppearance.BorderSize = 0;
-            btnTransacciones.FlatStyle = FlatStyle.Flat;
-            btnTransacciones.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnTransacciones.Location = new Point(15, 185);
-            btnTransacciones.Margin = new Padding(2, 3, 2, 3);
-            btnTransacciones.Name = "btnTransacciones";
-            btnTransacciones.Size = new Size(164, 33);
-            btnTransacciones.TabIndex = 3;
-            btnTransacciones.Tag = "btn_Transacciones";
-            btnTransacciones.Text = "TRANSACCIONES";
-            btnTransacciones.TextAlign = ContentAlignment.MiddleLeft;
-            btnTransacciones.UseVisualStyleBackColor = false;
+            btn_Ventas_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_Ventas_DNI853.FlatAppearance.BorderSize = 0;
+            btn_Ventas_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_Ventas_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_Ventas_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_Ventas_DNI853.Location = new Point(36, 468);
+            btn_Ventas_DNI853.Margin = new Padding(5, 8, 5, 8);
+            btn_Ventas_DNI853.Name = "btn_Ventas_DNI853";
+            btn_Ventas_DNI853.Size = new Size(398, 90);
+            btn_Ventas_DNI853.TabIndex = 3;
+            btn_Ventas_DNI853.Tag = "btn_Ventas_DNI853";
+            btn_Ventas_DNI853.Text = "Ventas";
+            btn_Ventas_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Ventas_DNI853.UseVisualStyleBackColor = false;
+            btn_Ventas_DNI853.Click += btn_Ventas_DNI853_Click;
             // 
-            // btnCategorias
+            // btn_Funciones_DNI853
             // 
-            btnCategorias.BackColor = Color.White;
-            btnCategorias.FlatAppearance.BorderSize = 0;
-            btnCategorias.FlatStyle = FlatStyle.Flat;
-            btnCategorias.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnCategorias.Location = new Point(12, 338);
-            btnCategorias.Margin = new Padding(2, 3, 2, 3);
-            btnCategorias.Name = "btnCategorias";
-            btnCategorias.Size = new Size(152, 35);
-            btnCategorias.TabIndex = 4;
-            btnCategorias.Tag = "btn_Categorias";
-            btnCategorias.Text = "CATEGORÍAS";
-            btnCategorias.TextAlign = ContentAlignment.MiddleLeft;
-            btnCategorias.UseVisualStyleBackColor = false;
+            btn_Funciones_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_Funciones_DNI853.FlatAppearance.BorderSize = 0;
+            btn_Funciones_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_Funciones_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_Funciones_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_Funciones_DNI853.Location = new Point(24, 832);
+            btn_Funciones_DNI853.Margin = new Padding(5, 8, 5, 8);
+            btn_Funciones_DNI853.Name = "btn_Funciones_DNI853";
+            btn_Funciones_DNI853.Size = new Size(406, 69);
+            btn_Funciones_DNI853.TabIndex = 4;
+            btn_Funciones_DNI853.Tag = "btn_Funciones_DNI853";
+            btn_Funciones_DNI853.Text = "Gestion de Funciones";
+            btn_Funciones_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Funciones_DNI853.UseVisualStyleBackColor = false;
+            btn_Funciones_DNI853.Click += btn_Funciones_DNI853_Click;
             // 
-            // btnVencimientos
+            // btn_Obras_DNI853
             // 
-            btnVencimientos.BackColor = Color.White;
-            btnVencimientos.FlatAppearance.BorderSize = 0;
-            btnVencimientos.FlatStyle = FlatStyle.Flat;
-            btnVencimientos.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnVencimientos.Location = new Point(15, 265);
-            btnVencimientos.Margin = new Padding(1, 1, 1, 1);
-            btnVencimientos.Name = "btnVencimientos";
-            btnVencimientos.Size = new Size(164, 28);
-            btnVencimientos.TabIndex = 5;
-            btnVencimientos.Tag = "btn_Vencimientos";
-            btnVencimientos.Text = "VENCIMIENTOS";
-            btnVencimientos.TextAlign = ContentAlignment.MiddleLeft;
-            btnVencimientos.UseVisualStyleBackColor = false;
-            btnVencimientos.Click += btnVencimientos_Click;
+            btn_Obras_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_Obras_DNI853.FlatAppearance.BorderSize = 0;
+            btn_Obras_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_Obras_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_Obras_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_Obras_DNI853.Location = new Point(22, 629);
+            btn_Obras_DNI853.Margin = new Padding(2, 3, 2, 3);
+            btn_Obras_DNI853.Name = "btn_Obras_DNI853";
+            btn_Obras_DNI853.Size = new Size(398, 77);
+            btn_Obras_DNI853.TabIndex = 5;
+            btn_Obras_DNI853.Tag = "btn_Obras_DNI853";
+            btn_Obras_DNI853.Text = "Gestion de Obras";
+            btn_Obras_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Obras_DNI853.UseVisualStyleBackColor = false;
+            btn_Obras_DNI853.Click += btn_Obras_DNI853_Click;
             // 
             // button3
             // 
-            button3.BackColor = Color.White;
+            button3.BackColor = Color.FromArgb(245, 243, 240);
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button3.Location = new Point(10, 494);
-            button3.Margin = new Padding(2, 3, 2, 3);
+            button3.Font = new Font("Segoe UI", 11F);
+            button3.ForeColor = Color.FromArgb(60, 60, 60);
+            button3.Location = new Point(24, 1350);
+            button3.Margin = new Padding(5, 8, 5, 8);
             button3.Name = "button3";
-            button3.Size = new Size(163, 28);
+            button3.Size = new Size(396, 77);
             button3.TabIndex = 11;
             button3.Tag = "btn_GestionPerfiles";
             button3.Text = "Gestión Perfiles";
@@ -344,32 +386,35 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
-            // btnGraficos
+            // btnGraficos_DNI853
             // 
-            btnGraficos.BackColor = Color.White;
-            btnGraficos.FlatAppearance.BorderSize = 0;
-            btnGraficos.FlatStyle = FlatStyle.Flat;
-            btnGraficos.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnGraficos.Location = new Point(15, 222);
-            btnGraficos.Margin = new Padding(1, 1, 1, 1);
-            btnGraficos.Name = "btnGraficos";
-            btnGraficos.Size = new Size(164, 31);
-            btnGraficos.TabIndex = 7;
-            btnGraficos.Tag = "btn_Graficos";
-            btnGraficos.Text = "GRÁFICOS";
-            btnGraficos.TextAlign = ContentAlignment.MiddleLeft;
-            btnGraficos.UseVisualStyleBackColor = false;
+            btnGraficos_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btnGraficos_DNI853.FlatAppearance.BorderSize = 0;
+            btnGraficos_DNI853.FlatStyle = FlatStyle.Flat;
+            btnGraficos_DNI853.Font = new Font("Segoe UI", 11F);
+            btnGraficos_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btnGraficos_DNI853.Location = new Point(27, 538);
+            btnGraficos_DNI853.Margin = new Padding(2, 3, 2, 3);
+            btnGraficos_DNI853.Name = "btnGraficos_DNI853";
+            btnGraficos_DNI853.Size = new Size(398, 85);
+            btnGraficos_DNI853.TabIndex = 7;
+            btnGraficos_DNI853.Tag = "btn_Graficos_DNI853";
+            btnGraficos_DNI853.Text = "Graficos";
+            btnGraficos_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btnGraficos_DNI853.UseVisualStyleBackColor = false;
+            btnGraficos_DNI853.Click += btnGraficos_DNI853_Click;
             // 
             // button1
             // 
-            button1.BackColor = Color.White;
+            button1.BackColor = Color.FromArgb(245, 243, 240);
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.Location = new Point(11, 451);
-            button1.Margin = new Padding(2, 3, 2, 3);
+            button1.Font = new Font("Segoe UI", 11F);
+            button1.ForeColor = Color.FromArgb(60, 60, 60);
+            button1.Location = new Point(27, 1233);
+            button1.Margin = new Padding(5, 8, 5, 8);
             button1.Name = "button1";
-            button1.Size = new Size(190, 37);
+            button1.Size = new Size(461, 101);
             button1.TabIndex = 8;
             button1.Tag = "btn_GestionUsuarios";
             button1.Text = "Gestión de Usuarios";
@@ -379,17 +424,17 @@
             // 
             // panelUsuario
             // 
-            panelUsuario.BackColor = Color.FromArgb(18, 87, 150);
+            panelUsuario.BackColor = Color.FromArgb(120, 20, 40);
             panelUsuario.Controls.Add(label1);
             panelUsuario.Controls.Add(lblUsuarioActivo);
             panelUsuario.Controls.Add(lblUsuarioValor);
             panelUsuario.Controls.Add(lblUsuario);
             panelUsuario.Controls.Add(lblBD);
             panelUsuario.Dock = DockStyle.Bottom;
-            panelUsuario.Location = new Point(204, 809);
+            panelUsuario.Location = new Point(495, 1999);
             panelUsuario.Margin = new Padding(0);
             panelUsuario.Name = "panelUsuario";
-            panelUsuario.Size = new Size(1059, 40);
+            panelUsuario.Size = new Size(2572, 109);
             panelUsuario.TabIndex = 3;
             panelUsuario.Paint += panelUsuario_Paint;
             // 
@@ -398,10 +443,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(114, 10);
-            label1.Margin = new Padding(1, 0, 1, 0);
+            label1.Location = new Point(277, 27);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(161, 15);
+            label1.Size = new Size(415, 41);
             label1.TabIndex = 4;
             label1.Tag = "";
             label1.Text = "Maria Lopez -Administrador";
@@ -411,10 +456,10 @@
             lblUsuarioActivo.AutoSize = true;
             lblUsuarioActivo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblUsuarioActivo.ForeColor = Color.White;
-            lblUsuarioActivo.Location = new Point(14, 10);
-            lblUsuarioActivo.Margin = new Padding(1, 0, 1, 0);
+            lblUsuarioActivo.Location = new Point(34, 27);
+            lblUsuarioActivo.Margin = new Padding(2, 0, 2, 0);
             lblUsuarioActivo.Name = "lblUsuarioActivo";
-            lblUsuarioActivo.Size = new Size(89, 15);
+            lblUsuarioActivo.Size = new Size(227, 41);
             lblUsuarioActivo.TabIndex = 3;
             lblUsuarioActivo.Tag = "lbl_Usuario";
             lblUsuarioActivo.Text = "Usuario activo:";
@@ -424,10 +469,10 @@
             lblUsuarioValor.AutoSize = true;
             lblUsuarioValor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblUsuarioValor.ForeColor = Color.White;
-            lblUsuarioValor.Location = new Point(333, 53);
-            lblUsuarioValor.Margin = new Padding(7, 0, 7, 0);
+            lblUsuarioValor.Location = new Point(809, 145);
+            lblUsuarioValor.Margin = new Padding(17, 0, 17, 0);
             lblUsuarioValor.Name = "lblUsuarioValor";
-            lblUsuarioValor.Size = new Size(0, 21);
+            lblUsuarioValor.Size = new Size(0, 54);
             lblUsuarioValor.TabIndex = 2;
             lblUsuarioValor.Tag = "";
             // 
@@ -436,158 +481,21 @@
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblUsuario.ForeColor = Color.White;
-            lblUsuario.Location = new Point(49, 55);
-            lblUsuario.Margin = new Padding(7, 0, 7, 0);
+            lblUsuario.Location = new Point(119, 150);
+            lblUsuario.Margin = new Padding(17, 0, 17, 0);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(0, 21);
+            lblUsuario.Size = new Size(0, 54);
             lblUsuario.TabIndex = 0;
             lblUsuario.Tag = "lbl_Usuario";
             // 
             // lblBD
             // 
-            lblBD.Location = new Point(431, 46);
-            lblBD.Margin = new Padding(7, 0, 7, 0);
+            lblBD.Location = new Point(1047, 126);
+            lblBD.Margin = new Padding(17, 0, 17, 0);
             lblBD.Name = "lblBD";
-            lblBD.Size = new Size(243, 63);
+            lblBD.Size = new Size(590, 172);
             lblBD.TabIndex = 1;
             lblBD.Click += lblBD_Click;
-            // 
-            // panelMovimientos
-            // 
-            panelMovimientos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panelMovimientos.BackColor = Color.White;
-            panelMovimientos.Controls.Add(dgvMovimientos);
-            panelMovimientos.Controls.Add(btnNuevoIngreso);
-            panelMovimientos.Controls.Add(lblSaldoGeneral);
-            panelMovimientos.Controls.Add(lblEstadoSaldos);
-            panelMovimientos.Controls.Add(btnNuevoEgreso);
-            panelMovimientos.Location = new Point(218, 104);
-            panelMovimientos.Margin = new Padding(0);
-            panelMovimientos.Name = "panelMovimientos";
-            panelMovimientos.Size = new Size(1025, 730);
-            panelMovimientos.TabIndex = 0;
-            panelMovimientos.Paint += panelMovimientos_Paint;
-            // 
-            // dgvMovimientos
-            // 
-            dgvMovimientos.AllowUserToAddRows = false;
-            dgvMovimientos.AllowUserToDeleteRows = false;
-            dgvMovimientos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvMovimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvMovimientos.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvMovimientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvMovimientos.ColumnHeadersHeight = 30;
-            dgvMovimientos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvMovimientos.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvMovimientos.Location = new Point(35, 92);
-            dgvMovimientos.Margin = new Padding(0);
-            dgvMovimientos.Name = "dgvMovimientos";
-            dgvMovimientos.ReadOnly = true;
-            dgvMovimientos.RowHeadersVisible = false;
-            dgvMovimientos.RowHeadersWidth = 102;
-            dgvMovimientos.Size = new Size(913, 428);
-            dgvMovimientos.TabIndex = 1;
-            dgvMovimientos.Tag = "dgv_Menu";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Concepto";
-            dataGridViewTextBoxColumn4.MinimumWidth = 12;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Descripción";
-            dataGridViewTextBoxColumn5.MinimumWidth = 12;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Valor";
-            dataGridViewTextBoxColumn6.MinimumWidth = 12;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // btnNuevoIngreso
-            // 
-            btnNuevoIngreso.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnNuevoIngreso.FlatStyle = FlatStyle.Flat;
-            btnNuevoIngreso.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnNuevoIngreso.Location = new Point(758, 579);
-            btnNuevoIngreso.Margin = new Padding(0);
-            btnNuevoIngreso.Name = "btnNuevoIngreso";
-            btnNuevoIngreso.Size = new Size(190, 45);
-            btnNuevoIngreso.TabIndex = 2;
-            btnNuevoIngreso.Tag = "btn_RegistrarNuevoIngreso";
-            btnNuevoIngreso.Text = "Registrar Nuevo Ingreso +";
-            // 
-            // lblSaldoGeneral
-            // 
-            lblSaldoGeneral.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblSaldoGeneral.AutoSize = true;
-            lblSaldoGeneral.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblSaldoGeneral.ForeColor = Color.FromArgb(15, 45, 75);
-            lblSaldoGeneral.Location = new Point(12, 25);
-            lblSaldoGeneral.Margin = new Padding(1, 0, 1, 0);
-            lblSaldoGeneral.Name = "lblSaldoGeneral";
-            lblSaldoGeneral.Size = new Size(400, 32);
-            lblSaldoGeneral.TabIndex = 1;
-            lblSaldoGeneral.Tag = "lbl_SaldoGeneral";
-            lblSaldoGeneral.Text = "Saldo Líquido General del Hogar: \r\n";
-            // 
-            // lblEstadoSaldos
-            // 
-            lblEstadoSaldos.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            lblEstadoSaldos.AutoSize = true;
-            lblEstadoSaldos.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblEstadoSaldos.Location = new Point(12, 605);
-            lblEstadoSaldos.Margin = new Padding(0);
-            lblEstadoSaldos.Name = "lblEstadoSaldos";
-            lblEstadoSaldos.Size = new Size(393, 21);
-            lblEstadoSaldos.TabIndex = 4;
-            lblEstadoSaldos.Tag = "lbl_SaldosConciliados:HogarenEquilibrioyArmonia";
-            lblEstadoSaldos.Text = "Saldos Conciliados: Hogar en Equilibrio y Armonía";
-            // 
-            // btnNuevoEgreso
-            // 
-            btnNuevoEgreso.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnNuevoEgreso.FlatStyle = FlatStyle.Flat;
-            btnNuevoEgreso.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnNuevoEgreso.Location = new Point(525, 579);
-            btnNuevoEgreso.Margin = new Padding(0);
-            btnNuevoEgreso.Name = "btnNuevoEgreso";
-            btnNuevoEgreso.Size = new Size(190, 45);
-            btnNuevoEgreso.TabIndex = 3;
-            btnNuevoEgreso.Tag = "btn_RegistrarNuevoEgreso";
-            btnNuevoEgreso.Text = "Registrar Nuevo Egreso -";
-            // 
-            // lblHistorial
-            // 
-            lblHistorial.AutoSize = true;
-            lblHistorial.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblHistorial.Location = new Point(218, 31);
-            lblHistorial.Margin = new Padding(0);
-            lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(368, 30);
-            lblHistorial.TabIndex = 0;
-            lblHistorial.Tag = "lbl_Historial";
-            lblHistorial.Text = "Historial Reciente de Movimientos";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -615,21 +523,21 @@
             // 
             // FormMenu
             // 
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 246, 248);
-            ClientSize = new Size(1263, 849);
-            Controls.Add(lblHistorial);
+            BackColor = Color.FromArgb(240, 238, 235);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(3067, 2108);
             Controls.Add(panelUsuario);
-            Controls.Add(panelMovimientos);
             Controls.Add(panelMenu);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(0);
             Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Tag = "lbl_Usuario";
-            Text = "CuentaClara - Gestión Financiera Familiar";
+            Text = "TeatroLux- Gestion de Teatro";
             FormClosed += FormMenu_FormClosed;
             Load += FormMenu_Load;
             panelMenu.ResumeLayout(false);
@@ -637,11 +545,7 @@
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             panelUsuario.ResumeLayout(false);
             panelUsuario.PerformLayout();
-            panelMovimientos.ResumeLayout(false);
-            panelMovimientos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvMovimientos).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -650,32 +554,16 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
 
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-
         private PictureBox picLogo;
         private Label lblTitulo;
 
         private Button btnInicio;
-        private Button btnTransacciones;
-        private Button btnCategorias;
-        private Button btnVencimientos;
-        private Button btnSaldos;
-        private Button btnGraficos;
+        private Button btn_Ventas_DNI853;
+        private Button btn_Funciones_DNI853;
+        private Button btn_Obras_DNI853;
+        private Button btnGraficos_DNI853;
 
         private Panel panelUsuario;
-
-        private Panel panelMovimientos;
-        private Label lblHistorial;
-
-        private DataGridView dgvMovimientos;
-
-        private Button btnNuevoIngreso;
-        private Button btnNuevoEgreso;
-
-        private Label lblEstadoSaldos;
-        private Label lblSaldoGeneral;
         private Button button2;
         private Button button1;
         private Button btnCerrarSesion;
@@ -690,5 +578,8 @@
         private Label lblUsuarioActivo;
         private Label label1;
         private Button button8;
+        private Button btn_Clientes_DNI853;
+        private Button btn_Promociones_DNI853;
+        private Button btn_SalasySectores_DNI853;
     }
 }

@@ -1,5 +1,4 @@
-﻿using BLL;
-using Servicio;
+﻿using Servicio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Windows.Forms;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using BLL.BLL_Servicio;
 
 namespace CuentaClara_TrabajoCampo
 {

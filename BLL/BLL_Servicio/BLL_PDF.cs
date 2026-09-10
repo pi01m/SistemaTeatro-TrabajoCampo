@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Servicio;
-namespace BLL
+namespace BLL.BLL_Servicio
 {
     public class BLL_PDF
     {

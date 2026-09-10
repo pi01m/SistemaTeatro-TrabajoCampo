@@ -1,5 +1,4 @@
-﻿using BLL;
-using IU;
+﻿using IU;
 using Microsoft.Data.SqlClient;
 using Servicio;
 using System;
@@ -11,6 +10,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using IU.Properties;
+using BLL.BLL_Servicio;
 
 namespace CuentaClara_TrabajoCampo
 {

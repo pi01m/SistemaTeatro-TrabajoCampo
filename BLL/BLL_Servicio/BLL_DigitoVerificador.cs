@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 
-namespace BLL
+namespace BLL.BLL_Servicio
 {
     public class BLL_DigitoVerificador
     {

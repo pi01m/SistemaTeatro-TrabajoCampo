@@ -1,4 +1,4 @@
-﻿using BLL;
+﻿using BLL.BLL_Servicio;
 using Microsoft.Data.Sql;
 using Microsoft.Data.SqlClient;
 using System;

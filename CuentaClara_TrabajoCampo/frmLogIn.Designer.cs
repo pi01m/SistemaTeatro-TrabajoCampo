@@ -70,7 +70,7 @@
             // ojo
             // 
             ojo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            ojo.BackColor = Color.FromArgb(18, 87, 150);
+            ojo.BackColor = Color.FromArgb(120, 20, 40);
             ojo.FlatAppearance.BorderSize = 0;
             ojo.FlatStyle = FlatStyle.Flat;
             ojo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -99,9 +99,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(60, 60, 60);
             label1.Location = new Point(47, 301);
             label1.Name = "label1";
-            label1.Size = new Size(51, 17);
+            label1.Size = new Size(127, 45);
             label1.TabIndex = 9;
             label1.Tag = "lbl_LogInClave";
             label1.Text = "Idioma";
@@ -109,10 +110,11 @@
             // comboBox1
             // 
             comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(47, 333);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(211, 25);
+            comboBox1.Size = new Size(211, 53);
             comboBox1.TabIndex = 8;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -120,20 +122,21 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(20, 70, 120);
+            lblTitulo.ForeColor = Color.FromArgb(120, 20, 40);
             lblTitulo.Location = new Point(115, 25);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(173, 37);
+            lblTitulo.Size = new Size(349, 89);
             lblTitulo.TabIndex = 1;
-            lblTitulo.Text = "CuentaClara";
+            lblTitulo.Text = "TeatroLux";
             // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsuario.ForeColor = Color.FromArgb(60, 60, 60);
             lblUsuario.Location = new Point(46, 136);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(128, 17);
+            lblUsuario.Size = new Size(322, 45);
             lblUsuario.TabIndex = 2;
             lblUsuario.Tag = "lbl_LogInNombreUsuario";
             lblUsuario.Text = "Nombre de Usuario";
@@ -141,18 +144,20 @@
             // txtUsuario
             // 
             txtUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtUsuario.BorderStyle = BorderStyle.FixedSingle;
             txtUsuario.Location = new Point(47, 165);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(211, 25);
+            txtUsuario.Size = new Size(211, 52);
             txtUsuario.TabIndex = 3;
             // 
             // lblClave
             // 
             lblClave.AutoSize = true;
             lblClave.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblClave.ForeColor = Color.FromArgb(60, 60, 60);
             lblClave.Location = new Point(47, 216);
             lblClave.Name = "lblClave";
-            lblClave.Size = new Size(77, 17);
+            lblClave.Size = new Size(196, 45);
             lblClave.TabIndex = 4;
             lblClave.Tag = "lbl_LogInClave";
             lblClave.Text = "Contraseña";
@@ -160,16 +165,17 @@
             // txtContrasena
             // 
             txtContrasena.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtContrasena.BorderStyle = BorderStyle.FixedSingle;
             txtContrasena.Location = new Point(46, 245);
             txtContrasena.Name = "txtContrasena";
-            txtContrasena.Size = new Size(212, 25);
+            txtContrasena.Size = new Size(212, 52);
             txtContrasena.TabIndex = 5;
             txtContrasena.TextChanged += txtContrasena_TextChanged;
             // 
             // btnIngresar
             // 
             btnIngresar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnIngresar.BackColor = Color.FromArgb(18, 87, 150);
+            btnIngresar.BackColor = Color.FromArgb(120, 20, 40);
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -187,10 +193,10 @@
             // 
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnSalir.BackColor = Color.White;
-            btnSalir.FlatAppearance.BorderColor = Color.FromArgb(18, 87, 150);
+            btnSalir.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnSalir.ForeColor = Color.FromArgb(18, 87, 150);
+            btnSalir.ForeColor = Color.FromArgb(120, 20, 40);
             btnSalir.Location = new Point(28, 390);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(122, 42);
@@ -202,9 +208,9 @@
             // 
             // frmLogIn
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(18F, 45F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 246, 248);
+            BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(481, 523);
             Controls.Add(panelLogin);
             Font = new Font("Segoe UI", 10F);
@@ -213,7 +219,7 @@
             Name = "frmLogIn";
             StartPosition = FormStartPosition.CenterScreen;
             Tag = "lbl_FormLogin";
-            Text = "CuentaClara - Inicio de Sesión";
+            Text = "TeatroLux- Inicio de Sesión";
             FormClosed += frmLogIn_FormClosed;
             Load += frmLogIn_Load_1;
             Resize += frmLogIn_Resize;

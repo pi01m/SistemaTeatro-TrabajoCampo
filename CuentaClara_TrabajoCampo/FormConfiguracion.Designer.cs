@@ -37,25 +37,26 @@
             // 
             // cmbIdioma
             // 
+            cmbIdioma.Font = new Font("Segoe UI", 10F);
             cmbIdioma.FormattingEnabled = true;
-            cmbIdioma.Location = new Point(30, 43);
-            cmbIdioma.Margin = new Padding(1);
+            cmbIdioma.Location = new Point(73, 118);
+            cmbIdioma.Margin = new Padding(2, 3, 2, 3);
             cmbIdioma.Name = "cmbIdioma";
-            cmbIdioma.Size = new Size(121, 23);
+            cmbIdioma.Size = new Size(288, 53);
             cmbIdioma.TabIndex = 8;
             cmbIdioma.SelectedIndexChanged += cmbIdioma_SelectedIndexChanged;
             // 
             // btnGuardarr
             // 
             btnGuardarr.BackColor = Color.White;
-            btnGuardarr.FlatAppearance.BorderColor = Color.FromArgb(18, 87, 150);
+            btnGuardarr.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
             btnGuardarr.FlatStyle = FlatStyle.Flat;
             btnGuardarr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnGuardarr.ForeColor = Color.FromArgb(18, 87, 150);
-            btnGuardarr.Location = new Point(180, 34);
-            btnGuardarr.Margin = new Padding(1);
+            btnGuardarr.ForeColor = Color.FromArgb(120, 20, 40);
+            btnGuardarr.Location = new Point(437, 93);
+            btnGuardarr.Margin = new Padding(2, 3, 2, 3);
             btnGuardarr.Name = "btnGuardarr";
-            btnGuardarr.Size = new Size(107, 37);
+            btnGuardarr.Size = new Size(260, 101);
             btnGuardarr.TabIndex = 9;
             btnGuardarr.Tag = "btn_Guardar";
             btnGuardarr.Text = "Guardar";
@@ -65,14 +66,14 @@
             // button1
             // 
             button1.BackColor = Color.White;
-            button1.FlatAppearance.BorderColor = Color.FromArgb(18, 87, 150);
+            button1.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            button1.ForeColor = Color.FromArgb(18, 87, 150);
-            button1.Location = new Point(180, 99);
-            button1.Margin = new Padding(1);
+            button1.ForeColor = Color.FromArgb(120, 20, 40);
+            button1.Location = new Point(437, 271);
+            button1.Margin = new Padding(2, 3, 2, 3);
             button1.Name = "button1";
-            button1.Size = new Size(107, 37);
+            button1.Size = new Size(260, 101);
             button1.TabIndex = 10;
             button1.Tag = "btn_Salir";
             button1.Text = "Salir";
@@ -89,22 +90,23 @@
             panelLogin.Controls.Add(cmbIdioma);
             panelLogin.Dock = DockStyle.Fill;
             panelLogin.Location = new Point(0, 0);
-            panelLogin.Margin = new Padding(1);
+            panelLogin.Margin = new Padding(2, 3, 2, 3);
             panelLogin.Name = "panelLogin";
-            panelLogin.Size = new Size(326, 174);
+            panelLogin.Size = new Size(792, 476);
             panelLogin.TabIndex = 1;
             panelLogin.Paint += panelLogin_Paint;
             // 
             // FormConfiguracion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(326, 174);
+            BackColor = Color.FromArgb(240, 238, 235);
+            ClientSize = new Size(792, 476);
             Controls.Add(panelLogin);
-            Margin = new Padding(1);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "FormConfiguracion";
             Tag = "lbl_FormConfIdioma";
-            Text = "CuentaClara - Configuración Idioma";
+            Text = "TeatroLux - Configuración Idioma";
             FormClosed += FormConfiguracion_FormClosed;
             Load += FormConfiguracion_Load;
             panelLogin.ResumeLayout(false);

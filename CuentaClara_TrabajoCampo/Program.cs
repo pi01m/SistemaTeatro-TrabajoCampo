@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using BLL.BLL_Servicio;
 
 namespace CuentaClara_TrabajoCampo
 {
@@ -14,7 +15,7 @@ namespace CuentaClara_TrabajoCampo
         
             ApplicationConfiguration.Initialize();
 
-            BLL.BLL_Instalador gestorInstalacion = new BLL.BLL_Instalador();
+            BLL_Instalador gestorInstalacion = new BLL.BLL_Servicio.BLL_Instalador();
 
             if (gestorInstalacion.EsNecesarioInstalar())
             {

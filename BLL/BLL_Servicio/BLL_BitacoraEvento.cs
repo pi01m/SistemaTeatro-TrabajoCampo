@@ -6,7 +6,7 @@ using System.Data;
 using System.Reflection;
 using System.Text;
 
-namespace BLL
+namespace BLL.BLL_Servicio
 {
     public class BLL_BitacoraEvento
     {

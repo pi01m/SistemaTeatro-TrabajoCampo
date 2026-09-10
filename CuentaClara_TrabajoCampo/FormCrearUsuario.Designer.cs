@@ -91,7 +91,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(20, 70, 120);
+            lblTitulo.ForeColor = Color.FromArgb(120, 20, 40);
             lblTitulo.Location = new Point(146, 27);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(617, 81);
@@ -103,6 +103,7 @@
             // 
             lblDNI.AutoSize = true;
             lblDNI.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDNI.ForeColor = Color.FromArgb(60, 60, 60);
             lblDNI.Location = new Point(53, 118);
             lblDNI.Name = "lblDNI";
             lblDNI.Size = new Size(83, 46);
@@ -112,6 +113,8 @@
             // 
             // txtDNI
             // 
+            txtDNI.BorderStyle = BorderStyle.FixedSingle;
+            txtDNI.Font = new Font("Segoe UI", 10F);
             txtDNI.Location = new Point(53, 140);
             txtDNI.Name = "txtDNI";
             txtDNI.Size = new Size(250, 52);
@@ -121,6 +124,7 @@
             // 
             lblRol.AutoSize = true;
             lblRol.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblRol.ForeColor = Color.FromArgb(60, 60, 60);
             lblRol.Location = new Point(478, 108);
             lblRol.Name = "lblRol";
             lblRol.Size = new Size(232, 46);
@@ -131,6 +135,7 @@
             // cmbRol
             // 
             cmbRol.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbRol.Font = new Font("Segoe UI", 10F);
             cmbRol.Items.AddRange(new object[] { "Admin", "Operador" });
             cmbRol.Location = new Point(478, 140);
             cmbRol.Name = "cmbRol";
@@ -141,6 +146,7 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNombre.ForeColor = Color.FromArgb(60, 60, 60);
             lblNombre.Location = new Point(53, 193);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(167, 46);
@@ -150,6 +156,8 @@
             // 
             // txtNombre
             // 
+            txtNombre.BorderStyle = BorderStyle.FixedSingle;
+            txtNombre.Font = new Font("Segoe UI", 10F);
             txtNombre.Location = new Point(53, 230);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(250, 52);
@@ -159,6 +167,7 @@
             // 
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblApellido.ForeColor = Color.FromArgb(60, 60, 60);
             lblApellido.Location = new Point(478, 204);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(170, 46);
@@ -168,6 +177,8 @@
             // 
             // txtApellido
             // 
+            txtApellido.BorderStyle = BorderStyle.FixedSingle;
+            txtApellido.Font = new Font("Segoe UI", 10F);
             txtApellido.Location = new Point(478, 230);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(250, 52);
@@ -177,6 +188,7 @@
             // 
             lblCorreo.AutoSize = true;
             lblCorreo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCorreo.ForeColor = Color.FromArgb(60, 60, 60);
             lblCorreo.Location = new Point(53, 281);
             lblCorreo.Name = "lblCorreo";
             lblCorreo.Size = new Size(316, 46);
@@ -186,6 +198,8 @@
             // 
             // txtCorreo
             // 
+            txtCorreo.BorderStyle = BorderStyle.FixedSingle;
+            txtCorreo.Font = new Font("Segoe UI", 10F);
             txtCorreo.Location = new Point(53, 314);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(250, 52);
@@ -195,7 +209,7 @@
             // 
             chkActivo.AutoSize = true;
             chkActivo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            chkActivo.ForeColor = Color.FromArgb(20, 70, 120);
+            chkActivo.ForeColor = Color.FromArgb(120, 20, 40);
             chkActivo.Location = new Point(53, 384);
             chkActivo.Name = "chkActivo";
             chkActivo.Size = new Size(454, 50);
@@ -207,10 +221,10 @@
             // btnCancelar
             // 
             btnCancelar.BackColor = Color.White;
-            btnCancelar.FlatAppearance.BorderColor = Color.FromArgb(18, 87, 150);
+            btnCancelar.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.FromArgb(18, 87, 150);
+            btnCancelar.ForeColor = Color.FromArgb(120, 20, 40);
             btnCancelar.Location = new Point(83, 520);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(204, 52);
@@ -222,7 +236,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.BackColor = Color.FromArgb(18, 87, 150);
+            btnGuardar.BackColor = Color.FromArgb(120, 20, 40);
             btnGuardar.FlatAppearance.BorderSize = 0;
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -240,7 +254,7 @@
             // 
             AutoScaleDimensions = new SizeF(18F, 45F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 246, 248);
+            BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(856, 669);
             Controls.Add(panelPrincipal);
             Font = new Font("Segoe UI", 10F);
@@ -249,7 +263,7 @@
             Name = "FormCrearUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Tag = "lbl_FormCrearUsuario";
-            Text = "CuentaClara - Crear Usuario";
+            Text = "TeatroLux - Crear Usuario";
             FormClosed += FormCrearUsuario_FormClosed;
             Load += FormCrearUsuario_Load_1;
             Resize += FormCrearUsuario_Resize;
