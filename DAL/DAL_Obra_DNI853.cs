@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using Microsoft.Data.SqlClient;
 namespace DAL
 {
     public class DAL_Obra_DNI853
@@ -30,7 +32,8 @@ namespace DAL
                     {
                         IdObra_DNI853 = fila_DNI853["IdObra_DNI853"].ToString(),
                         NombreObra_DNI853 = fila_DNI853["NombreObra_DNI853"].ToString(),
-                        DescripcionObra_DNI853 = fila_DNI853["DescripcionObra_DNI853"].ToString()
+                        DescripcionObra_DNI853 = fila_DNI853["DescripcionObra_DNI853"].ToString(),
+                        Estado_DNI853 = fila_DNI853["Estado_DNI853"] != DBNull.Value ? fila_DNI853["Estado_DNI853"].ToString() : string.Empty
                     };
 
                     listaObras_DNI853.Add(obra_DNI853);
@@ -53,6 +56,7 @@ namespace DAL
                 fila_DNI853["IdObra_DNI853"] = obraParam_DNI853.IdObra_DNI853;
                 fila_DNI853["NombreObra_DNI853"] = obraParam_DNI853.NombreObra_DNI853;
                 fila_DNI853["DescripcionObra_DNI853"] = obraParam_DNI853.DescripcionObra_DNI853;
+                fila_DNI853["Estado_DNI853"] = string.IsNullOrEmpty(obraParam_DNI853.Estado_DNI853) ? (object)DBNull.Value : obraParam_DNI853.Estado_DNI853;
 
                 ds_DNI853.Tables["Obra_DNI853"].Rows.Add(fila_DNI853);
 
@@ -80,6 +84,7 @@ namespace DAL
 
                 fila_DNI853["NombreObra_DNI853"] = obraParam_DNI853.NombreObra_DNI853;
                 fila_DNI853["DescripcionObra_DNI853"] = obraParam_DNI853.DescripcionObra_DNI853;
+                fila_DNI853["Estado_DNI853"] = string.IsNullOrEmpty(obraParam_DNI853.Estado_DNI853) ? (object)DBNull.Value : obraParam_DNI853.Estado_DNI853;
 
                 SqlCommandBuilder builder_DNI853 = new SqlCommandBuilder(adapter_DNI853);
                 adapter_DNI853.Update(ds_DNI853, "Obra_DNI853");
@@ -109,6 +114,54 @@ namespace DAL
 
                 return true;
             }
+        }
+
+        public List<BE_Obra_DNI853> ObtenerObrasEnCartelera_DNI853()
+        {
+            List<BE_Obra_DNI853> listaObras_DNI853 = new List<BE_Obra_DNI853>();
+
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                SqlDataAdapter adapter_DNI853 = new SqlDataAdapter("SELECT * FROM Obra_DNI853 WHERE Estado_DNI853 = 'En Cartelera'", conn_DNI853);
+                DataTable tabla_DNI853 = new DataTable();
+                adapter_DNI853.Fill(tabla_DNI853);
+
+                foreach (DataRow fila_DNI853 in tabla_DNI853.Rows)
+                {
+                    BE_Obra_DNI853 obra_DNI853 = new BE_Obra_DNI853
+                    {
+                        IdObra_DNI853 = fila_DNI853["IdObra_DNI853"].ToString(),
+                        NombreObra_DNI853 = fila_DNI853["NombreObra_DNI853"].ToString()
+                    };
+                    listaObras_DNI853.Add(obra_DNI853);
+                }
+            }
+
+            return listaObras_DNI853;
+        }
+
+        public List<BE_Obra_DNI853> ObtenerObrasDisponibles_DNI853()
+        {
+            List<BE_Obra_DNI853> listaObras_DNI853 = new List<BE_Obra_DNI853>();
+
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                SqlDataAdapter adapter_DNI853 = new SqlDataAdapter("SELECT * FROM Obra_DNI853 WHERE Estado_DNI853 = 'Activa' OR Estado_DNI853 = 'En Cartelera'", conn_DNI853);
+                DataTable tabla_DNI853 = new DataTable();
+                adapter_DNI853.Fill(tabla_DNI853);
+
+                foreach (DataRow fila_DNI853 in tabla_DNI853.Rows)
+                {
+                    BE_Obra_DNI853 obra_DNI853 = new BE_Obra_DNI853
+                    {
+                        IdObra_DNI853 = fila_DNI853["IdObra_DNI853"].ToString(),
+                        NombreObra_DNI853 = fila_DNI853["NombreObra_DNI853"].ToString()
+                    };
+                    listaObras_DNI853.Add(obra_DNI853);
+                }
+            }
+
+            return listaObras_DNI853;
         }
     }
 }

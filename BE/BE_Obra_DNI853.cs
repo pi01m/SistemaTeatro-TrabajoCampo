@@ -12,6 +12,7 @@ namespace BE
         public string IdObra_DNI853 { get; set; }
         public string NombreObra_DNI853 { get; set; }
         public string DescripcionObra_DNI853 { get; set; }
+        public string Estado_DNI853 { get; set; } // Nuevo campo de estado
 
         public BE_Obra_DNI853() { }
 
@@ -22,7 +23,8 @@ namespace BE
 
         public string ObtenerCadenaParaHash()
         {
-            return $"{IdObra_DNI853}|{NombreObra_DNI853}|{DescripcionObra_DNI853}";
+            // Se incluye el estado en la cadena para que la integridad vertical/horizontal lo contemple
+            return $"{IdObra_DNI853}|{NombreObra_DNI853}|{DescripcionObra_DNI853}|{Estado_DNI853}";
         }
 
         public override string ToString()

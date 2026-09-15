@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-
+using BE;
 namespace BLL.BLL_Servicio
 {
     public class BLL_DigitoVerificador
@@ -135,6 +135,88 @@ namespace BLL.BLL_Servicio
         public void ValidarTodaLaBase()
         {
             List<ExcepcionIntegridad> errores = new List<ExcepcionIntegridad>();
+
+            // ---------- Sector_DNI853 ----------
+            DAL_Sector_DNI853 dalSector_DNI853 = new DAL_Sector_DNI853();
+            var errorSector_DNI853 = ValidarIntegridad(
+                dalSector_DNI853.ListarTodosSectores_DNI853(),
+                "Sector_DNI853");
+
+            if (errorSector_DNI853 != null)
+                errores.Add(errorSector_DNI853);
+
+            // ---------- Sala_DNI853 ----------
+            DAL_Sala_DNI853 dalSala_DNI853 = new DAL_Sala_DNI853();
+            var errorSala_DNI853 = ValidarIntegridad(
+                dalSala_DNI853.ListarSalas_DNI853(),
+                "Sala_DNI853");
+
+            if (errorSala_DNI853 != null)
+                errores.Add(errorSala_DNI853);
+
+            // ---------- Promocion_DNI853 ----------
+            DAL_Promocion_DNI853 dalPromocion_DNI853 = new DAL_Promocion_DNI853();
+            var errorPromocion_DNI853 = ValidarIntegridad(
+                dalPromocion_DNI853.ListarPromociones_DNI853(),
+                "Promocion_DNI853");
+
+            if (errorPromocion_DNI853 != null)
+                errores.Add(errorPromocion_DNI853);
+
+            // ---------- Obra_DNI853 ----------
+            DAL_Obra_DNI853 dalObra_DNI853 = new DAL_Obra_DNI853();
+            var errorObra_DNI853 = ValidarIntegridad(
+                dalObra_DNI853.ListarObras_DNI853(),
+                "Obra_DNI853");
+
+            if (errorObra_DNI853 != null)
+                errores.Add(errorObra_DNI853);
+
+            // ---------- MedioPago_DNI853 ----------
+            DAL_MedioPago_DNI853 dalMedioPago_DNI853 = new DAL_MedioPago_DNI853();
+            var errorMedioPago_DNI853 = ValidarIntegridad(
+                dalMedioPago_DNI853.ObtenerMediosDePago_DNI853(),
+                "MedioPago_DNI853");
+
+            if (errorMedioPago_DNI853 != null)
+                errores.Add(errorMedioPago_DNI853);
+
+            // ---------- Funcion_DNI853 ----------
+            DAL_Funcion_DNI853 dalFuncion_DNI853 = new DAL_Funcion_DNI853();
+            var errorFuncion_DNI853 = ValidarIntegridad(
+                dalFuncion_DNI853.ListarFunciones_DNI853(),
+                "Funcion_DNI853");
+
+            if (errorFuncion_DNI853 != null)
+                errores.Add(errorFuncion_DNI853);
+
+            // ---------- Factura_DNI853 ----------
+            DAL_Factura_DNI853 dalFactura_DNI853 = new DAL_Factura_DNI853();
+            var errorFactura_DNI853 = ValidarIntegridad(
+                dalFactura_DNI853.ListarFacturas_DNI853(),
+                "Factura_DNI853");
+
+            if (errorFactura_DNI853 != null)
+                errores.Add(errorFactura_DNI853);
+
+            // ---------- Entrada_DNI853 ----------
+            DAL_Entrada_DNI853 dalEntrada_DNI853 = new DAL_Entrada_DNI853();
+            var errorEntrada_DNI853 = ValidarIntegridad(
+                dalEntrada_DNI853.ListarEntradas_DNI853(),
+                "Entrada_DNI853");
+
+            if (errorEntrada_DNI853 != null)
+                errores.Add(errorEntrada_DNI853);
+
+            // ---------- Cliente_DNI853 ----------
+            DAL_Cliente_DNI853 dalCliente_DNI853 = new DAL_Cliente_DNI853();
+            var errorCliente_DNI853 = ValidarIntegridad(
+                dalCliente_DNI853.ListarClientes_DNI853(),
+                "Cliente_DNI853");
+
+            if (errorCliente_DNI853 != null)
+                errores.Add(errorCliente_DNI853);
+
             // ---------- Idioma ----------
             var errorIdioma = ValidarIntegridad(
                 dalIdioma.DameIdiomasBD(),
@@ -277,6 +359,17 @@ namespace BLL.BLL_Servicio
             RecalcularFamilias(log);
             RecalcularIdiomas(log);
             RecalcularPermisos(log);
+
+            ///negocio
+            RecalcularClientes_DNI853(log);
+            RecalcularEntradas_DNI853(log);
+            RecalcularFacturas_DNI853(log);
+            RecalcularFunciones_DNI853(log);
+            RecalcularMediosPago_DNI853(log);
+            RecalcularObras_DNI853(log);
+            RecalcularPromociones_DNI853(log);
+            RecalcularSalas_DNI853(log);
+            RecalcularSectores_DNI853(log);
         }
 
         private void RecalcularUsuarios(string log)
@@ -511,6 +604,310 @@ namespace BLL.BLL_Servicio
                 1);
         }
 
+        private void RecalcularClientes_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Cliente_DNI853");
 
+            DAL_Cliente_DNI853 dalCliente_DNI853 = new DAL_Cliente_DNI853();
+            List<BE_Cliente_DNI853> clientes_DNI853 = dalCliente_DNI853.ListarClientes_DNI853()
+                .OrderBy(c_DNI853 => c_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Cliente_DNI853 cliente_DNI853 in clientes_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(cliente_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Cliente_DNI853_" + cliente_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Cliente_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Clientes", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularEntradas_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Entrada_DNI853");
+
+            DAL_Entrada_DNI853 dalEntrada_DNI853 = new DAL_Entrada_DNI853();
+            List<BE_Entrada_DNI853> entradas_DNI853 = dalEntrada_DNI853.ListarEntradas_DNI853()
+                .OrderBy(e_DNI853 => e_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Entrada_DNI853 entrada_DNI853 in entradas_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(entrada_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Entrada_DNI853_" + entrada_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Entrada_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Entradas", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularFacturas_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Factura_DNI853");
+
+            DAL_Factura_DNI853 dalFactura_DNI853 = new DAL_Factura_DNI853();
+            List<BE_Factura_DNI853> facturas_DNI853 = dalFactura_DNI853.ListarFacturas_DNI853()
+                .OrderBy(f_DNI853 => f_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Factura_DNI853 factura_DNI853 in facturas_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(factura_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Factura_DNI853_" + factura_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Factura_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígito Verificador de Facturas", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularFunciones_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Funcion_DNI853");
+
+            DAL_Funcion_DNI853 dalFuncion_DNI853 = new DAL_Funcion_DNI853();
+            List<BE_Funcion_DNI853> funciones_DNI853 = dalFuncion_DNI853.ListarFunciones_DNI853()
+                .OrderBy(f_DNI853 => f_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Funcion_DNI853 funcion_DNI853 in funciones_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(funcion_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Funcion_DNI853_" + funcion_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Funcion_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Funciones", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularMediosPago_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("MedioPago_DNI853");
+
+            DAL_MedioPago_DNI853 dalMedioPago_DNI853 = new DAL_MedioPago_DNI853();
+            List<BE_MedioPago_DNI853> medios_DNI853 = dalMedioPago_DNI853.ObtenerMediosDePago_DNI853()
+                .OrderBy(m_DNI853 => m_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_MedioPago_DNI853 medio_DNI853 in medios_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(medio_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "MedioPago_DNI853_" + medio_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "MedioPago_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Medios de Pago", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularObras_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Obra_DNI853");
+
+            DAL_Obra_DNI853 dalObra_DNI853 = new DAL_Obra_DNI853();
+            List<BE_Obra_DNI853> obras_DNI853 = dalObra_DNI853.ListarObras_DNI853()
+                .OrderBy(o_DNI853 => o_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Obra_DNI853 obra_DNI853 in obras_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(obra_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Obra_DNI853_" + obra_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Obra_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Obras", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularPromociones_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Promocion_DNI853");
+
+            DAL_Promocion_DNI853 dalPromocion_DNI853 = new DAL_Promocion_DNI853();
+            List<BE.BE_Promocion_DNI853> promociones_DNI853 = dalPromocion_DNI853.ListarPromociones_DNI853()
+                .OrderBy(p_DNI853 => p_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE.BE_Promocion_DNI853 promocion_DNI853 in promociones_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(promocion_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Promocion_DNI853_" + promocion_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Promocion_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Promociones", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularSalas_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Sala_DNI853");
+
+            DAL_Sala_DNI853 dalSala_DNI853 = new DAL_Sala_DNI853();
+            List<BE_Sala_DNI853> salas_DNI853 = dalSala_DNI853.ListarSalas_DNI853()
+                .OrderBy(s_DNI853 => s_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Sala_DNI853 sala_DNI853 in salas_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(sala_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Sala_DNI853_" + sala_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Sala_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Salas", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularSectores_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Sector_DNI853");
+
+            DAL_Sector_DNI853 dalSector_DNI853 = new DAL_Sector_DNI853();
+            List<BE.BE_Sector_DNI853> sectores_DNI853 = dalSector_DNI853.ListarTodosSectores_DNI853()
+                .OrderBy(s_DNI853 => s_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE.BE_Sector_DNI853 sector_DNI853 in sectores_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(sector_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Sector_DNI853_" + sector_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Sector_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Sectores", log_DNI853, "Seguridad", 1);
+        }
     }
 }

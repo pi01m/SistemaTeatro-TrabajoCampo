@@ -113,12 +113,13 @@ namespace CuentaClara_TrabajoCampo
             button2.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P43");
             button5.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P44");
             btnInicio.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "InicioMenu");
-            btn_Funciones_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Categorias");
-            btnGraficos_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Graficos");
-
-            btn_Obras_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Vencimientos");
-            btn_Ventas_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "Transacciones");
-           
+            btn_Funciones_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P24");
+            btnGraficos_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P27");
+            btn_SalasySectores_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P26");
+            btn_Promociones_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P46");
+            btn_Obras_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P25");
+            btn_Ventas_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P23");
+            btn_Clientes_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P47");
             button7.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P36");
         }
 
@@ -371,7 +372,10 @@ namespace CuentaClara_TrabajoCampo
 
         private void btn_Ventas_DNI853_Click(object sender, EventArgs e)
         {
-
+            FormGestionVentaEntradas_DNI853 frm = new FormGestionVentaEntradas_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
 
         private void btnGraficos_DNI853_Click(object sender, EventArgs e)
@@ -381,27 +385,42 @@ namespace CuentaClara_TrabajoCampo
 
         private void btn_Obras_DNI853_Click(object sender, EventArgs e)
         {
-
+            FormGestionObrasDNI853 frm = new FormGestionObrasDNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
 
         private void btn_SalasySectores_DNI853_Click(object sender, EventArgs e)
         {
-
+            FormGestionSalasySectores_DNI853 frm = new FormGestionSalasySectores_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
 
         private void btn_Funciones_DNI853_Click(object sender, EventArgs e)
         {
-
+            FormGestionFunciones_DNI853 frm = new FormGestionFunciones_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
 
         private void btn_Promociones_DNI853_Click(object sender, EventArgs e)
         {
-
+            FormGestionPromocion_DNI853 frm = new FormGestionPromocion_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
 
         private void btn_Clientes_DNI853_Click(object sender, EventArgs e)
         {
-
+            FormGestionClientes_DNI853 frm = new FormGestionClientes_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
     }
 }

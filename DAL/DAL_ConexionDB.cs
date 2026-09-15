@@ -24,11 +24,11 @@ namespace DAL
             return "."; 
         }
 
-
+       
         public static string ObtenerCadena()
         {
             string servidor = ObtenerServidor();
-            return $"Data Source={servidor};Initial Catalog=BD_CuentaClara;Integrated Security=True;TrustServerCertificate=True;";
+            return $"Data Source={servidor};Initial Catalog= BD_TeatroLux_DNI853;Integrated Security=True;TrustServerCertificate=True;";
         }
 
 
@@ -43,7 +43,7 @@ namespace DAL
             {
               
                 string connString = ObtenerCadenaMaster(servidorElegido);
-                string consulta = "SELECT name FROM sys.databases WHERE name = 'BD_CuentaClara'";
+                string consulta = "SELECT name FROM sys.databases WHERE name = 'BD_TeatroLux_DNI853'";
 
                 using (SqlConnection conn = new SqlConnection(connString))
                 {

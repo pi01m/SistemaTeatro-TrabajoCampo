@@ -74,11 +74,32 @@ namespace IU
             try
             {
                 dgvSalas_DNI853.DataSource = null;
-                dgvSalas_DNI853.DataSource = bllSalas_DNI853.ListarSalas_DNI853();
+                var listaSalas = bllSalas_DNI853.ListarSalas_DNI853();
+                dgvSalas_DNI853.DataSource = listaSalas;
+
                 TraducirColumnasGrillas_DNI853();
-                LimpiarControlesSala_DNI853();
                 LimpiarControlesSector_DNI853();
                 dgvSectores_DNI853.DataSource = null;
+
+                // Si hay al menos una sala, forzamos la selección de la primera fila 
+                // para garantizar que se invoque el pintado de datos y no quede en null.
+                if (dgvSalas_DNI853.Rows.Count > 0)
+                {
+                    dgvSalas_DNI853.ClearSelection();
+                    dgvSalas_DNI853.Rows[0].Selected = true;
+                    dgvSalas_DNI853.CurrentCell = dgvSalas_DNI853.Rows[0].Cells[0];
+
+                    // Forzamos manualmente la carga del objeto seleccionado por si el evento no salta
+                    salaSeleccionada_DNI853 = (BE_Sala_DNI853)dgvSalas_DNI853.Rows[0].DataBoundItem;
+                    txtNombreSala_DNI853.Text = salaSeleccionada_DNI853.NombreSala_DNI853;
+                    txtUbicacionSala_DNI853.Text = salaSeleccionada_DNI853.Ubicacion_DNI853;
+                    txtCapacidadSala_DNI853.Text = salaSeleccionada_DNI853.Capacidad_DNI853.ToString();
+                    ActualizarGrillaSectores_DNI853(salaSeleccionada_DNI853.IdSala_DNI853);
+                }
+                else
+                {
+                    LimpiarControlesSala_DNI853();
+                }
             }
             catch (Exception ex_DNI853)
             {
@@ -214,6 +235,7 @@ namespace IU
                 txtNombreSector_DNI853.Text = sectorSeleccionado_DNI853.NombreSector_DNI853;
                 txtUbicacionSector_DNI853.Text = sectorSeleccionado_DNI853.Ubicacion_DNI853;
                 txtCapacidadSector_DNI853.Text = sectorSeleccionado_DNI853.Capacidad_DNI853.ToString();
+                txtPrecioSector_DNI853.Text = sectorSeleccionado_DNI853.Precio_DNI853.ToString("N2");
             }
         }
 
@@ -229,7 +251,8 @@ namespace IU
                     IdSala_DNI853 = salaSeleccionada_DNI853.IdSala_DNI853,
                     NombreSector_DNI853 = txtNombreSector_DNI853.Text,
                     Ubicacion_DNI853 = txtUbicacionSector_DNI853.Text,
-                    Capacidad_DNI853 = int.Parse(txtCapacidadSector_DNI853.Text)
+                    Capacidad_DNI853 = int.Parse(txtCapacidadSector_DNI853.Text),
+                    Precio_DNI853 = decimal.Parse(txtPrecioSector_DNI853.Text)
                 };
 
                 bool resultadoProc_DNI853 = bllSectores_DNI853.CrearSector_DNI853(objNuevoSector_DNI853);
@@ -255,7 +278,7 @@ namespace IU
                 sectorSeleccionado_DNI853.NombreSector_DNI853 = txtNombreSector_DNI853.Text;
                 sectorSeleccionado_DNI853.Ubicacion_DNI853 = txtUbicacionSector_DNI853.Text;
                 sectorSeleccionado_DNI853.Capacidad_DNI853 = int.Parse(txtCapacidadSector_DNI853.Text);
-
+                sectorSeleccionado_DNI853.Precio_DNI853 = decimal.Parse(txtPrecioSector_DNI853.Text);
                 bool resultadoProc_DNI853 = bllSectores_DNI853.ModificarSector_DNI853(sectorSeleccionado_DNI853);
                 if (resultadoProc_DNI853)
                 {
@@ -414,6 +437,9 @@ namespace IU
 
             if (dgvSectores_DNI853.Columns.Contains("Capacidad_DNI853"))
                 dgvSectores_DNI853.Columns["Capacidad_DNI853"].HeaderText = TraducirTexto_DNI853("ColCapacidad");
+
+            if (dgvSectores_DNI853.Columns.Contains("Precio_DNI853"))
+                dgvSectores_DNI853.Columns["Precio_DNI853"].HeaderText = TraducirTexto_DNI853("ColPrecio");
         }
 
         private string TraducirExcepcion_DNI853(Exception ex_DNI853)
@@ -429,5 +455,9 @@ namespace IU
             return mensajeTraducido_DNI853;
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

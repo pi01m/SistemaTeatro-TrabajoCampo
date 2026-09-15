@@ -11,34 +11,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using BLL;
+
+
 namespace IU
 {
     public partial class FormGestionObrasDNI853 : Form, IObserverIdioma
     {
-        // Instancia de BLL para Obras terminada en _DNI853
         private BLL_Obra_DNI853 bllObras_DNI853;
-
-        // Instancias de BLL de Servicios generales
         private BLL_Rol bllRol_DNI853;
         private BLL_Idioma bllIdioma_DNI853;
-
-        // Variable de estado
         private BE_Obra_DNI853 obraSeleccionada_DNI853;
 
         public FormGestionObrasDNI853()
         {
             InitializeComponent();
-            // Inicialización de gestores
             bllObras_DNI853 = new BLL_Obra_DNI853();
             bllRol_DNI853 = new BLL_Rol();
             bllIdioma_DNI853 = new BLL_Idioma();
 
-            // Configuración visual de la grilla
             dgvObras_DNI853.MultiSelect = false;
             dgvObras_DNI853.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvObras_DNI853.ReadOnly = true;
 
-            // Suscripción al Patrón Observer de Idioma
             GestorIdioma.GetInstancia().Suscribir(this);
         }
 
@@ -46,13 +40,22 @@ namespace IU
         {
             FormGestionObrasDNI853_Resize(null, null);
             CargarUsuarioActivo_DNI853();
+            CargarEstadosComboBox_DNI853();
             ActualizarIdioma();
             ActualizarGrillaObras_DNI853();
         }
 
-        // ====================================================================
-        // GESTIÓN DE OBRAS
-        // ====================================================================
+        private void CargarEstadosComboBox_DNI853()
+        {
+            // Puedes ajustar o cargar estos valores según los estados que maneje tu sistema/teatro
+            cmb_EstadoObra_DNI853.Items.Clear();
+            cmb_EstadoObra_DNI853.Items.Add("Activa");
+            cmb_EstadoObra_DNI853.Items.Add("Inactiva");
+            
+
+            if (cmb_EstadoObra_DNI853.Items.Count > 0)
+                cmb_EstadoObra_DNI853.SelectedIndex = 0;
+        }
 
         private void ActualizarGrillaObras_DNI853()
         {
@@ -73,6 +76,9 @@ namespace IU
         {
             txtNombreObra_DNI853.Text = string.Empty;
             txtDescripcionObra_DNI853.Text = string.Empty;
+            if (cmb_EstadoObra_DNI853.Items.Count > 0)
+                cmb_EstadoObra_DNI853.SelectedIndex = 0;
+
             obraSeleccionada_DNI853 = null;
         }
 
@@ -84,6 +90,12 @@ namespace IU
 
                 txtNombreObra_DNI853.Text = obraSeleccionada_DNI853.NombreObra_DNI853;
                 txtDescripcionObra_DNI853.Text = obraSeleccionada_DNI853.DescripcionObra_DNI853;
+
+                // Seleccionar el estado correspondiente en el ComboBox
+                if (!string.IsNullOrEmpty(obraSeleccionada_DNI853.Estado_DNI853))
+                {
+                    cmb_EstadoObra_DNI853.SelectedItem = obraSeleccionada_DNI853.Estado_DNI853;
+                }
             }
         }
 
@@ -94,7 +106,8 @@ namespace IU
                 BE_Obra_DNI853 objNuevaObra_DNI853 = new BE_Obra_DNI853
                 {
                     NombreObra_DNI853 = txtNombreObra_DNI853.Text,
-                    DescripcionObra_DNI853 = txtDescripcionObra_DNI853.Text
+                    DescripcionObra_DNI853 = txtDescripcionObra_DNI853.Text,
+                    Estado_DNI853 = cmb_EstadoObra_DNI853.SelectedItem?.ToString() ?? "Activa"
                 };
 
                 bool resultadoProc_DNI853 = bllObras_DNI853.CrearObra_DNI853(objNuevaObra_DNI853);
@@ -119,6 +132,7 @@ namespace IU
 
                 obraSeleccionada_DNI853.NombreObra_DNI853 = txtNombreObra_DNI853.Text;
                 obraSeleccionada_DNI853.DescripcionObra_DNI853 = txtDescripcionObra_DNI853.Text;
+                obraSeleccionada_DNI853.Estado_DNI853 = cmb_EstadoObra_DNI853.SelectedItem?.ToString() ?? "Activa";
 
                 bool resultadoProc_DNI853 = bllObras_DNI853.ModificarObra_DNI853(obraSeleccionada_DNI853);
                 if (resultadoProc_DNI853)
@@ -153,12 +167,6 @@ namespace IU
             }
         }
 
-
-
-        // ====================================================================
-        // EVENTOS GENERALES
-        // ====================================================================
-
         private void btnSalir_DNI853_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -182,10 +190,6 @@ namespace IU
             );
         }
 
-        // ====================================================================
-        // MANEJO DE SESIÓN Y SEGURIDAD
-        // ====================================================================
-
         private void CargarUsuarioActivo_DNI853()
         {
             Servicio_Usuario usuarioActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual();
@@ -208,10 +212,6 @@ namespace IU
                 return;
             }
         }
-
-        // ====================================================================
-        // PATRÓN OBSERVER: IDIOMA
-        // ====================================================================
 
         public void ActualizarIdioma()
         {
@@ -265,6 +265,9 @@ namespace IU
 
             if (dgvObras_DNI853.Columns.Contains("DescripcionObra_DNI853"))
                 dgvObras_DNI853.Columns["DescripcionObra_DNI853"].HeaderText = TraducirTexto_DNI853("ColDescripcionObra");
+
+            if (dgvObras_DNI853.Columns.Contains("Estado_DNI853"))
+                dgvObras_DNI853.Columns["Estado_DNI853"].HeaderText = TraducirTexto_DNI853("ColEstadoObra");
         }
 
         private string TraducirExcepcion_DNI853(Exception ex_DNI853)

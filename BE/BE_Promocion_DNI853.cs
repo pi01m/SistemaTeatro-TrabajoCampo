@@ -16,6 +16,7 @@ namespace BE
         public DateTime FechaInicio_DNI853 { get; set; }
         public DateTime FechaFin_DNI853 { get; set; }
         public string EstadoPromo_DNI853 { get; set; }
+        public string DestinoPromo_DNI853 { get; set; } 
 
         public BE_Promocion_DNI853() { }
 
@@ -29,7 +30,8 @@ namespace BE
             string fechaInicioStr_DNI853 = FechaInicio_DNI853.ToString("yyyy-MM-dd");
             string fechaFinStr_DNI853 = FechaFin_DNI853.ToString("yyyy-MM-dd");
 
-            return $"{IdPromo_DNI853}|{NombrePromo_DNI853}|{TipoPromo_DNI853}|{ValorDescuento_DNI853}|{fechaInicioStr_DNI853}|{fechaFinStr_DNI853}|{EstadoPromo_DNI853}";
+            // Incluimos el destino en el cálculo del hash
+            return $"{IdPromo_DNI853}|{NombrePromo_DNI853}|{TipoPromo_DNI853}|{ValorDescuento_DNI853}|{fechaInicioStr_DNI853}|{fechaFinStr_DNI853}|{EstadoPromo_DNI853}|{DestinoPromo_DNI853}";
         }
 
         public override string ToString()

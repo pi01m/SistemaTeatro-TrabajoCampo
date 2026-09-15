@@ -50,6 +50,8 @@
             panelInferior_DNI853 = new Panel();
             lblUsuarioValor_DNI853 = new Label();
             lblUsuarioActivo_DNI853 = new Label();
+            label1 = new Label();
+            cboDestinoPromo_DNI853 = new ComboBox();
             panelContenedor_DNI853.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPromociones_DNI853).BeginInit();
             panelInferior_DNI853.SuspendLayout();
@@ -59,6 +61,8 @@
             // 
             panelContenedor_DNI853.Anchor = AnchorStyles.None;
             panelContenedor_DNI853.BackColor = Color.White;
+            panelContenedor_DNI853.Controls.Add(label1);
+            panelContenedor_DNI853.Controls.Add(cboDestinoPromo_DNI853);
             panelContenedor_DNI853.Controls.Add(btnSalir_DNI853);
             panelContenedor_DNI853.Controls.Add(lblTitulo_DNI853);
             panelContenedor_DNI853.Controls.Add(dgvPromociones_DNI853);
@@ -331,6 +335,28 @@
             lblUsuarioActivo_DNI853.TabIndex = 0;
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.Location = new Point(53, 1058);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(286, 41);
+            label1.TabIndex = 18;
+            label1.Text = "Destino Promoción";
+            // 
+            // cboDestinoPromo_DNI853
+            // 
+            cboDestinoPromo_DNI853.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDestinoPromo_DNI853.FormattingEnabled = true;
+            cboDestinoPromo_DNI853.Items.AddRange(new object[] { "Entradas", "Cantina" });
+            cboDestinoPromo_DNI853.Location = new Point(53, 1109);
+            cboDestinoPromo_DNI853.Margin = new Padding(6);
+            cboDestinoPromo_DNI853.Name = "cboDestinoPromo_DNI853";
+            cboDestinoPromo_DNI853.Size = new Size(420, 49);
+            cboDestinoPromo_DNI853.TabIndex = 19;
+            // 
             // FormGestionPromocion_DNI853
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -381,5 +407,7 @@
         private System.Windows.Forms.Panel panelInferior_DNI853;
         private System.Windows.Forms.Label lblUsuarioActivo_DNI853;
         private System.Windows.Forms.Label lblUsuarioValor_DNI853;
+        private Label label1;
+        private ComboBox cboDestinoPromo_DNI853;
     }
 }

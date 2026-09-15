@@ -46,6 +46,14 @@ namespace IU
         {
             CargarUsuarioActivo_DNI853();
             ActualizarIdioma();
+
+            // Carga inicial de opciones para el ComboBox de destino si no se hizo desde el diseñador
+            if (cboDestinoPromo_DNI853.Items.Count == 0)
+            {
+                cboDestinoPromo_DNI853.Items.Add("Entradas");
+                cboDestinoPromo_DNI853.Items.Add("Cantina");
+            }
+
             ActualizarGrillaPromociones_DNI853();
         }
 
@@ -76,6 +84,7 @@ namespace IU
             dtpFechaInicio_DNI853.Value = DateTime.Now;
             dtpFechaFin_DNI853.Value = DateTime.Now.AddDays(30);
             if (cboEstadoPromo_DNI853.Items.Count > 0) cboEstadoPromo_DNI853.SelectedIndex = 0;
+            if (cboDestinoPromo_DNI853.Items.Count > 0) cboDestinoPromo_DNI853.SelectedIndex = 0;
             promocionSeleccionada_DNI853 = null;
         }
 
@@ -91,6 +100,7 @@ namespace IU
                 dtpFechaInicio_DNI853.Value = promocionSeleccionada_DNI853.FechaInicio_DNI853;
                 dtpFechaFin_DNI853.Value = promocionSeleccionada_DNI853.FechaFin_DNI853;
                 cboEstadoPromo_DNI853.SelectedItem = promocionSeleccionada_DNI853.EstadoPromo_DNI853;
+                cboDestinoPromo_DNI853.SelectedItem = promocionSeleccionada_DNI853.DestinoPromo_DNI853;
             }
         }
 
@@ -105,7 +115,8 @@ namespace IU
                     ValorDescuento_DNI853 = decimal.Parse(txtValorDescuento_DNI853.Text),
                     FechaInicio_DNI853 = dtpFechaInicio_DNI853.Value,
                     FechaFin_DNI853 = dtpFechaFin_DNI853.Value,
-                    EstadoPromo_DNI853 = cboEstadoPromo_DNI853.SelectedItem?.ToString()
+                    EstadoPromo_DNI853 = cboEstadoPromo_DNI853.SelectedItem?.ToString(),
+                    DestinoPromo_DNI853 = cboDestinoPromo_DNI853.SelectedItem?.ToString()
                 };
 
                 bool resultadoProc_DNI853 = bllPromociones_DNI853.CrearPromocion_DNI853(objNuevaPromo_DNI853);
@@ -134,6 +145,7 @@ namespace IU
                 promocionSeleccionada_DNI853.FechaInicio_DNI853 = dtpFechaInicio_DNI853.Value;
                 promocionSeleccionada_DNI853.FechaFin_DNI853 = dtpFechaFin_DNI853.Value;
                 promocionSeleccionada_DNI853.EstadoPromo_DNI853 = cboEstadoPromo_DNI853.SelectedItem?.ToString();
+                promocionSeleccionada_DNI853.DestinoPromo_DNI853 = cboDestinoPromo_DNI853.SelectedItem?.ToString();
 
                 bool resultadoProc_DNI853 = bllPromociones_DNI853.ModificarPromocion_DNI853(promocionSeleccionada_DNI853);
                 if (resultadoProc_DNI853)
@@ -288,6 +300,9 @@ namespace IU
 
             if (dgvPromociones_DNI853.Columns.Contains("EstadoPromo_DNI853"))
                 dgvPromociones_DNI853.Columns["EstadoPromo_DNI853"].HeaderText = TraducirTexto_DNI853("ColEstadoPromo");
+
+            if (dgvPromociones_DNI853.Columns.Contains("DestinoPromo_DNI853"))
+                dgvPromociones_DNI853.Columns["DestinoPromo_DNI853"].HeaderText = TraducirTexto_DNI853("ColDestinoPromo");
         }
 
         private string TraducirExcepcion_DNI853(Exception ex_DNI853)

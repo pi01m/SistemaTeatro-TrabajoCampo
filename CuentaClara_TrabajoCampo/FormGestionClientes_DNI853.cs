@@ -24,9 +24,14 @@ namespace IU
 
         // Variable de estado
         private BE_Cliente_DNI853 clienteSeleccionado_DNI853;
+
+        // Variable para controlar el estado de la operación actual (Nuevo, Modificar, Eliminar o Ninguno)
+        private string operacionActual_DNI853 = string.Empty;
+
         public FormGestionClientes_DNI853()
         {
             InitializeComponent();
+
             // Inicialización de gestores
             bllClientes_DNI853 = new BLL_Cliente_DNI853();
             bllRol_DNI853 = new BLL_Rol();
@@ -46,6 +51,24 @@ namespace IU
             CargarUsuarioActivo_DNI853();
             ActualizarIdioma();
             ActualizarGrillaClientes_DNI853();
+            ConfigurarEstadoInicial_DNI853();
+        }
+
+        private void ConfigurarEstadoInicial_DNI853()
+        {
+            operacionActual_DNI853 = string.Empty;
+            listaPasos_DNI853.Items.Clear();
+            DeshabilitarCampos_DNI853();
+        }
+
+        private void DeshabilitarCampos_DNI853()
+        {
+            txtDniCliente_DNI853.Enabled = false;
+            txtNombreCliente_DNI853.Enabled = false;
+            txtApellidoCliente_DNI853.Enabled = false;
+            txtCorreoCliente_DNI853.Enabled = false;
+            txtTelefonoCliente_DNI853.Enabled = false;
+            txtDireccionCliente_DNI853.Enabled = false;
         }
 
         // ====================================================================
@@ -70,7 +93,6 @@ namespace IU
         private void LimpiarControlesCliente_DNI853()
         {
             txtDniCliente_DNI853.Text = string.Empty;
-            txtDniCliente_DNI853.Enabled = true; // Habilitado para permitir ingresar nuevo DNI
             txtNombreCliente_DNI853.Text = string.Empty;
             txtApellidoCliente_DNI853.Text = string.Empty;
             txtCorreoCliente_DNI853.Text = string.Empty;
@@ -81,40 +103,140 @@ namespace IU
 
         private void dgvClientes_DNI853_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvClientes_DNI853.CurrentRow != null)
+            if (dgvClientes_DNI853.CurrentRow != null && string.IsNullOrEmpty(operacionActual_DNI853))
             {
                 clienteSeleccionado_DNI853 = (BE_Cliente_DNI853)dgvClientes_DNI853.CurrentRow.DataBoundItem;
 
-                txtDniCliente_DNI853.Text = clienteSeleccionado_DNI853.DNI_C;
-                txtDniCliente_DNI853.Enabled = false; // El DNI es clave primaria y no debe modificarse al actualizar
-                txtNombreCliente_DNI853.Text = clienteSeleccionado_DNI853.Nombre_C;
-                txtApellidoCliente_DNI853.Text = clienteSeleccionado_DNI853.Apellido_C;
-                txtCorreoCliente_DNI853.Text = clienteSeleccionado_DNI853.CorreoElectronico_C;
-                txtTelefonoCliente_DNI853.Text = clienteSeleccionado_DNI853.Telefono_C;
-                txtDireccionCliente_DNI853.Text = clienteSeleccionado_DNI853.Direccion_C;
+                txtDniCliente_DNI853.Text = clienteSeleccionado_DNI853.DNI_C_DNI853;
+                txtNombreCliente_DNI853.Text = clienteSeleccionado_DNI853.Nombre_C_DNI853;
+                txtApellidoCliente_DNI853.Text = clienteSeleccionado_DNI853.Apellido_C_DNI853;
+                txtCorreoCliente_DNI853.Text = clienteSeleccionado_DNI853.CorreoElectronico_C_DNI853;
+                txtTelefonoCliente_DNI853.Text = clienteSeleccionado_DNI853.Telefono_C_DNI853;
+                txtDireccionCliente_DNI853.Text = clienteSeleccionado_DNI853.Direccion_C_DNI853;
             }
         }
 
         private void btnNuevoCliente_DNI853_Click(object sender, EventArgs e)
         {
+            operacionActual_DNI853 = "NUEVO";
+            LimpiarControlesCliente_DNI853();
+
+            // Habilitar campos para ingreso
+            txtDniCliente_DNI853.Enabled = true;
+            txtNombreCliente_DNI853.Enabled = true;
+            txtApellidoCliente_DNI853.Enabled = true;
+            txtCorreoCliente_DNI853.Enabled = true;
+            txtTelefonoCliente_DNI853.Enabled = true;
+            txtDireccionCliente_DNI853.Enabled = true;
+
+            // Mostrar pasos en la lista
+            listaPasos_DNI853.Items.Clear();
+            listaPasos_DNI853.Items.Add("1. Ingrese los datos del nuevo cliente.");
+            listaPasos_DNI853.Items.Add("2. Verifique la información ingresada.");
+            listaPasos_DNI853.Items.Add("3. Presione 'Aplicar' para confirmar.");
+        }
+
+        private void btnModificarCliente_DNI853_Click(object sender, EventArgs e)
+        {
+            if (clienteSeleccionado_DNI853 == null)
+            {
+                MessageBox.Show("Debe seleccionar un cliente de la grilla para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            operacionActual_DNI853 = "MODIFICAR";
+
+            // El DNI no se modifica por ser clave, el resto sí
+            txtDniCliente_DNI853.Enabled = false;
+            txtNombreCliente_DNI853.Enabled = true;
+            txtApellidoCliente_DNI853.Enabled = true;
+            txtCorreoCliente_DNI853.Enabled = true;
+            txtTelefonoCliente_DNI853.Enabled = true;
+            txtDireccionCliente_DNI853.Enabled = true;
+
+            // Mostrar pasos en la lista
+            listaPasos_DNI853.Items.Clear();
+            listaPasos_DNI853.Items.Add("1. Modifique los campos deseados.");
+            listaPasos_DNI853.Items.Add("2. Verifique los cambios.");
+            listaPasos_DNI853.Items.Add("3. Presione 'Aplicar' para guardar.");
+        }
+
+        private void btnEliminarCliente_DNI853_Click(object sender, EventArgs e)
+        {
+            if (clienteSeleccionado_DNI853 == null)
+            {
+                MessageBox.Show("Debe seleccionar un cliente de la grilla para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            operacionActual_DNI853 = "ELIMINAR";
+            DeshabilitarCampos_DNI853();
+
+            // Mostrar pasos en la lista
+            listaPasos_DNI853.Items.Clear();
+            listaPasos_DNI853.Items.Add("1. Verifique el cliente seleccionado.");
+            listaPasos_DNI853.Items.Add("2. Presione 'Aplicar' para confirmar baja.");
+        }
+
+        private void btnAplicar_DNI853_Click(object sender, EventArgs e)
+        {
             try
             {
-                BE_Cliente_DNI853 objNuevoCliente_DNI853 = new BE_Cliente_DNI853
+                if (string.IsNullOrEmpty(operacionActual_DNI853))
                 {
-                    DNI_C = txtDniCliente_DNI853.Text,
-                    Nombre_C = txtNombreCliente_DNI853.Text,
-                    Apellido_C = txtApellidoCliente_DNI853.Text,
-                    CorreoElectronico_C = txtCorreoCliente_DNI853.Text,
-                    Telefono_C = txtTelefonoCliente_DNI853.Text,
-                    Direccion_C = txtDireccionCliente_DNI853.Text
-                };
-
-                bool resultadoProc_DNI853 = bllClientes_DNI853.CrearCliente_DNI853(objNuevoCliente_DNI853);
-                if (resultadoProc_DNI853)
-                {
-                    MessageBox.Show(TraducirTexto_DNI853("Exito_ClienteCreado"));
-                    ActualizarGrillaClientes_DNI853();
+                    MessageBox.Show("Debe seleccionar una operación de ABM (Nuevo, Modificar o Eliminar) antes de aplicar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                if (operacionActual_DNI853 == "NUEVO")
+                {
+                    BE_Cliente_DNI853 objNuevoCliente_DNI853 = new BE_Cliente_DNI853
+                    {
+                        DNI_C_DNI853 = txtDniCliente_DNI853.Text,
+                        Nombre_C_DNI853 = txtNombreCliente_DNI853.Text,
+                        Apellido_C_DNI853 = txtApellidoCliente_DNI853.Text,
+                        CorreoElectronico_C_DNI853 = txtCorreoCliente_DNI853.Text,
+                        Telefono_C_DNI853 = txtTelefonoCliente_DNI853.Text,
+                        Direccion_C_DNI853 = txtDireccionCliente_DNI853.Text
+                    };
+
+                    bool resultadoProc_DNI853 = bllClientes_DNI853.CrearCliente_DNI853(objNuevoCliente_DNI853);
+                    if (resultadoProc_DNI853)
+                    {
+                        MessageBox.Show(TraducirTexto_DNI853("Exito_ClienteCreado"));
+                    }
+                }
+                else if (operacionActual_DNI853 == "MODIFICAR")
+                {
+                    if (clienteSeleccionado_DNI853 == null)
+                        throw new Exception("err_SeleccioneClientePrimero");
+
+                    clienteSeleccionado_DNI853.Nombre_C_DNI853 = txtNombreCliente_DNI853.Text;
+                    clienteSeleccionado_DNI853.Apellido_C_DNI853 = txtApellidoCliente_DNI853.Text;
+                    clienteSeleccionado_DNI853.CorreoElectronico_C_DNI853 = txtCorreoCliente_DNI853.Text;
+                    clienteSeleccionado_DNI853.Telefono_C_DNI853 = txtTelefonoCliente_DNI853.Text;
+                    clienteSeleccionado_DNI853.Direccion_C_DNI853 = txtDireccionCliente_DNI853.Text;
+
+                    bool resultadoProc_DNI853 = bllClientes_DNI853.ModificarCliente_DNI853(clienteSeleccionado_DNI853);
+                    if (resultadoProc_DNI853)
+                    {
+                        MessageBox.Show(TraducirTexto_DNI853("Exito_ClienteModificado"));
+                    }
+                }
+                else if (operacionActual_DNI853 == "ELIMINAR")
+                {
+                    if (clienteSeleccionado_DNI853 == null)
+                        throw new Exception("err_SeleccioneClientePrimero");
+
+                    bool resultadoProc_DNI853 = bllClientes_DNI853.EliminarCliente_DNI853(clienteSeleccionado_DNI853.DNI_C_DNI853);
+                    if (resultadoProc_DNI853)
+                    {
+                        MessageBox.Show(TraducirTexto_DNI853("Exito_ClienteEliminado"));
+                    }
+                }
+
+                ActualizarGrillaClientes_DNI853();
+                ConfigurarEstadoInicial_DNI853();
             }
             catch (Exception ex_DNI853)
             {
@@ -122,56 +244,21 @@ namespace IU
             }
         }
 
-        private void btnModificarCliente_DNI853_Click(object sender, EventArgs e)
+        private void btnCancelar_DNI853_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (clienteSeleccionado_DNI853 == null)
-                    throw new Exception("err_SeleccioneClientePrimero");
+            ActualizarGrillaClientes_DNI853();
+            ConfigurarEstadoInicial_DNI853();
+        }
 
-                clienteSeleccionado_DNI853.DNI_C = txtDniCliente_DNI853.Text;
-                clienteSeleccionado_DNI853.Nombre_C = txtNombreCliente_DNI853.Text;
-                clienteSeleccionado_DNI853.Apellido_C = txtApellidoCliente_DNI853.Text;
-                clienteSeleccionado_DNI853.CorreoElectronico_C = txtCorreoCliente_DNI853.Text;
-                clienteSeleccionado_DNI853.Telefono_C = txtTelefonoCliente_DNI853.Text;
-                clienteSeleccionado_DNI853.Direccion_C = txtDireccionCliente_DNI853.Text;
-
-                bool resultadoProc_DNI853 = bllClientes_DNI853.ModificarCliente_DNI853(clienteSeleccionado_DNI853);
-                if (resultadoProc_DNI853)
-                {
-                    MessageBox.Show(TraducirTexto_DNI853("Exito_ClienteModificado"));
-                    ActualizarGrillaClientes_DNI853();
-                }
-            }
-            catch (Exception ex_DNI853)
-            {
-                MessageBox.Show(TraducirExcepcion_DNI853(ex_DNI853), TraducirTexto_DNI853("TituloError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        private void btnActualizar_DNI853_Click(object sender, EventArgs e)
+        {
+            ActualizarGrillaClientes_DNI853();
+            ConfigurarEstadoInicial_DNI853();
         }
 
         private void panelContenedor_DNI853_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void btnEliminarCliente_DNI853_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (clienteSeleccionado_DNI853 == null)
-                    throw new Exception("err_SeleccioneClientePrimero");
-
-                bool resultadoProc_DNI853 = bllClientes_DNI853.EliminarCliente_DNI853(clienteSeleccionado_DNI853.DNI_C);
-                if (resultadoProc_DNI853)
-                {
-                    MessageBox.Show(TraducirTexto_DNI853("Exito_ClienteEliminado"));
-                    ActualizarGrillaClientes_DNI853();
-                }
-            }
-            catch (Exception ex_DNI853)
-            {
-                MessageBox.Show(TraducirExcepcion_DNI853(ex_DNI853), TraducirTexto_DNI853("TituloError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         // ====================================================================

@@ -11,10 +11,12 @@ namespace DAL
     public class DAL_BitacoraEvento
     {
         private readonly string _connectionString = DAL_ConexionDB.ObtenerCadena();
+        //private readonly string _connectionString = "Data Source =.; Initial Catalog = BD_TeatroLux_DNI853; Integrated Security = True; Trust Server Certificate=True";
+
         public DAL_BitacoraEvento()
         {
           
-        }
+        } 
 
         private List<Servicio_Bitacora> MapearTablaALista(DataTable tabla)
         {

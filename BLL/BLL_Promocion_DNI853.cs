@@ -127,5 +127,18 @@ namespace BLL
 
             return resultado_DNI853;
         }
+
+        public List<BE_Promocion_DNI853> ObtenerPromocionesVigentes_DNI853()
+        {
+            return objDalPromocion_DNI853.ObtenerPromocionesVigentes_DNI853();
+        }
+
+        public List<BE_Promocion_DNI853> ObtenerPromocionesVigentesParaEntradas_DNI853()
+        {
+            // Llama al método existente y aplica el filtro por destino en la capa de negocio
+            return this.ObtenerPromocionesVigentes_DNI853()
+                       .Where(p => p.DestinoPromo_DNI853 == "Entradas")
+                       .ToList();
+        }
     }
 }

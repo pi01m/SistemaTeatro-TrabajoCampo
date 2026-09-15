@@ -35,5 +35,7 @@ namespace BE
         {
             return $"{IdFuncion_DNI853} - {Fecha_DNI853.ToShortDateString()} {HoraInicio_DNI853}";
         }
+
+
     }
 }

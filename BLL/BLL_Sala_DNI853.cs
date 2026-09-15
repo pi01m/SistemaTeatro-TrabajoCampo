@@ -37,6 +37,12 @@ namespace BLL
             if (salaParam_DNI853.Capacidad_DNI853 <= 0)
                 throw new Exception("err_CapacidadInvalida");
 
+            // Autogeneración de ID tipo string si no viene asignado
+            if (string.IsNullOrEmpty(salaParam_DNI853.IdSala_DNI853))
+            {
+                salaParam_DNI853.IdSala_DNI853 = "SAL_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper();
+            }
+
             // 2. Insertar en la Base de Datos a través de la DAL
             bool resultado_DNI853 = objDalSala_DNI853.InsertarSala_DNI853(salaParam_DNI853);
 

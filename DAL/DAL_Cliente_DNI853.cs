@@ -11,6 +11,7 @@ namespace DAL
     public class DAL_Cliente_DNI853
     {
         private readonly string _connectionString_DNI853 = DAL_ConexionDB.ObtenerCadena();
+        //private readonly string _connectionString_DNI853 = "Data Source =.; Initial Catalog = BD_TeatroLux_DNI853; Integrated Security = True; Trust Server Certificate=True";
 
         public DAL_Cliente_DNI853()
         {
@@ -30,12 +31,12 @@ namespace DAL
                 {
                     BE_Cliente_DNI853 cliente_DNI853 = new BE_Cliente_DNI853
                     {
-                        DNI_C = fila_DNI853["DNI_C"].ToString(),
-                        Nombre_C = fila_DNI853["Nombre_C"].ToString(),
-                        Apellido_C = fila_DNI853["Apellido_C"].ToString(),
-                        CorreoElectronico_C = fila_DNI853["CorreoElectronico_C"].ToString(),
-                        Telefono_C = fila_DNI853["Telefono_C"].ToString(),
-                        Direccion_C = fila_DNI853["Direccion_C"].ToString()
+                        DNI_C_DNI853 = fila_DNI853["DNI_C_DNI853"].ToString(),
+                        Nombre_C_DNI853 = fila_DNI853["Nombre_C_DNI853"].ToString(),
+                        Apellido_C_DNI853 = fila_DNI853["Apellido_C_DNI853"].ToString(),
+                        CorreoElectronico_C_DNI853 = fila_DNI853["CorreoElectronico_C_DNI853"].ToString(),
+                        Telefono_C_DNI853 = fila_DNI853["Telefono_C_DNI853"].ToString(),
+                        Direccion_C_DNI853 = fila_DNI853["Direccion_C_DNI853"].ToString()
                     };
 
                     listaClientes_DNI853.Add(cliente_DNI853);
@@ -55,12 +56,12 @@ namespace DAL
 
                 DataRow fila_DNI853 = ds_DNI853.Tables["Cliente_DNI853"].NewRow();
 
-                fila_DNI853["DNI_C"] = clienteParam_DNI853.DNI_C;
-                fila_DNI853["Nombre_C"] = clienteParam_DNI853.Nombre_C;
-                fila_DNI853["Apellido_C"] = clienteParam_DNI853.Apellido_C;
-                fila_DNI853["CorreoElectronico_C"] = clienteParam_DNI853.CorreoElectronico_C;
-                fila_DNI853["Telefono_C"] = clienteParam_DNI853.Telefono_C;
-                fila_DNI853["Direccion_C"] = clienteParam_DNI853.Direccion_C;
+                fila_DNI853["DNI_C_DNI853"] = clienteParam_DNI853.DNI_C_DNI853;
+                fila_DNI853["Nombre_C_DNI853"] = clienteParam_DNI853.Nombre_C_DNI853;
+                fila_DNI853["Apellido_C_DNI853"] = clienteParam_DNI853.Apellido_C_DNI853;
+                fila_DNI853["CorreoElectronico_C_DNI853"] = clienteParam_DNI853.CorreoElectronico_C_DNI853;
+                fila_DNI853["Telefono_C_DNI853"] = clienteParam_DNI853.Telefono_C_DNI853;
+                fila_DNI853["Direccion_C_DNI853"] = clienteParam_DNI853.Direccion_C_DNI853;
 
                 ds_DNI853.Tables["Cliente_DNI853"].Rows.Add(fila_DNI853);
 
@@ -75,8 +76,8 @@ namespace DAL
         {
             using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
             {
-                SqlDataAdapter adapter_DNI853 = new SqlDataAdapter("SELECT * FROM Cliente_DNI853 WHERE DNI_C = @DNI_C", conn_DNI853);
-                adapter_DNI853.SelectCommand.Parameters.Add(new SqlParameter("@DNI_C", SqlDbType.VarChar, 50) { Value = clienteParam_DNI853.DNI_C });
+                SqlDataAdapter adapter_DNI853 = new SqlDataAdapter("SELECT * FROM Cliente_DNI853 WHERE DNI_C_DNI853 = @DNI_C_DNI853", conn_DNI853);
+                adapter_DNI853.SelectCommand.Parameters.Add(new SqlParameter("@DNI_C_DNI853", SqlDbType.VarChar, 50) { Value = clienteParam_DNI853.DNI_C_DNI853 });
 
                 DataSet ds_DNI853 = new DataSet();
                 adapter_DNI853.Fill(ds_DNI853, "Cliente_DNI853");
@@ -86,11 +87,11 @@ namespace DAL
 
                 DataRow fila_DNI853 = ds_DNI853.Tables["Cliente_DNI853"].Rows[0];
 
-                fila_DNI853["Nombre_C"] = clienteParam_DNI853.Nombre_C;
-                fila_DNI853["Apellido_C"] = clienteParam_DNI853.Apellido_C;
-                fila_DNI853["CorreoElectronico_C"] = clienteParam_DNI853.CorreoElectronico_C;
-                fila_DNI853["Telefono_C"] = clienteParam_DNI853.Telefono_C;
-                fila_DNI853["Direccion_C"] = clienteParam_DNI853.Direccion_C;
+                fila_DNI853["Nombre_C_DNI853"] = clienteParam_DNI853.Nombre_C_DNI853;
+                fila_DNI853["Apellido_C_DNI853"] = clienteParam_DNI853.Apellido_C_DNI853;
+                fila_DNI853["CorreoElectronico_C_DNI853"] = clienteParam_DNI853.CorreoElectronico_C_DNI853;
+                fila_DNI853["Telefono_C_DNI853"] = clienteParam_DNI853.Telefono_C_DNI853;
+                fila_DNI853["Direccion_C_DNI853"] = clienteParam_DNI853.Direccion_C_DNI853;
 
                 SqlCommandBuilder builder_DNI853 = new SqlCommandBuilder(adapter_DNI853);
                 adapter_DNI853.Update(ds_DNI853, "Cliente_DNI853");
@@ -103,8 +104,8 @@ namespace DAL
         {
             using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
             {
-                SqlDataAdapter adapter_DNI853 = new SqlDataAdapter("SELECT * FROM Cliente_DNI853 WHERE DNI_C = @DNI_C", conn_DNI853);
-                adapter_DNI853.SelectCommand.Parameters.Add(new SqlParameter("@DNI_C", SqlDbType.VarChar, 50) { Value = dniClienteParam_DNI853 });
+                SqlDataAdapter adapter_DNI853 = new SqlDataAdapter("SELECT * FROM Cliente_DNI853 WHERE DNI_C_DNI853 = @DNI_C_DNI853", conn_DNI853);
+                adapter_DNI853.SelectCommand.Parameters.Add(new SqlParameter("@DNI_C_DNI853", SqlDbType.VarChar, 50) { Value = dniClienteParam_DNI853 });
 
                 DataSet ds_DNI853 = new DataSet();
                 adapter_DNI853.Fill(ds_DNI853, "Cliente_DNI853");
@@ -120,6 +121,40 @@ namespace DAL
 
                 return true;
             }
+        }
+
+        public BE_Cliente_DNI853 BuscarPorDNI_DNI853(string dni_DNI853)
+        {
+            BE_Cliente_DNI853 cliente_DNI853 = null;
+
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                string query_DNI853 = "SELECT * FROM Cliente_DNI853 WHERE DNI_C_DNI853 = @DNI_C_DNI853";
+                using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
+                {
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@DNI_C_DNI853", SqlDbType.VarChar, 50) { Value = dni_DNI853 });
+
+                    SqlDataAdapter adapter_DNI853 = new SqlDataAdapter(cmd_DNI853);
+                    DataTable tabla_DNI853 = new DataTable();
+                    adapter_DNI853.Fill(tabla_DNI853);
+
+                    if (tabla_DNI853.Rows.Count > 0)
+                    {
+                        DataRow fila_DNI853 = tabla_DNI853.Rows[0];
+                        cliente_DNI853 = new BE_Cliente_DNI853
+                        {
+                            DNI_C_DNI853 = fila_DNI853["DNI_C_DNI853"].ToString(),
+                            Nombre_C_DNI853 = fila_DNI853["Nombre_C_DNI853"].ToString(),
+                            Apellido_C_DNI853 = fila_DNI853["Apellido_C_DNI853"].ToString(),
+                            CorreoElectronico_C_DNI853 = fila_DNI853["CorreoElectronico_C_DNI853"].ToString(),
+                            Telefono_C_DNI853 = fila_DNI853["Telefono_C_DNI853"].ToString(),
+                            Direccion_C_DNI853 = fila_DNI853["Direccion_C_DNI853"].ToString()
+                        };
+                    }
+                }
+            }
+
+            return cliente_DNI853;
         }
     }
 }

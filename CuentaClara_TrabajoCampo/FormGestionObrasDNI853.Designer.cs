@@ -42,6 +42,8 @@
             panelInferior_DNI853 = new Panel();
             lblUsuarioValor_DNI853 = new Label();
             lblUsuarioActivo_DNI853 = new Label();
+            lblEstadoObra_DNI853 = new Label();
+            cmb_EstadoObra_DNI853 = new ComboBox();
             panelContenedor_DNI853.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvObras_DNI853).BeginInit();
             panelInferior_DNI853.SuspendLayout();
@@ -51,6 +53,8 @@
             // 
             panelContenedor_DNI853.Anchor = AnchorStyles.None;
             panelContenedor_DNI853.BackColor = Color.White;
+            panelContenedor_DNI853.Controls.Add(cmb_EstadoObra_DNI853);
+            panelContenedor_DNI853.Controls.Add(lblEstadoObra_DNI853);
             panelContenedor_DNI853.Controls.Add(btnSalir_DNI853);
             panelContenedor_DNI853.Controls.Add(lblTitulo_DNI853);
             panelContenedor_DNI853.Controls.Add(dgvObras_DNI853);
@@ -149,7 +153,7 @@
             txtDescripcionObra_DNI853.Margin = new Padding(6);
             txtDescripcionObra_DNI853.Multiline = true;
             txtDescripcionObra_DNI853.Name = "txtDescripcionObra_DNI853";
-            txtDescripcionObra_DNI853.Size = new Size(1270, 201);
+            txtDescripcionObra_DNI853.Size = new Size(1204, 141);
             txtDescripcionObra_DNI853.TabIndex = 5;
             // 
             // btnNuevaObra_DNI853
@@ -232,6 +236,25 @@
             lblUsuarioActivo_DNI853.TabIndex = 0;
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
+            // lblEstadoObra_DNI853
+            // 
+            lblEstadoObra_DNI853.AutoSize = true;
+            lblEstadoObra_DNI853.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblEstadoObra_DNI853.Location = new Point(53, 1226);
+            lblEstadoObra_DNI853.Margin = new Padding(6, 0, 6, 0);
+            lblEstadoObra_DNI853.Name = "lblEstadoObra_DNI853";
+            lblEstadoObra_DNI853.Size = new Size(190, 41);
+            lblEstadoObra_DNI853.TabIndex = 10;
+            lblEstadoObra_DNI853.Text = "Estado Obra";
+            // 
+            // cmb_EstadoObra_DNI853
+            // 
+            cmb_EstadoObra_DNI853.FormattingEnabled = true;
+            cmb_EstadoObra_DNI853.Location = new Point(53, 1270);
+            cmb_EstadoObra_DNI853.Name = "cmb_EstadoObra_DNI853";
+            cmb_EstadoObra_DNI853.Size = new Size(302, 49);
+            cmb_EstadoObra_DNI853.TabIndex = 11;
+            // 
             // FormGestionObrasDNI853
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -270,5 +293,8 @@
         private System.Windows.Forms.Panel panelInferior_DNI853;
         private System.Windows.Forms.Label lblUsuarioActivo_DNI853;
         private System.Windows.Forms.Label lblUsuarioValor_DNI853;
+        private Label lblEstadoObra_DNI853;
+        private TextBox txtEstadoObra_DNI853;
+        private ComboBox cmb_EstadoObra_DNI853;
     }
 }

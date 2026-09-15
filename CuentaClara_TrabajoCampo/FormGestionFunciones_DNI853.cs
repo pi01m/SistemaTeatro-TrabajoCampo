@@ -61,9 +61,9 @@ namespace IU
         {
             try
             {
-                // Cargar ComboBox de Obras
+                // Cargar ComboBox de Obras 
                 cboObra_DNI853.DataSource = null;
-                cboObra_DNI853.DataSource = bllObras_DNI853.ListarObras_DNI853();
+                cboObra_DNI853.DataSource = bllObras_DNI853.ListarObrasDisponibles_DNI853();
                 cboObra_DNI853.DisplayMember = "NombreObra_DNI853";
                 cboObra_DNI853.ValueMember = "IdObra_DNI853";
 

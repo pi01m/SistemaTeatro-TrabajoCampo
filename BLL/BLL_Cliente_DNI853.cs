@@ -30,13 +30,13 @@ namespace BLL
         public bool CrearCliente_DNI853(BE_Cliente_DNI853 clienteParam_DNI853)
         {
             // 1. Validaciones de negocio
-            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.DNI_C))
+            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.DNI_C_DNI853))
                 throw new Exception("err_DniClienteObligatorio");
 
-            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Nombre_C))
+            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Nombre_C_DNI853))
                 throw new Exception("err_NombreClienteObligatorio");
 
-            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Apellido_C))
+            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Apellido_C_DNI853))
                 throw new Exception("err_ApellidoClienteObligatorio");
 
             // 2. Inserción en Base de Datos
@@ -64,13 +64,13 @@ namespace BLL
         public bool ModificarCliente_DNI853(BE_Cliente_DNI853 clienteParam_DNI853)
         {
             // 1. Validaciones de negocio
-            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.DNI_C))
+            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.DNI_C_DNI853))
                 throw new Exception("err_DniClienteObligatorio");
 
-            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Nombre_C))
+            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Nombre_C_DNI853))
                 throw new Exception("err_NombreClienteObligatorio");
 
-            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Apellido_C))
+            if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Apellido_C_DNI853))
                 throw new Exception("err_ApellidoClienteObligatorio");
 
             // 2. Actualización en Base de Datos
@@ -120,6 +120,14 @@ namespace BLL
             }
 
             return resultado_DNI853;
+        }
+
+        public BE_Cliente_DNI853 BuscarPorDNI_DNI853(string dni_DNI853)
+        {
+            if (string.IsNullOrWhiteSpace(dni_DNI853))
+                throw new Exception("err_DniClienteObligatorio");
+
+            return objDalCliente_DNI853.BuscarPorDNI_DNI853(dni_DNI853);
         }
     }
 }

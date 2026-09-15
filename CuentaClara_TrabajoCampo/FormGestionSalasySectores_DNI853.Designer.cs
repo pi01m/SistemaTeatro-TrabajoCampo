@@ -56,6 +56,8 @@
             panelInferior_DNI853 = new Panel();
             lblUsuarioValor_DNI853 = new Label();
             lblUsuarioActivo_DNI853 = new Label();
+            Precio = new Label();
+            txtPrecioSector_DNI853 = new TextBox();
             panelContenedor_DNI853.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSalas_DNI853).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSectores_DNI853).BeginInit();
@@ -66,6 +68,8 @@
             // 
             panelContenedor_DNI853.Anchor = AnchorStyles.None;
             panelContenedor_DNI853.BackColor = Color.White;
+            panelContenedor_DNI853.Controls.Add(Precio);
+            panelContenedor_DNI853.Controls.Add(txtPrecioSector_DNI853);
             panelContenedor_DNI853.Controls.Add(btnSalir_DNI853);
             panelContenedor_DNI853.Controls.Add(lblTitulo_DNI853);
             panelContenedor_DNI853.Controls.Add(lblSubSalas_DNI853);
@@ -327,7 +331,7 @@
             // 
             lblCapacidadSector_DNI853.AutoSize = true;
             lblCapacidadSector_DNI853.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblCapacidadSector_DNI853.Location = new Point(988, 1097);
+            lblCapacidadSector_DNI853.Location = new Point(62, 1233);
             lblCapacidadSector_DNI853.Margin = new Padding(6, 0, 6, 0);
             lblCapacidadSector_DNI853.Name = "lblCapacidadSector_DNI853";
             lblCapacidadSector_DNI853.Size = new Size(165, 41);
@@ -336,7 +340,7 @@
             // 
             // txtCapacidadSector_DNI853
             // 
-            txtCapacidadSector_DNI853.Location = new Point(988, 1148);
+            txtCapacidadSector_DNI853.Location = new Point(62, 1284);
             txtCapacidadSector_DNI853.Margin = new Padding(6);
             txtCapacidadSector_DNI853.Name = "txtCapacidadSector_DNI853";
             txtCapacidadSector_DNI853.Size = new Size(250, 47);
@@ -422,6 +426,26 @@
             lblUsuarioActivo_DNI853.TabIndex = 0;
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
+            // Precio
+            // 
+            Precio.AutoSize = true;
+            Precio.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            Precio.Location = new Point(521, 1233);
+            Precio.Margin = new Padding(6, 0, 6, 0);
+            Precio.Name = "Precio";
+            Precio.Size = new Size(105, 41);
+            Precio.TabIndex = 23;
+            Precio.Text = "Precio";
+            Precio.Click += label1_Click;
+            // 
+            // txtPrecioSector_DNI853
+            // 
+            txtPrecioSector_DNI853.Location = new Point(521, 1284);
+            txtPrecioSector_DNI853.Margin = new Padding(6);
+            txtPrecioSector_DNI853.Name = "txtPrecioSector_DNI853";
+            txtPrecioSector_DNI853.Size = new Size(250, 47);
+            txtPrecioSector_DNI853.TabIndex = 24;
+            // 
             // FormGestionSalasySectores_DNI853
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -482,5 +506,7 @@
         private System.Windows.Forms.Panel panelInferior_DNI853;
         private System.Windows.Forms.Label lblUsuarioActivo_DNI853;
         private System.Windows.Forms.Label lblUsuarioValor_DNI853;
+        private Label Precio;
+        private TextBox txtPrecioSector_DNI853;
     }
 }

@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionClientes_DNI853));
             panelContenedor_DNI853 = new Panel();
+            btnActualizar_DNI853 = new Button();
+            listaPasos_DNI853 = new ListBox();
+            btnCancelar_DNI853 = new Button();
+            btnAplicar_DNI853 = new Button();
             btnSalir_DNI853 = new Button();
             lblTitulo_DNI853 = new Label();
             dgvClientes_DNI853 = new DataGridView();
@@ -58,7 +63,11 @@
             // panelContenedor_DNI853
             // 
             panelContenedor_DNI853.Anchor = AnchorStyles.None;
-            panelContenedor_DNI853.BackColor = Color.White;
+            panelContenedor_DNI853.BackColor = Color.FromArgb(240, 238, 235);
+            panelContenedor_DNI853.Controls.Add(btnActualizar_DNI853);
+            panelContenedor_DNI853.Controls.Add(listaPasos_DNI853);
+            panelContenedor_DNI853.Controls.Add(btnCancelar_DNI853);
+            panelContenedor_DNI853.Controls.Add(btnAplicar_DNI853);
             panelContenedor_DNI853.Controls.Add(btnSalir_DNI853);
             panelContenedor_DNI853.Controls.Add(lblTitulo_DNI853);
             panelContenedor_DNI853.Controls.Add(dgvClientes_DNI853);
@@ -83,6 +92,59 @@
             panelContenedor_DNI853.Size = new Size(2550, 1435);
             panelContenedor_DNI853.TabIndex = 1;
             panelContenedor_DNI853.Paint += panelContenedor_DNI853_Paint;
+            // 
+            // btnActualizar_DNI853
+            // 
+            btnActualizar_DNI853.BackColor = Color.White;
+            btnActualizar_DNI853.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
+            btnActualizar_DNI853.FlatStyle = FlatStyle.Flat;
+            btnActualizar_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
+            btnActualizar_DNI853.Location = new Point(790, 1240);
+            btnActualizar_DNI853.Margin = new Padding(6);
+            btnActualizar_DNI853.Name = "btnActualizar_DNI853";
+            btnActualizar_DNI853.Size = new Size(212, 72);
+            btnActualizar_DNI853.TabIndex = 20;
+            btnActualizar_DNI853.Text = "Actualizar";
+            btnActualizar_DNI853.UseVisualStyleBackColor = false;
+            btnActualizar_DNI853.Click += btnActualizar_DNI853_Click;
+            // 
+            // listaPasos_DNI853
+            // 
+            listaPasos_DNI853.FormattingEnabled = true;
+            listaPasos_DNI853.ItemHeight = 41;
+            listaPasos_DNI853.Location = new Point(1957, 833);
+            listaPasos_DNI853.Name = "listaPasos_DNI853";
+            listaPasos_DNI853.Size = new Size(456, 373);
+            listaPasos_DNI853.TabIndex = 19;
+            // 
+            // btnCancelar_DNI853
+            // 
+            btnCancelar_DNI853.BackColor = Color.White;
+            btnCancelar_DNI853.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
+            btnCancelar_DNI853.FlatStyle = FlatStyle.Flat;
+            btnCancelar_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
+            btnCancelar_DNI853.Location = new Point(2201, 1240);
+            btnCancelar_DNI853.Margin = new Padding(6);
+            btnCancelar_DNI853.Name = "btnCancelar_DNI853";
+            btnCancelar_DNI853.Size = new Size(212, 72);
+            btnCancelar_DNI853.TabIndex = 18;
+            btnCancelar_DNI853.Text = "Cancelar";
+            btnCancelar_DNI853.UseVisualStyleBackColor = false;
+            btnCancelar_DNI853.Click += btnCancelar_DNI853_Click;
+            // 
+            // btnAplicar_DNI853
+            // 
+            btnAplicar_DNI853.BackColor = Color.FromArgb(120, 20, 40);
+            btnAplicar_DNI853.FlatStyle = FlatStyle.Flat;
+            btnAplicar_DNI853.ForeColor = Color.White;
+            btnAplicar_DNI853.Location = new Point(1957, 1240);
+            btnAplicar_DNI853.Margin = new Padding(6);
+            btnAplicar_DNI853.Name = "btnAplicar_DNI853";
+            btnAplicar_DNI853.Size = new Size(212, 72);
+            btnAplicar_DNI853.TabIndex = 17;
+            btnAplicar_DNI853.Text = "Aplicar";
+            btnAplicar_DNI853.UseVisualStyleBackColor = false;
+            btnAplicar_DNI853.Click += btnAplicar_DNI853_Click;
             // 
             // btnSalir_DNI853
             // 
@@ -249,7 +311,7 @@
             btnNuevoCliente_DNI853.BackColor = Color.FromArgb(120, 20, 40);
             btnNuevoCliente_DNI853.FlatStyle = FlatStyle.Flat;
             btnNuevoCliente_DNI853.ForeColor = Color.White;
-            btnNuevoCliente_DNI853.Location = new Point(1753, 1250);
+            btnNuevoCliente_DNI853.Location = new Point(86, 1241);
             btnNuevoCliente_DNI853.Margin = new Padding(6);
             btnNuevoCliente_DNI853.Name = "btnNuevoCliente_DNI853";
             btnNuevoCliente_DNI853.Size = new Size(212, 72);
@@ -264,7 +326,7 @@
             btnModificarCliente_DNI853.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
             btnModificarCliente_DNI853.FlatStyle = FlatStyle.Flat;
             btnModificarCliente_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
-            btnModificarCliente_DNI853.Location = new Point(1987, 1250);
+            btnModificarCliente_DNI853.Location = new Point(320, 1241);
             btnModificarCliente_DNI853.Margin = new Padding(6);
             btnModificarCliente_DNI853.Name = "btnModificarCliente_DNI853";
             btnModificarCliente_DNI853.Size = new Size(212, 72);
@@ -279,7 +341,7 @@
             btnEliminarCliente_DNI853.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
             btnEliminarCliente_DNI853.FlatStyle = FlatStyle.Flat;
             btnEliminarCliente_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
-            btnEliminarCliente_DNI853.Location = new Point(2221, 1250);
+            btnEliminarCliente_DNI853.Location = new Point(554, 1241);
             btnEliminarCliente_DNI853.Margin = new Padding(6);
             btnEliminarCliente_DNI853.Name = "btnEliminarCliente_DNI853";
             btnEliminarCliente_DNI853.Size = new Size(212, 72);
@@ -328,7 +390,8 @@
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(240, 238, 235);
+            BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(2682, 1548);
             Controls.Add(panelInferior_DNI853);
             Controls.Add(panelContenedor_DNI853);
@@ -375,5 +438,9 @@
         private System.Windows.Forms.Panel panelInferior_DNI853;
         private System.Windows.Forms.Label lblUsuarioActivo_DNI853;
         private System.Windows.Forms.Label lblUsuarioValor_DNI853;
+        private Button btnCancelar_DNI853;
+        private Button btnAplicar_DNI853;
+        private ListBox listaPasos_DNI853;
+        private Button btnActualizar_DNI853;
     }
 }

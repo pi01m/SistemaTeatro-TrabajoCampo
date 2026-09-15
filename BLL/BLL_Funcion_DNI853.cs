@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using BE;
 namespace BLL
 {
     public class BLL_Funcion_DNI853
@@ -13,12 +14,13 @@ namespace BLL
         private DAL_Funcion_DNI853 objDalFuncion_DNI853;
         private BLL_BitacoraEvento objBitacora_DNI853;
         private BLL_DigitoVerificador objDigitoVerificador_DNI853;
-
+        BLL_Obra_DNI853 bllObra_DNI853;
         public BLL_Funcion_DNI853()
         {
             objDalFuncion_DNI853 = new DAL_Funcion_DNI853();
             objBitacora_DNI853 = new BLL_BitacoraEvento();
             objDigitoVerificador_DNI853 = new BLL_DigitoVerificador();
+            bllObra_DNI853 = new BLL_Obra_DNI853();
         }
 
         public List<BE_Funcion_DNI853> ListarFunciones_DNI853()
@@ -52,13 +54,18 @@ namespace BLL
 
             if (resultado_DNI853)
             {
+                // --- 4. ACTUALIZAR ESTADO DE LA OBRA MEDIANTE SU BLL ---
+               
+                bllObra_DNI853.VerificarYActualizarEstadoAEnCartelera_DNI853(funcionParam_DNI853.IdObra_DNI853);
+               
+
                 string loginActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual().Login;
 
-                // 4. Actualización de Dígitos Verificadores
+                // 5. Actualización de Dígitos Verificadores de la función
                 List<BE_Funcion_DNI853> listaCompleta_DNI853 = this.ListarFunciones_DNI853();
                 objDigitoVerificador_DNI853.ActualizarDigitos(funcionParam_DNI853, listaCompleta_DNI853, "Funcion_DNI853");
 
-                // 5. Registro Obligatorio en Bitácora
+                // 6. Registro Obligatorio en Bitácora
                 objBitacora_DNI853.RegistrarBitacora(
                     "Alta de Función",
                     loginActual_DNI853,
@@ -131,6 +138,17 @@ namespace BLL
             }
 
             return resultado_DNI853;
+        }
+
+       
+        public List<BE_Funcion_DNI853> ObtenerFunciones_DNI853(string idObra_DNI853, DateTime fecha_DNI853)
+        {
+            return objDalFuncion_DNI853.ObtenerFunciones_DNI853(idObra_DNI853, fecha_DNI853);
+        }
+
+        public List<BE_Funcion_DNI853> ObtenerFuncionesConfirmadas_DNI853(string idObra_DNI853, DateTime fecha_DNI853)
+        {
+            return objDalFuncion_DNI853.ObtenerFuncionesConfirmadas_DNI853(idObra_DNI853, fecha_DNI853);
         }
     }
 }
