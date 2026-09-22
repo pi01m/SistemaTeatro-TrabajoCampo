@@ -23,6 +23,11 @@ namespace BLL
             bllObra_DNI853 = new BLL_Obra_DNI853();
         }
 
+        public bool DescontarStockSector_DNI853(string idFuncion_DNI853, string idSector_DNI853, int cantidadVendida_DNI853)
+        {
+            return objDalFuncion_DNI853.DescontarStockSector_DNI853(idFuncion_DNI853, idSector_DNI853, cantidadVendida_DNI853);
+        }
+
         public List<BE_Funcion_DNI853> ListarFunciones_DNI853()
         {
             return objDalFuncion_DNI853.ListarFunciones_DNI853();
@@ -49,15 +54,26 @@ namespace BLL
                 funcionParam_DNI853.IdFuncion_DNI853 = "FUN_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper();
             }
 
-            // 3. Inserción en Base de Datos
+            // 3. Inserción de la Función en Base de Datos
             bool resultado_DNI853 = objDalFuncion_DNI853.InsertarFuncion_DNI853(funcionParam_DNI853);
 
             if (resultado_DNI853)
             {
-                // --- 4. ACTUALIZAR ESTADO DE LA OBRA MEDIANTE SU BLL ---
-               
+                // --- 3.1. ASIGNACIÓN AUTOMÁTICA DE SECTORES DE LA SALA A LA FUNCIÓN ---
+                BLL_Sector_DNI853 bllSector_DNI853 = new BLL_Sector_DNI853();
+                List<BE_Sector_DNI853> sectoresDeLaSala_DNI853 = bllSector_DNI853.ListarSectoresPorSala_DNI853(funcionParam_DNI853.IdSala_DNI853);
+
+                foreach (var sector_DNI853 in sectoresDeLaSala_DNI853)
+                {
+                    objDalFuncion_DNI853.CrearCupoFuncionSector_DNI853(
+                        funcionParam_DNI853.IdFuncion_DNI853,
+                        sector_DNI853.IdSector_DNI853,
+                        sector_DNI853.Capacidad_DNI853 // Toma la capacidad base del sector físico
+                    );
+                }
+
+                // 4. Actualizar estado de la obra mediante su BLL
                 bllObra_DNI853.VerificarYActualizarEstadoAEnCartelera_DNI853(funcionParam_DNI853.IdObra_DNI853);
-               
 
                 string loginActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual().Login;
 
@@ -149,6 +165,16 @@ namespace BLL
         public List<BE_Funcion_DNI853> ObtenerFuncionesConfirmadas_DNI853(string idObra_DNI853, DateTime fecha_DNI853)
         {
             return objDalFuncion_DNI853.ObtenerFuncionesConfirmadas_DNI853(idObra_DNI853, fecha_DNI853);
+        }
+
+        public List<BE_Funcion_DNI853> ObtenerFuncionesPorObra_DNI853(string idObra_DNI853)
+        {
+            return objDalFuncion_DNI853.ObtenerFuncionesPorObra_DNI853(idObra_DNI853);
+        }
+
+        public List<BE_Funcion_DNI853> ObtenerFuncionesConfirmadasPorObra_DNI853(string idObra_DNI853)
+        {
+            return objDalFuncion_DNI853.ObtenerFuncionesConfirmadasPorObra_DNI853(idObra_DNI853);
         }
     }
 }

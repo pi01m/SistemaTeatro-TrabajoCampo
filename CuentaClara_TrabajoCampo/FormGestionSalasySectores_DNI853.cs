@@ -81,15 +81,16 @@ namespace IU
                 LimpiarControlesSector_DNI853();
                 dgvSectores_DNI853.DataSource = null;
 
-                // Si hay al menos una sala, forzamos la selección de la primera fila 
-                // para garantizar que se invoque el pintado de datos y no quede en null.
+                // Forzado de selección para Salas
                 if (dgvSalas_DNI853.Rows.Count > 0)
                 {
                     dgvSalas_DNI853.ClearSelection();
                     dgvSalas_DNI853.Rows[0].Selected = true;
-                    dgvSalas_DNI853.CurrentCell = dgvSalas_DNI853.Rows[0].Cells[0];
+                    if (dgvSalas_DNI853.Columns.Count > 0)
+                    {
+                        dgvSalas_DNI853.CurrentCell = dgvSalas_DNI853.Rows[0].Cells[0];
+                    }
 
-                    // Forzamos manualmente la carga del objeto seleccionado por si el evento no salta
                     salaSeleccionada_DNI853 = (BE_Sala_DNI853)dgvSalas_DNI853.Rows[0].DataBoundItem;
                     txtNombreSala_DNI853.Text = salaSeleccionada_DNI853.NombreSala_DNI853;
                     txtUbicacionSala_DNI853.Text = salaSeleccionada_DNI853.Ubicacion_DNI853;
@@ -125,7 +126,6 @@ namespace IU
                 txtUbicacionSala_DNI853.Text = salaSeleccionada_DNI853.Ubicacion_DNI853;
                 txtCapacidadSala_DNI853.Text = salaSeleccionada_DNI853.Capacidad_DNI853.ToString();
 
-                // Aquí pasamos el IdSala como string
                 ActualizarGrillaSectores_DNI853(salaSeleccionada_DNI853.IdSala_DNI853);
             }
         }
@@ -185,7 +185,6 @@ namespace IU
                 if (salaSeleccionada_DNI853 == null)
                     throw new Exception("err_SeleccioneSalaPrimero");
 
-                // Recibe string por el cambio de ID
                 bool resultadoProc_DNI853 = bllSalas_DNI853.EliminarSala_DNI853(salaSeleccionada_DNI853.IdSala_DNI853);
                 if (resultadoProc_DNI853)
                 {
@@ -203,14 +202,34 @@ namespace IU
         // GESTIÓN DE SECTORES (DETALLE)
         // ====================================================================
 
-        private void ActualizarGrillaSectores_DNI853(string idSalaParam_DNI853) // Cambiado a string
+        private void ActualizarGrillaSectores_DNI853(string idSalaParam_DNI853)
         {
             try
             {
                 dgvSectores_DNI853.DataSource = null;
                 dgvSectores_DNI853.DataSource = bllSectores_DNI853.ListarSectoresPorSala_DNI853(idSalaParam_DNI853);
                 TraducirColumnasGrillas_DNI853();
-                LimpiarControlesSector_DNI853();
+
+                // Forzado de selección para Sectores
+                if (dgvSectores_DNI853.Rows.Count > 0)
+                {
+                    dgvSectores_DNI853.ClearSelection();
+                    dgvSectores_DNI853.Rows[0].Selected = true;
+                    if (dgvSectores_DNI853.Columns.Count > 0)
+                    {
+                        dgvSectores_DNI853.CurrentCell = dgvSectores_DNI853.Rows[0].Cells[0];
+                    }
+
+                    sectorSeleccionado_DNI853 = (BE_Sector_DNI853)dgvSectores_DNI853.Rows[0].DataBoundItem;
+                    txtNombreSector_DNI853.Text = sectorSeleccionado_DNI853.NombreSector_DNI853;
+                    txtUbicacionSector_DNI853.Text = sectorSeleccionado_DNI853.Ubicacion_DNI853;
+                    txtCapacidadSector_DNI853.Text = sectorSeleccionado_DNI853.Capacidad_DNI853.ToString();
+                    txtPrecioSector_DNI853.Text = sectorSeleccionado_DNI853.Precio_DNI853.ToString("N2");
+                }
+                else
+                {
+                    LimpiarControlesSector_DNI853();
+                }
             }
             catch (Exception ex_DNI853)
             {
@@ -223,6 +242,7 @@ namespace IU
             txtNombreSector_DNI853.Text = string.Empty;
             txtUbicacionSector_DNI853.Text = string.Empty;
             txtCapacidadSector_DNI853.Text = string.Empty;
+            txtPrecioSector_DNI853.Text = string.Empty;
             sectorSeleccionado_DNI853 = null;
         }
 
@@ -299,7 +319,6 @@ namespace IU
                 if (sectorSeleccionado_DNI853 == null)
                     throw new Exception("err_SeleccioneSectorPrimero");
 
-                // IdSector_DNI853 pasa string
                 bool resultadoProc_DNI853 = bllSectores_DNI853.EliminarSector_DNI853(sectorSeleccionado_DNI853.IdSector_DNI853);
                 if (resultadoProc_DNI853)
                 {
@@ -420,6 +439,12 @@ namespace IU
 
         private void TraducirColumnasGrillas_DNI853()
         {
+            if (dgvSalas_DNI853.Columns.Contains("IdSala_DNI853"))
+            {
+                dgvSalas_DNI853.Columns["IdSala_DNI853"].HeaderText = TraducirTexto_DNI853("ColIdSala");
+                dgvSalas_DNI853.Columns["IdSala_DNI853"].Visible = true;
+            }
+
             if (dgvSalas_DNI853.Columns.Contains("NombreSala_DNI853"))
                 dgvSalas_DNI853.Columns["NombreSala_DNI853"].HeaderText = TraducirTexto_DNI853("ColNombreSala");
 
@@ -428,6 +453,19 @@ namespace IU
 
             if (dgvSalas_DNI853.Columns.Contains("Capacidad_DNI853"))
                 dgvSalas_DNI853.Columns["Capacidad_DNI853"].HeaderText = TraducirTexto_DNI853("ColCapacidad");
+
+            // --- Grilla de Sectores ---
+            if (dgvSectores_DNI853.Columns.Contains("IdSector_DNI853"))
+            {
+                dgvSectores_DNI853.Columns["IdSector_DNI853"].HeaderText = TraducirTexto_DNI853("ColIdSector");
+                dgvSectores_DNI853.Columns["IdSector_DNI853"].Visible = true;
+            }
+
+            if (dgvSectores_DNI853.Columns.Contains("IdSala_DNI853"))
+            {
+                dgvSectores_DNI853.Columns["IdSala_DNI853"].HeaderText = TraducirTexto_DNI853("ColIdSala");
+                dgvSectores_DNI853.Columns["IdSala_DNI853"].Visible = true;
+            }
 
             if (dgvSectores_DNI853.Columns.Contains("NombreSector_DNI853"))
                 dgvSectores_DNI853.Columns["NombreSector_DNI853"].HeaderText = TraducirTexto_DNI853("ColNombreSector");

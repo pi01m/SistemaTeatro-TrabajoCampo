@@ -26,6 +26,7 @@ namespace IU
 
         // Variable de estado
         private BE_Funcion_DNI853 funcionSeleccionada_DNI853;
+
         public FormGestionFunciones_DNI853()
         {
             InitializeComponent();
@@ -86,7 +87,32 @@ namespace IU
                 dgvFunciones_DNI853.DataSource = null;
                 dgvFunciones_DNI853.DataSource = bllFunciones_DNI853.ListarFunciones_DNI853();
                 TraducirColumnasGrillas_DNI853();
-                LimpiarControlesFuncion_DNI853();
+
+                // Si hay al menos un registro (incluso si es solo 1), forzamos manualmente
+                // la selección y pintado de datos para evitar que SelectionChanged falle.
+                if (dgvFunciones_DNI853.Rows.Count > 0)
+                {
+                    dgvFunciones_DNI853.ClearSelection();
+                    dgvFunciones_DNI853.Rows[0].Selected = true;
+                    if (dgvFunciones_DNI853.Columns.Count > 0)
+                    {
+                        dgvFunciones_DNI853.CurrentCell = dgvFunciones_DNI853.Rows[0].Cells[0];
+                    }
+
+                    // Carga forzada directa del objeto seleccionado
+                    funcionSeleccionada_DNI853 = (BE_Funcion_DNI853)dgvFunciones_DNI853.Rows[0].DataBoundItem;
+
+                    cboObra_DNI853.SelectedValue = funcionSeleccionada_DNI853.IdObra_DNI853;
+                    cboSala_DNI853.SelectedValue = funcionSeleccionada_DNI853.IdSala_DNI853;
+                    dtpFecha_DNI853.Value = funcionSeleccionada_DNI853.Fecha_DNI853;
+                    txtHoraInicio_DNI853.Text = funcionSeleccionada_DNI853.HoraInicio_DNI853;
+                    txtHoraFinalizacion_DNI853.Text = funcionSeleccionada_DNI853.HoraFinalizacion_DNI853;
+                    cboEstado_DNI853.SelectedItem = funcionSeleccionada_DNI853.Estado_DNI853;
+                }
+                else
+                {
+                    LimpiarControlesFuncion_DNI853();
+                }
             }
             catch (Exception ex_DNI853)
             {
@@ -287,7 +313,10 @@ namespace IU
 
         private string TraducirTexto_DNI853(string claveParam_DNI853)
         {
-            string idIdiomaActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual().Id_Idioma;
+            Servicio_Usuario usuarioActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual();
+            if (usuarioActual_DNI853 == null) return claveParam_DNI853;
+
+            string idIdiomaActual_DNI853 = usuarioActual_DNI853.Id_Idioma;
             Servicio_Idioma idiomaActual_DNI853 = bllIdioma_DNI853.ObtenerIdiomaPorId(idIdiomaActual_DNI853);
 
             if (idiomaActual_DNI853 == null) return claveParam_DNI853;
@@ -298,11 +327,23 @@ namespace IU
 
         private void TraducirColumnasGrillas_DNI853()
         {
+            if (dgvFunciones_DNI853.Columns.Contains("IdFuncion_DNI853"))
+            {
+                dgvFunciones_DNI853.Columns["IdFuncion_DNI853"].HeaderText = TraducirTexto_DNI853("IdFuncion_DNI853");
+                dgvFunciones_DNI853.Columns["IdFuncion_DNI853"].Visible = true;
+            }
+
             if (dgvFunciones_DNI853.Columns.Contains("IdObra_DNI853"))
+            {
                 dgvFunciones_DNI853.Columns["IdObra_DNI853"].HeaderText = TraducirTexto_DNI853("ColObra");
+                dgvFunciones_DNI853.Columns["IdObra_DNI853"].Visible = true;
+            }
 
             if (dgvFunciones_DNI853.Columns.Contains("IdSala_DNI853"))
+            {
                 dgvFunciones_DNI853.Columns["IdSala_DNI853"].HeaderText = TraducirTexto_DNI853("ColSala");
+                dgvFunciones_DNI853.Columns["IdSala_DNI853"].Visible = true;
+            }
 
             if (dgvFunciones_DNI853.Columns.Contains("Fecha_DNI853"))
                 dgvFunciones_DNI853.Columns["Fecha_DNI853"].HeaderText = TraducirTexto_DNI853("ColFecha");

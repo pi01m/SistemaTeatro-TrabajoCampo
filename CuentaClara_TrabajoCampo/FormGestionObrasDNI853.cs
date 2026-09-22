@@ -47,11 +47,9 @@ namespace IU
 
         private void CargarEstadosComboBox_DNI853()
         {
-            // Puedes ajustar o cargar estos valores según los estados que maneje tu sistema/teatro
             cmb_EstadoObra_DNI853.Items.Clear();
             cmb_EstadoObra_DNI853.Items.Add("Activa");
             cmb_EstadoObra_DNI853.Items.Add("Inactiva");
-            
 
             if (cmb_EstadoObra_DNI853.Items.Count > 0)
                 cmb_EstadoObra_DNI853.SelectedIndex = 0;
@@ -64,7 +62,31 @@ namespace IU
                 dgvObras_DNI853.DataSource = null;
                 dgvObras_DNI853.DataSource = bllObras_DNI853.ListarObras_DNI853();
                 TraducirColumnasGrillas_DNI853();
-                LimpiarControlesObra_DNI853();
+
+                // Si hay al menos una fila (incluso si es 1 sola), forzamos la selección manual
+                if (dgvObras_DNI853.Rows.Count > 0)
+                {
+                    dgvObras_DNI853.ClearSelection();
+                    dgvObras_DNI853.Rows[0].Selected = true;
+                    if (dgvObras_DNI853.Columns.Count > 0)
+                    {
+                        dgvObras_DNI853.CurrentCell = dgvObras_DNI853.Rows[0].Cells[0];
+                    }
+
+                    // Carga forzada manual de los controles
+                    obraSeleccionada_DNI853 = (BE_Obra_DNI853)dgvObras_DNI853.Rows[0].DataBoundItem;
+                    txtNombreObra_DNI853.Text = obraSeleccionada_DNI853.NombreObra_DNI853;
+                    txtDescripcionObra_DNI853.Text = obraSeleccionada_DNI853.DescripcionObra_DNI853;
+
+                    if (!string.IsNullOrEmpty(obraSeleccionada_DNI853.Estado_DNI853))
+                    {
+                        cmb_EstadoObra_DNI853.SelectedItem = obraSeleccionada_DNI853.Estado_DNI853;
+                    }
+                }
+                else
+                {
+                    LimpiarControlesObra_DNI853();
+                }
             }
             catch (Exception ex_DNI853)
             {
@@ -91,7 +113,6 @@ namespace IU
                 txtNombreObra_DNI853.Text = obraSeleccionada_DNI853.NombreObra_DNI853;
                 txtDescripcionObra_DNI853.Text = obraSeleccionada_DNI853.DescripcionObra_DNI853;
 
-                // Seleccionar el estado correspondiente en el ComboBox
                 if (!string.IsNullOrEmpty(obraSeleccionada_DNI853.Estado_DNI853))
                 {
                     cmb_EstadoObra_DNI853.SelectedItem = obraSeleccionada_DNI853.Estado_DNI853;
@@ -260,6 +281,12 @@ namespace IU
 
         private void TraducirColumnasGrillas_DNI853()
         {
+            if (dgvObras_DNI853.Columns.Contains("IdObra_DNI853"))
+            {
+                dgvObras_DNI853.Columns["IdObra_DNI853"].HeaderText = TraducirTexto_DNI853("ColIdObra");
+                dgvObras_DNI853.Columns["IdObra_DNI853"].Visible = true;
+            }
+
             if (dgvObras_DNI853.Columns.Contains("NombreObra_DNI853"))
                 dgvObras_DNI853.Columns["NombreObra_DNI853"].HeaderText = TraducirTexto_DNI853("ColNombreObra");
 

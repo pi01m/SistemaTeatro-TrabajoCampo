@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BE
 { 
     public class BE_Entrada_DNI853: IVerificable
-    {
+    { 
         public string Id_Entrada_DNI853 { get; set; }
         public string Id_Factura_DNI853 { get; set; }
         public string IdFuncion_DNI853 { get; set; }
@@ -16,7 +16,7 @@ namespace BE
         public string Detalle_DNI853 { get; set; }
         public int Cantidad_DNI853 { get; set; } 
         public decimal PrecioUnitario_DNI853 { get; set; }
-
+         
         public decimal Subtotal_DNI853
         {
             get { return Cantidad_DNI853 * PrecioUnitario_DNI853; }
@@ -31,7 +31,9 @@ namespace BE
 
         public string ObtenerCadenaParaHash()
         {
-            return $"{Id_Entrada_DNI853}|{Id_Factura_DNI853}|{IdFuncion_DNI853}|{IdSector_DNI853}|{Detalle_DNI853}|{Cantidad_DNI853}|{PrecioUnitario_DNI853}";
+            string precioFormat = PrecioUnitario_DNI853.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+
+            return $"{Id_Entrada_DNI853}|{Id_Factura_DNI853}|{IdFuncion_DNI853}|{IdSector_DNI853}|{Detalle_DNI853}|{Cantidad_DNI853}|{precioFormat}";
         }
     }
 }

@@ -33,7 +33,6 @@ namespace DAL
                         IdFuncion_DNI853 = fila_DNI853["Id_Funcion_DNI853"].ToString(),
                         IdSector_DNI853 = fila_DNI853["Id_Sector_DNI853"].ToString(),
                         Detalle_DNI853 = fila_DNI853["Detalle_DNI853"].ToString(),
-                        Cantidad_DNI853 = Convert.ToInt32(fila_DNI853["Cantidad_DNI853"]),
                         PrecioUnitario_DNI853 = Convert.ToDecimal(fila_DNI853["PrecioUnitario_DNI853"])
                     };
 
@@ -45,32 +44,31 @@ namespace DAL
         }
 
         // Método encargado exclusivamente de insertar las entradas usando la misma transacción abierta
-        public void RegistrarEntradas_DNI853(List<BE_Entrada_DNI853> entradas_DNI853, SqlConnection conexion_DNI853, SqlTransaction transaccion_DNI853)
+        public void RegistrarEntradas_DNI853(List<BE_Entrada_DNI853> entradas_DNI853)
         {
-            SqlDataAdapter adapterEntrada = new SqlDataAdapter("SELECT * FROM Entrada_DNI853 WHERE 1 = 0", conexion_DNI853);
-            adapterEntrada.SelectCommand.Transaction = transaccion_DNI853;
-
-            DataSet dsEntrada = new DataSet();
-            adapterEntrada.Fill(dsEntrada, "Entrada");
-            DataTable tablaEntrada = dsEntrada.Tables["Entrada"];
-
-            foreach (BE_Entrada_DNI853 entrada in entradas_DNI853)
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
             {
-                DataRow filaEntrada = tablaEntrada.NewRow();
-                filaEntrada["Id_Entrada_DNI853"] = entrada.Id_Entrada_DNI853;
-                filaEntrada["Id_Factura_DNI853"] = entrada.Id_Factura_DNI853;
-                filaEntrada["Id_Funcion_DNI853"] = entrada.IdFuncion_DNI853;
-                filaEntrada["Id_Sector_DNI853"] = entrada.IdSector_DNI853;
-                filaEntrada["Detalle_DNI853"] = entrada.Detalle_DNI853;
-                filaEntrada["Cantidad_DNI853"] = entrada.Cantidad_DNI853;
-                filaEntrada["PrecioUnitario_DNI853"] = entrada.PrecioUnitario_DNI853;
-                filaEntrada["Subtotal_DNI853"] = entrada.Subtotal_DNI853;
+                SqlDataAdapter adapterEntrada_DNI853 = new SqlDataAdapter("SELECT * FROM Entrada_DNI853 WHERE 1 = 0", conn_DNI853);
+                DataSet dsEntrada_DNI853 = new DataSet();
+                adapterEntrada_DNI853.Fill(dsEntrada_DNI853, "Entrada");
+                DataTable tablaEntrada_DNI853 = dsEntrada_DNI853.Tables["Entrada"];
 
-                tablaEntrada.Rows.Add(filaEntrada);
+                foreach (BE_Entrada_DNI853 entrada_DNI853 in entradas_DNI853)
+                {
+                    DataRow filaEntrada_DNI853 = tablaEntrada_DNI853.NewRow();
+                    filaEntrada_DNI853["Id_Entrada_DNI853"] = entrada_DNI853.Id_Entrada_DNI853;
+                    filaEntrada_DNI853["Id_Factura_DNI853"] = entrada_DNI853.Id_Factura_DNI853;
+                    filaEntrada_DNI853["Id_Funcion_DNI853"] = entrada_DNI853.IdFuncion_DNI853;
+                    filaEntrada_DNI853["Id_Sector_DNI853"] = entrada_DNI853.IdSector_DNI853;
+                    filaEntrada_DNI853["Detalle_DNI853"] = entrada_DNI853.Detalle_DNI853;
+                    filaEntrada_DNI853["PrecioUnitario_DNI853"] = entrada_DNI853.PrecioUnitario_DNI853;
+
+                    tablaEntrada_DNI853.Rows.Add(filaEntrada_DNI853);
+                }
+
+                SqlCommandBuilder builderEntrada_DNI853 = new SqlCommandBuilder(adapterEntrada_DNI853);
+                adapterEntrada_DNI853.Update(dsEntrada_DNI853, "Entrada");
             }
-
-            SqlCommandBuilder builderEntrada = new SqlCommandBuilder(adapterEntrada);
-            adapterEntrada.Update(dsEntrada, "Entrada");
         }
     }
 }

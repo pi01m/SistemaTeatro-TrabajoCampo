@@ -128,14 +128,15 @@ namespace DAL
             }
         }
 
-        // Filtra las funciones por Obra y Fecha usando ADO.NET desconectado
+        // Filtra las funciones por Obra y a partir de la Fecha seleccionada (hoy o adelante)
         public List<BE_Funcion_DNI853> ObtenerFunciones_DNI853(string idObra_DNI853, DateTime fecha_DNI853)
         {
             List<BE_Funcion_DNI853> listaFunciones_DNI853 = new List<BE_Funcion_DNI853>();
 
             using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
             {
-                string query_DNI853 = "SELECT * FROM Funcion_DNI853 WHERE IdObra_DNI853 = @IdObra AND CONVERT(DATE, Fecha_DNI853) = CONVERT(DATE, @Fecha)";
+                // Se cambia '=' por '>=' para incluir la fecha indicada y todas las posteriores
+                string query_DNI853 = "SELECT * FROM Funcion_DNI853 WHERE IdObra_DNI853 = @IdObra AND CONVERT(DATE, Fecha_DNI853) >= CONVERT(DATE, @Fecha)";
 
                 using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
                 {
@@ -167,14 +168,15 @@ namespace DAL
             return listaFunciones_DNI853;
         }
 
-        // Filtra las funciones por Obra, Fecha y que estén Confirmadas
+        // Filtra las funciones por Obra, a partir de la Fecha, que estén Confirmadas y vigentes
         public List<BE_Funcion_DNI853> ObtenerFuncionesConfirmadas_DNI853(string idObra_DNI853, DateTime fecha_DNI853)
         {
             List<BE_Funcion_DNI853> listaFunciones_DNI853 = new List<BE_Funcion_DNI853>();
 
             using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
             {
-                string query_DNI853 = "SELECT * FROM Funcion_DNI853 WHERE IdObra_DNI853 = @IdObra AND CONVERT(DATE, Fecha_DNI853) = CONVERT(DATE, @Fecha) AND Estado_DNI853 = 'Confirmada'";
+                // Se cambia '=' por '>=' para asegurar que solo devuelva funciones vigentes o futuras
+                string query_DNI853 = "SELECT * FROM Funcion_DNI853 WHERE IdObra_DNI853 = @IdObra AND CONVERT(DATE, Fecha_DNI853) >= CONVERT(DATE, @Fecha) AND Estado_DNI853 = 'Confirmada'";
 
                 using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
                 {
@@ -204,6 +206,156 @@ namespace DAL
             }
 
             return listaFunciones_DNI853;
+        }
+
+
+        // Obtiene todas las funciones de una obra a partir de la fecha actual
+        public List<BE_Funcion_DNI853> ObtenerFuncionesPorObra_DNI853(string idObra_DNI853)
+        {
+            List<BE_Funcion_DNI853> listaFunciones_DNI853 = new List<BE_Funcion_DNI853>();
+
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                string query_DNI853 = "SELECT * FROM Funcion_DNI853 WHERE IdObra_DNI853 = @IdObra AND CONVERT(DATE, Fecha_DNI853) >= CONVERT(DATE, GETDATE())";
+
+                using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
+                {
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdObra", SqlDbType.VarChar, 50) { Value = idObra_DNI853 });
+
+                    SqlDataAdapter adapter_DNI853 = new SqlDataAdapter(cmd_DNI853);
+                    DataTable tabla_DNI853 = new DataTable();
+                    adapter_DNI853.Fill(tabla_DNI853);
+
+                    foreach (DataRow fila_DNI853 in tabla_DNI853.Rows)
+                    {
+                        BE_Funcion_DNI853 funcion_DNI853 = new BE_Funcion_DNI853
+                        {
+                            IdFuncion_DNI853 = fila_DNI853["IdFuncion_DNI853"].ToString(),
+                            IdObra_DNI853 = fila_DNI853["IdObra_DNI853"].ToString(),
+                            IdSala_DNI853 = fila_DNI853["IdSala_DNI853"].ToString(),
+                            Fecha_DNI853 = Convert.ToDateTime(fila_DNI853["Fecha_DNI853"]),
+                            HoraInicio_DNI853 = fila_DNI853["HoraInicio_DNI853"].ToString(),
+                            HoraFinalizacion_DNI853 = fila_DNI853["HoraFinalizacion_DNI853"].ToString(),
+                            Estado_DNI853 = fila_DNI853["Estado_DNI853"].ToString()
+                        };
+
+                        listaFunciones_DNI853.Add(funcion_DNI853);
+                    }
+                }
+            }
+
+            return listaFunciones_DNI853;
+        }
+
+        // Obtiene todas las funciones confirmadas de una obra a partir de la fecha actual
+        public List<BE_Funcion_DNI853> ObtenerFuncionesConfirmadasPorObra_DNI853(string idObra_DNI853)
+        {
+            List<BE_Funcion_DNI853> listaFunciones_DNI853 = new List<BE_Funcion_DNI853>();
+
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                string query_DNI853 = "SELECT * FROM Funcion_DNI853 WHERE IdObra_DNI853 = @IdObra AND CONVERT(DATE, Fecha_DNI853) >= CONVERT(DATE, GETDATE()) AND Estado_DNI853 = 'Confirmada'";
+
+                using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
+                {
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdObra", SqlDbType.VarChar, 50) { Value = idObra_DNI853 });
+
+                    SqlDataAdapter adapter_DNI853 = new SqlDataAdapter(cmd_DNI853);
+                    DataTable tabla_DNI853 = new DataTable();
+                    adapter_DNI853.Fill(tabla_DNI853);
+
+                    foreach (DataRow fila_DNI853 in tabla_DNI853.Rows)
+                    {
+                        BE_Funcion_DNI853 funcion_DNI853 = new BE_Funcion_DNI853
+                        {
+                            IdFuncion_DNI853 = fila_DNI853["IdFuncion_DNI853"].ToString(),
+                            IdObra_DNI853 = fila_DNI853["IdObra_DNI853"].ToString(),
+                            IdSala_DNI853 = fila_DNI853["IdSala_DNI853"].ToString(),
+                            Fecha_DNI853 = Convert.ToDateTime(fila_DNI853["Fecha_DNI853"]),
+                            HoraInicio_DNI853 = fila_DNI853["HoraInicio_DNI853"].ToString(),
+                            HoraFinalizacion_DNI853 = fila_DNI853["HoraFinalizacion_DNI853"].ToString(),
+                            Estado_DNI853 = fila_DNI853["Estado_DNI853"].ToString()
+                        };
+
+                        listaFunciones_DNI853.Add(funcion_DNI853);
+                    }
+                }
+            }
+
+            return listaFunciones_DNI853;
+        }
+        // ====================================================================
+        // MÉTODOS PARA GESTIONAR LA DISPONIBILIDAD DE LA TABLA INTERMEDIA
+        // ====================================================================
+
+        // 1. Inserta la disponibilidad inicial de un sector al crear la función
+        public bool CrearCupoFuncionSector_DNI853(string idFuncion_DNI853, string idSector_DNI853, int cantidadDisponible_DNI853)
+        {
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                string query_DNI853 = @"INSERT INTO Funcion_Sector_DNI853 (IdFuncion_DNI853, IdSector_DNI853, CantidadDisponible_DNI853) 
+                                       VALUES (@IdFuncion_DNI853, @IdSector_DNI853, @CantidadDisponible_DNI853)";
+
+                using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
+                {
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdFuncion_DNI853", SqlDbType.NVarChar, 50) { Value = idFuncion_DNI853 });
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdSector_DNI853", SqlDbType.NVarChar, 50) { Value = idSector_DNI853 });
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@CantidadDisponible_DNI853", SqlDbType.Int) { Value = cantidadDisponible_DNI853 });
+
+                    conn_DNI853.Open();
+                    return cmd_DNI853.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        // 2. Descuenta la cantidad vendida dentro de la SqlTransaction al confirmar la venta
+        public bool DescontarStockSector_DNI853(string idFuncion_DNI853, string idSector_DNI853, int cantidadVendida_DNI853, SqlConnection conexion_DNI853, SqlTransaction transaccion_DNI853)
+        {
+            string query_DNI853 = @"UPDATE Funcion_Sector_DNI853
+                                   SET CantidadDisponible_DNI853 = CantidadDisponible_DNI853 - @CantidadVendida_DNI853
+                                   WHERE IdFuncion_DNI853 = @IdFuncion_DNI853 
+                                     AND IdSector_DNI853 = @IdSector_DNI853 
+                                     AND CantidadDisponible_DNI853 >= @CantidadVendida_DNI853";
+
+            using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conexion_DNI853, transaccion_DNI853))
+            {
+                cmd_DNI853.Parameters.Add(new SqlParameter("@IdFuncion_DNI853", SqlDbType.NVarChar, 50) { Value = idFuncion_DNI853 });
+                cmd_DNI853.Parameters.Add(new SqlParameter("@IdSector_DNI853", SqlDbType.NVarChar, 50) { Value = idSector_DNI853 });
+                cmd_DNI853.Parameters.Add(new SqlParameter("@CantidadVendida_DNI853", SqlDbType.Int) { Value = cantidadVendida_DNI853 });
+
+                int filasAfectadas_DNI853 = cmd_DNI853.ExecuteNonQuery();
+
+                if (filasAfectadas_DNI853 == 0)
+                {
+                    throw new Exception("err_SinDisponibilidadSuficiente");
+                }
+
+                return true;
+            }
+        }
+
+        public bool DescontarStockSector_DNI853(string idFuncion_DNI853, string idSector_DNI853, int cantidadVendida_DNI853)
+        {
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                string query_DNI853 = @"UPDATE Funcion_Sector_DNI853
+                               SET CantidadDisponible_DNI853 = CantidadDisponible_DNI853 - @CantidadVendida_DNI853
+                               WHERE IdFuncion_DNI853 = @IdFuncion_DNI853 
+                                 AND IdSector_DNI853 = @IdSector_DNI853 
+                                 AND CantidadDisponible_DNI853 >= @CantidadVendida_DNI853";
+
+                using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
+                {
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdFuncion_DNI853", SqlDbType.NVarChar, 50) { Value = idFuncion_DNI853 });
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdSector_DNI853", SqlDbType.NVarChar, 50) { Value = idSector_DNI853 });
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@CantidadVendida_DNI853", SqlDbType.Int) { Value = cantidadVendida_DNI853 });
+
+                    conn_DNI853.Open();
+                    int filasAfectadas_DNI853 = cmd_DNI853.ExecuteNonQuery();
+
+                    return filasAfectadas_DNI853 > 0; // Falso si no hubo stock
+                }
+            }
         }
     }
 }

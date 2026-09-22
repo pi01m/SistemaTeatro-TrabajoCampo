@@ -36,12 +36,10 @@ namespace IU
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionVentaEntradas_DNI853));
             panelContenedor_DNI853 = new Panel();
+            btnCobrarEntradas_DNI853 = new Button();
             lblTitulo_DNI853 = new Label();
             lblObra_DNI853 = new Label();
             cboObra_DNI853 = new ComboBox();
-            lblFechaFuncion_DNI853 = new Label();
-            dtpFechaFuncion_DNI853 = new DateTimePicker();
-            btnBuscarFunciones_DNI853 = new Button();
             dgvFunciones_DNI853 = new DataGridView();
             lblSectoresDisponibles_DNI853 = new Label();
             dgvSectores_DNI853 = new DataGridView();
@@ -88,12 +86,10 @@ namespace IU
             // 
             panelContenedor_DNI853.Anchor = AnchorStyles.None;
             panelContenedor_DNI853.BackColor = Color.FromArgb(240, 238, 235);
+            panelContenedor_DNI853.Controls.Add(btnCobrarEntradas_DNI853);
             panelContenedor_DNI853.Controls.Add(lblTitulo_DNI853);
             panelContenedor_DNI853.Controls.Add(lblObra_DNI853);
             panelContenedor_DNI853.Controls.Add(cboObra_DNI853);
-            panelContenedor_DNI853.Controls.Add(lblFechaFuncion_DNI853);
-            panelContenedor_DNI853.Controls.Add(dtpFechaFuncion_DNI853);
-            panelContenedor_DNI853.Controls.Add(btnBuscarFunciones_DNI853);
             panelContenedor_DNI853.Controls.Add(dgvFunciones_DNI853);
             panelContenedor_DNI853.Controls.Add(lblSectoresDisponibles_DNI853);
             panelContenedor_DNI853.Controls.Add(dgvSectores_DNI853);
@@ -132,6 +128,22 @@ namespace IU
             panelContenedor_DNI853.Size = new Size(3196, 2036);
             panelContenedor_DNI853.TabIndex = 1;
             // 
+            // btnCobrarEntradas_DNI853
+            // 
+            btnCobrarEntradas_DNI853.BackColor = Color.FromArgb(120, 20, 40);
+            btnCobrarEntradas_DNI853.FlatAppearance.BorderSize = 0;
+            btnCobrarEntradas_DNI853.FlatStyle = FlatStyle.Flat;
+            btnCobrarEntradas_DNI853.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCobrarEntradas_DNI853.ForeColor = Color.White;
+            btnCobrarEntradas_DNI853.Location = new Point(1765, 1758);
+            btnCobrarEntradas_DNI853.Name = "btnCobrarEntradas_DNI853";
+            btnCobrarEntradas_DNI853.Size = new Size(320, 119);
+            btnCobrarEntradas_DNI853.TabIndex = 38;
+            btnCobrarEntradas_DNI853.Tag = "btnConfirmarVenta";
+            btnCobrarEntradas_DNI853.Text = "Cobrar Entradas";
+            btnCobrarEntradas_DNI853.UseVisualStyleBackColor = false;
+            btnCobrarEntradas_DNI853.Click += btnCobrarEntradas_DNI853_Click;
+            // 
             // lblTitulo_DNI853
             // 
             lblTitulo_DNI853.AutoSize = true;
@@ -141,7 +153,7 @@ namespace IU
             lblTitulo_DNI853.Name = "lblTitulo_DNI853";
             lblTitulo_DNI853.Size = new Size(856, 81);
             lblTitulo_DNI853.TabIndex = 0;
-            lblTitulo_DNI853.Tag = "lbl_TituloVentaEntradas_DNI853";
+            lblTitulo_DNI853.Tag = "lblGestionVentaEntradasTitulo";
             lblTitulo_DNI853.Text = "Gestión de Venta de Entradas";
             // 
             // lblObra_DNI853
@@ -153,7 +165,7 @@ namespace IU
             lblObra_DNI853.Name = "lblObra_DNI853";
             lblObra_DNI853.Size = new Size(99, 46);
             lblObra_DNI853.TabIndex = 1;
-            lblObra_DNI853.Tag = "lbl_Obra_DNI853";
+            lblObra_DNI853.Tag = "lblObra";
             lblObra_DNI853.Text = "Obra";
             // 
             // cboObra_DNI853
@@ -164,43 +176,7 @@ namespace IU
             cboObra_DNI853.Name = "cboObra_DNI853";
             cboObra_DNI853.Size = new Size(450, 53);
             cboObra_DNI853.TabIndex = 2;
-            // 
-            // lblFechaFuncion_DNI853
-            // 
-            lblFechaFuncion_DNI853.AutoSize = true;
-            lblFechaFuncion_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblFechaFuncion_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblFechaFuncion_DNI853.Location = new Point(563, 312);
-            lblFechaFuncion_DNI853.Name = "lblFechaFuncion_DNI853";
-            lblFechaFuncion_DNI853.Size = new Size(110, 46);
-            lblFechaFuncion_DNI853.TabIndex = 3;
-            lblFechaFuncion_DNI853.Tag = "lbl_Fecha_DNI853";
-            lblFechaFuncion_DNI853.Text = "Fecha";
-            // 
-            // dtpFechaFuncion_DNI853
-            // 
-            dtpFechaFuncion_DNI853.Font = new Font("Segoe UI", 10F);
-            dtpFechaFuncion_DNI853.Format = DateTimePickerFormat.Short;
-            dtpFechaFuncion_DNI853.Location = new Point(563, 367);
-            dtpFechaFuncion_DNI853.Name = "dtpFechaFuncion_DNI853";
-            dtpFechaFuncion_DNI853.Size = new Size(300, 52);
-            dtpFechaFuncion_DNI853.TabIndex = 4;
-            // 
-            // btnBuscarFunciones_DNI853
-            // 
-            btnBuscarFunciones_DNI853.BackColor = Color.White;
-            btnBuscarFunciones_DNI853.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
-            btnBuscarFunciones_DNI853.FlatStyle = FlatStyle.Flat;
-            btnBuscarFunciones_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnBuscarFunciones_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
-            btnBuscarFunciones_DNI853.Location = new Point(888, 364);
-            btnBuscarFunciones_DNI853.Name = "btnBuscarFunciones_DNI853";
-            btnBuscarFunciones_DNI853.Size = new Size(250, 60);
-            btnBuscarFunciones_DNI853.TabIndex = 5;
-            btnBuscarFunciones_DNI853.Tag = "btn_BuscarFunciones_DNI853";
-            btnBuscarFunciones_DNI853.Text = "Buscar Funciones";
-            btnBuscarFunciones_DNI853.UseVisualStyleBackColor = false;
-            btnBuscarFunciones_DNI853.Click += btnBuscarFunciones_DNI853_Click;
+            cboObra_DNI853.SelectedIndexChanged += cboObra_DNI853_SelectedIndexChanged;
             // 
             // dgvFunciones_DNI853
             // 
@@ -251,7 +227,7 @@ namespace IU
             lblSectoresDisponibles_DNI853.Name = "lblSectoresDisponibles_DNI853";
             lblSectoresDisponibles_DNI853.Size = new Size(412, 54);
             lblSectoresDisponibles_DNI853.TabIndex = 7;
-            lblSectoresDisponibles_DNI853.Tag = "lbl_SectoresDisponibles_DNI853";
+            lblSectoresDisponibles_DNI853.Tag = "lblSectoresDisponibles";
             lblSectoresDisponibles_DNI853.Text = "Sectores Disponibles";
             // 
             // dgvSectores_DNI853
@@ -302,7 +278,7 @@ namespace IU
             lblCantidad_DNI853.Name = "lblCantidad_DNI853";
             lblCantidad_DNI853.Size = new Size(163, 46);
             lblCantidad_DNI853.TabIndex = 9;
-            lblCantidad_DNI853.Tag = "lbl_Cantidad_DNI853";
+            lblCantidad_DNI853.Tag = "lblCantidad";
             lblCantidad_DNI853.Text = "Cantidad";
             // 
             // txtCantidad_DNI853
@@ -325,7 +301,7 @@ namespace IU
             btnAgregarItem_DNI853.Name = "btnAgregarItem_DNI853";
             btnAgregarItem_DNI853.Size = new Size(300, 65);
             btnAgregarItem_DNI853.TabIndex = 11;
-            btnAgregarItem_DNI853.Tag = "btn_AgregarCarrito_DNI853";
+            btnAgregarItem_DNI853.Tag = "btnAgregarCarrito";
             btnAgregarItem_DNI853.Text = "Agregar al Carrito";
             btnAgregarItem_DNI853.UseVisualStyleBackColor = false;
             btnAgregarItem_DNI853.Click += btnAgregarItem_DNI853_Click;
@@ -339,7 +315,7 @@ namespace IU
             lblCarrito_DNI853.Name = "lblCarrito_DNI853";
             lblCarrito_DNI853.Size = new Size(416, 54);
             lblCarrito_DNI853.TabIndex = 12;
-            lblCarrito_DNI853.Tag = "lbl_ResumenVenta_DNI853";
+            lblCarrito_DNI853.Tag = "lblResumenVenta";
             lblCarrito_DNI853.Text = "Resumen de la Venta";
             // 
             // dgvCarrito_DNI853
@@ -378,7 +354,7 @@ namespace IU
             btnQuitarItem_DNI853.Name = "btnQuitarItem_DNI853";
             btnQuitarItem_DNI853.Size = new Size(323, 75);
             btnQuitarItem_DNI853.TabIndex = 14;
-            btnQuitarItem_DNI853.Tag = "btn_QuitarCarrito_DNI853";
+            btnQuitarItem_DNI853.Tag = "btnQuitarCarrito";
             btnQuitarItem_DNI853.Text = "Quitar del Carrito";
             btnQuitarItem_DNI853.UseVisualStyleBackColor = false;
             btnQuitarItem_DNI853.Click += btnQuitarItem_DNI853_Click;
@@ -392,7 +368,7 @@ namespace IU
             lblDniCliente_DNI853.Name = "lblDniCliente_DNI853";
             lblDniCliente_DNI853.Size = new Size(203, 46);
             lblDniCliente_DNI853.TabIndex = 15;
-            lblDniCliente_DNI853.Tag = "lbl_DniCliente_DNI853";
+            lblDniCliente_DNI853.Tag = "lblDniCliente";
             lblDniCliente_DNI853.Text = "DNI Cliente";
             // 
             // txtDniCliente_DNI853
@@ -415,7 +391,7 @@ namespace IU
             btnBuscarCliente_DNI853.Name = "btnBuscarCliente_DNI853";
             btnBuscarCliente_DNI853.Size = new Size(177, 74);
             btnBuscarCliente_DNI853.TabIndex = 17;
-            btnBuscarCliente_DNI853.Tag = "btn_Buscar_DNI853";
+            btnBuscarCliente_DNI853.Tag = "btnBuscar";
             btnBuscarCliente_DNI853.Text = "Buscar";
             btnBuscarCliente_DNI853.UseVisualStyleBackColor = false;
             btnBuscarCliente_DNI853.Click += btnBuscarCliente_DNI853_Click;
@@ -431,7 +407,7 @@ namespace IU
             btnRegistrarCliente_DNI853.Name = "btnRegistrarCliente_DNI853";
             btnRegistrarCliente_DNI853.Size = new Size(240, 131);
             btnRegistrarCliente_DNI853.TabIndex = 18;
-            btnRegistrarCliente_DNI853.Tag = "btn_RegistrarCliente_DNI853";
+            btnRegistrarCliente_DNI853.Tag = "btnRegistrarCliente";
             btnRegistrarCliente_DNI853.Text = "Registrar Cliente";
             btnRegistrarCliente_DNI853.UseVisualStyleBackColor = false;
             btnRegistrarCliente_DNI853.Click += btnRegistrarCliente_DNI853_Click;
@@ -445,7 +421,7 @@ namespace IU
             lblNombreCliente_DNI853.Name = "lblNombreCliente_DNI853";
             lblNombreCliente_DNI853.Size = new Size(256, 46);
             lblNombreCliente_DNI853.TabIndex = 19;
-            lblNombreCliente_DNI853.Tag = "lbl_Cliente_DNI853";
+            lblNombreCliente_DNI853.Tag = "lblClienteDatos";
             lblNombreCliente_DNI853.Text = "Cliente / Datos";
             // 
             // txtNombreCliente_DNI853
@@ -463,18 +439,18 @@ namespace IU
             lblPromocion_DNI853.AutoSize = true;
             lblPromocion_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblPromocion_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblPromocion_DNI853.Location = new Point(1537, 1210);
+            lblPromocion_DNI853.Location = new Point(1552, 1314);
             lblPromocion_DNI853.Name = "lblPromocion_DNI853";
             lblPromocion_DNI853.Size = new Size(196, 46);
             lblPromocion_DNI853.TabIndex = 21;
-            lblPromocion_DNI853.Tag = "lbl_Promocion_DNI853";
+            lblPromocion_DNI853.Tag = "lblPromocion";
             lblPromocion_DNI853.Text = "Promoción";
             // 
             // cboPromocion_DNI853
             // 
             cboPromocion_DNI853.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPromocion_DNI853.Font = new Font("Segoe UI", 10F);
-            cboPromocion_DNI853.Location = new Point(1537, 1265);
+            cboPromocion_DNI853.Location = new Point(1552, 1369);
             cboPromocion_DNI853.Name = "cboPromocion_DNI853";
             cboPromocion_DNI853.Size = new Size(600, 53);
             cboPromocion_DNI853.TabIndex = 22;
@@ -485,18 +461,18 @@ namespace IU
             lblMedioPago_DNI853.AutoSize = true;
             lblMedioPago_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblMedioPago_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblMedioPago_DNI853.Location = new Point(2187, 1210);
+            lblMedioPago_DNI853.Location = new Point(2202, 1314);
             lblMedioPago_DNI853.Name = "lblMedioPago_DNI853";
             lblMedioPago_DNI853.Size = new Size(260, 46);
             lblMedioPago_DNI853.TabIndex = 23;
-            lblMedioPago_DNI853.Tag = "lbl_MedioPago_DNI853";
+            lblMedioPago_DNI853.Tag = "lblMedioPago";
             lblMedioPago_DNI853.Text = "Medio de Pago";
             // 
             // cboMedioPago_DNI853
             // 
             cboMedioPago_DNI853.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMedioPago_DNI853.Font = new Font("Segoe UI", 10F);
-            cboMedioPago_DNI853.Location = new Point(2187, 1265);
+            cboMedioPago_DNI853.Location = new Point(2202, 1369);
             cboMedioPago_DNI853.Name = "cboMedioPago_DNI853";
             cboMedioPago_DNI853.Size = new Size(600, 53);
             cboMedioPago_DNI853.TabIndex = 24;
@@ -507,18 +483,18 @@ namespace IU
             lblBanco_DNI853.AutoSize = true;
             lblBanco_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblBanco_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblBanco_DNI853.Location = new Point(1537, 1340);
+            lblBanco_DNI853.Location = new Point(1552, 1444);
             lblBanco_DNI853.Name = "lblBanco_DNI853";
             lblBanco_DNI853.Size = new Size(118, 46);
             lblBanco_DNI853.TabIndex = 25;
-            lblBanco_DNI853.Tag = "lbl_Banco_DNI853";
+            lblBanco_DNI853.Tag = "lblBanco";
             lblBanco_DNI853.Text = "Banco";
             // 
             // txtBanco_DNI853
             // 
             txtBanco_DNI853.BorderStyle = BorderStyle.FixedSingle;
             txtBanco_DNI853.Font = new Font("Segoe UI", 10F);
-            txtBanco_DNI853.Location = new Point(1537, 1395);
+            txtBanco_DNI853.Location = new Point(1552, 1499);
             txtBanco_DNI853.Name = "txtBanco_DNI853";
             txtBanco_DNI853.Size = new Size(350, 52);
             txtBanco_DNI853.TabIndex = 26;
@@ -528,18 +504,18 @@ namespace IU
             lblNroTarjeta_DNI853.AutoSize = true;
             lblNroTarjeta_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblNroTarjeta_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblNroTarjeta_DNI853.Location = new Point(1917, 1340);
+            lblNroTarjeta_DNI853.Location = new Point(1932, 1444);
             lblNroTarjeta_DNI853.Name = "lblNroTarjeta_DNI853";
             lblNroTarjeta_DNI853.Size = new Size(269, 46);
             lblNroTarjeta_DNI853.TabIndex = 27;
-            lblNroTarjeta_DNI853.Tag = "lbl_NroTarjeta_DNI853";
+            lblNroTarjeta_DNI853.Tag = "lblNroTarjeta";
             lblNroTarjeta_DNI853.Text = "Número Tarjeta";
             // 
             // txtNroTarjeta_DNI853
             // 
             txtNroTarjeta_DNI853.BorderStyle = BorderStyle.FixedSingle;
             txtNroTarjeta_DNI853.Font = new Font("Segoe UI", 10F);
-            txtNroTarjeta_DNI853.Location = new Point(1917, 1395);
+            txtNroTarjeta_DNI853.Location = new Point(1932, 1499);
             txtNroTarjeta_DNI853.Name = "txtNroTarjeta_DNI853";
             txtNroTarjeta_DNI853.Size = new Size(500, 52);
             txtNroTarjeta_DNI853.TabIndex = 28;
@@ -549,18 +525,18 @@ namespace IU
             lblVencimiento_DNI853.AutoSize = true;
             lblVencimiento_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblVencimiento_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblVencimiento_DNI853.Location = new Point(2447, 1340);
+            lblVencimiento_DNI853.Location = new Point(2462, 1444);
             lblVencimiento_DNI853.Name = "lblVencimiento_DNI853";
             lblVencimiento_DNI853.Size = new Size(384, 46);
             lblVencimiento_DNI853.TabIndex = 29;
-            lblVencimiento_DNI853.Tag = "lbl_Vencimiento_DNI853";
+            lblVencimiento_DNI853.Tag = "lblVencimientoTarjeta";
             lblVencimiento_DNI853.Text = "Vencimiento (MM/AA)";
             // 
             // txtVencimiento_DNI853
             // 
             txtVencimiento_DNI853.BorderStyle = BorderStyle.FixedSingle;
             txtVencimiento_DNI853.Font = new Font("Segoe UI", 10F);
-            txtVencimiento_DNI853.Location = new Point(2447, 1395);
+            txtVencimiento_DNI853.Location = new Point(2462, 1499);
             txtVencimiento_DNI853.Name = "txtVencimiento_DNI853";
             txtVencimiento_DNI853.Size = new Size(340, 52);
             txtVencimiento_DNI853.TabIndex = 30;
@@ -574,7 +550,7 @@ namespace IU
             lblImporteTotalTexto_DNI853.Name = "lblImporteTotalTexto_DNI853";
             lblImporteTotalTexto_DNI853.Size = new Size(403, 62);
             lblImporteTotalTexto_DNI853.TabIndex = 31;
-            lblImporteTotalTexto_DNI853.Tag = "lbl_ImporteTotal_DNI853";
+            lblImporteTotalTexto_DNI853.Tag = "lblImporteTotal";
             lblImporteTotalTexto_DNI853.Text = "IMPORTE TOTAL:";
             // 
             // txtImporteTotal_DNI853
@@ -596,11 +572,11 @@ namespace IU
             btnLimpiar_DNI853.FlatStyle = FlatStyle.Flat;
             btnLimpiar_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnLimpiar_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
-            btnLimpiar_DNI853.Location = new Point(1551, 1758);
+            btnLimpiar_DNI853.Location = new Point(1822, 1128);
             btnLimpiar_DNI853.Name = "btnLimpiar_DNI853";
             btnLimpiar_DNI853.Size = new Size(300, 119);
             btnLimpiar_DNI853.TabIndex = 33;
-            btnLimpiar_DNI853.Tag = "btn_CancelarVenta_DNI853";
+            btnLimpiar_DNI853.Tag = "btnCancelarVenta";
             btnLimpiar_DNI853.Text = "Cancelar Venta";
             btnLimpiar_DNI853.UseVisualStyleBackColor = false;
             btnLimpiar_DNI853.Click += btnLimpiar_DNI853_Click;
@@ -612,11 +588,11 @@ namespace IU
             btnConfirmarVenta_DNI853.FlatStyle = FlatStyle.Flat;
             btnConfirmarVenta_DNI853.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnConfirmarVenta_DNI853.ForeColor = Color.White;
-            btnConfirmarVenta_DNI853.Location = new Point(1871, 1758);
+            btnConfirmarVenta_DNI853.Location = new Point(2142, 1128);
             btnConfirmarVenta_DNI853.Name = "btnConfirmarVenta_DNI853";
             btnConfirmarVenta_DNI853.Size = new Size(320, 119);
             btnConfirmarVenta_DNI853.TabIndex = 34;
-            btnConfirmarVenta_DNI853.Tag = "btn_ConfirmarVenta_DNI853";
+            btnConfirmarVenta_DNI853.Tag = "btnConfirmarVenta";
             btnConfirmarVenta_DNI853.Text = "Confirmar Venta";
             btnConfirmarVenta_DNI853.UseVisualStyleBackColor = false;
             btnConfirmarVenta_DNI853.Click += btnConfirmarVenta_DNI853_Click;
@@ -632,7 +608,7 @@ namespace IU
             btnImprimirFactura_DNI853.Name = "btnImprimirFactura_DNI853";
             btnImprimirFactura_DNI853.Size = new Size(280, 119);
             btnImprimirFactura_DNI853.TabIndex = 35;
-            btnImprimirFactura_DNI853.Tag = "btn_ImprimirFactura_DNI853";
+            btnImprimirFactura_DNI853.Tag = "btnImprimirFactura";
             btnImprimirFactura_DNI853.Text = "Imprimir Factura";
             btnImprimirFactura_DNI853.UseVisualStyleBackColor = false;
             btnImprimirFactura_DNI853.Click += btnImprimirFactura_DNI853_Click;
@@ -648,7 +624,7 @@ namespace IU
             btnImprimirEntradas_DNI853.Name = "btnImprimirEntradas_DNI853";
             btnImprimirEntradas_DNI853.Size = new Size(300, 119);
             btnImprimirEntradas_DNI853.TabIndex = 36;
-            btnImprimirEntradas_DNI853.Tag = "btn_ImprimirEntradas_DNI853";
+            btnImprimirEntradas_DNI853.Tag = "btnImprimirEntradas";
             btnImprimirEntradas_DNI853.Text = "Imprimir Entradas";
             btnImprimirEntradas_DNI853.UseVisualStyleBackColor = false;
             btnImprimirEntradas_DNI853.Click += btnImprimirEntradas_DNI853_Click;
@@ -664,7 +640,7 @@ namespace IU
             btnSalir_DNI853.Name = "btnSalir_DNI853";
             btnSalir_DNI853.Size = new Size(340, 104);
             btnSalir_DNI853.TabIndex = 37;
-            btnSalir_DNI853.Tag = "btn_Salir_DNI853";
+            btnSalir_DNI853.Tag = "btnSalir";
             btnSalir_DNI853.Text = "Salir";
             btnSalir_DNI853.UseVisualStyleBackColor = false;
             btnSalir_DNI853.Click += btnSalir_DNI853_Click;
@@ -700,7 +676,7 @@ namespace IU
             lblUsuarioActivo_DNI853.Name = "lblUsuarioActivo_DNI853";
             lblUsuarioActivo_DNI853.Size = new Size(235, 41);
             lblUsuarioActivo_DNI853.TabIndex = 0;
-            lblUsuarioActivo_DNI853.Tag = "lbl_Usuario_DNI853";
+            lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
             // FormGestionVentaEntradas_DNI853
@@ -715,7 +691,7 @@ namespace IU
             Font = new Font("Segoe UI", 9F);
             Name = "FormGestionVentaEntradas_DNI853";
             StartPosition = FormStartPosition.CenterScreen;
-            Tag = "lbl_FormVentaEntradas_DNI853";
+            Tag = "lblFormVentaEntradasTitulo";
             Text = "TeatroLux - Gestión de Venta de Entradas";
             Load += FormGestionVentaEntradas_DNI853_Load;
             panelContenedor_DNI853.ResumeLayout(false);
@@ -736,9 +712,6 @@ namespace IU
         // Columna Izquierda (Funciones y Sectores)
         private Label lblObra_DNI853;
         private ComboBox cboObra_DNI853;
-        private Label lblFechaFuncion_DNI853;
-        private DateTimePicker dtpFechaFuncion_DNI853;
-        private Button btnBuscarFunciones_DNI853;
         private DataGridView dgvFunciones_DNI853;
 
         private Label lblSectoresDisponibles_DNI853;
@@ -785,5 +758,6 @@ namespace IU
         private Panel panelInferior_DNI853;
         private Label lblUsuarioActivo_DNI853;
         private Label lblUsuarioValor_DNI853;
+        private Button btnCobrarEntradas_DNI853;
     }
 }

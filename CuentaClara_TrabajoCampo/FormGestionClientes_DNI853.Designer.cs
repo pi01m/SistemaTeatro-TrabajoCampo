@@ -104,6 +104,7 @@
             btnActualizar_DNI853.Name = "btnActualizar_DNI853";
             btnActualizar_DNI853.Size = new Size(212, 72);
             btnActualizar_DNI853.TabIndex = 20;
+            btnActualizar_DNI853.Tag = "btnActualizar";
             btnActualizar_DNI853.Text = "Actualizar";
             btnActualizar_DNI853.UseVisualStyleBackColor = false;
             btnActualizar_DNI853.Click += btnActualizar_DNI853_Click;
@@ -128,6 +129,7 @@
             btnCancelar_DNI853.Name = "btnCancelar_DNI853";
             btnCancelar_DNI853.Size = new Size(212, 72);
             btnCancelar_DNI853.TabIndex = 18;
+            btnCancelar_DNI853.Tag = "btnCancelar";
             btnCancelar_DNI853.Text = "Cancelar";
             btnCancelar_DNI853.UseVisualStyleBackColor = false;
             btnCancelar_DNI853.Click += btnCancelar_DNI853_Click;
@@ -142,6 +144,7 @@
             btnAplicar_DNI853.Name = "btnAplicar_DNI853";
             btnAplicar_DNI853.Size = new Size(212, 72);
             btnAplicar_DNI853.TabIndex = 17;
+            btnAplicar_DNI853.Tag = "btnAplicar";
             btnAplicar_DNI853.Text = "Aplicar";
             btnAplicar_DNI853.UseVisualStyleBackColor = false;
             btnAplicar_DNI853.Click += btnAplicar_DNI853_Click;
@@ -158,6 +161,7 @@
             btnSalir_DNI853.Name = "btnSalir_DNI853";
             btnSalir_DNI853.Size = new Size(255, 82);
             btnSalir_DNI853.TabIndex = 16;
+            btnSalir_DNI853.Tag = "btnSalir";
             btnSalir_DNI853.Text = "Salir";
             btnSalir_DNI853.UseVisualStyleBackColor = false;
             btnSalir_DNI853.Click += btnSalir_DNI853_Click;
@@ -172,6 +176,7 @@
             lblTitulo_DNI853.Name = "lblTitulo_DNI853";
             lblTitulo_DNI853.Size = new Size(515, 72);
             lblTitulo_DNI853.TabIndex = 0;
+            lblTitulo_DNI853.Tag = "lblGestionClientesTitulo";
             lblTitulo_DNI853.Text = "Gestión de Clientes";
             // 
             // dgvClientes_DNI853
@@ -201,6 +206,7 @@
             lblDniCliente_DNI853.Name = "lblDniCliente_DNI853";
             lblDniCliente_DNI853.Size = new Size(74, 41);
             lblDniCliente_DNI853.TabIndex = 2;
+            lblDniCliente_DNI853.Tag = "lblDniCliente";
             lblDniCliente_DNI853.Text = "DNI";
             // 
             // txtDniCliente_DNI853
@@ -220,6 +226,7 @@
             lblNombreCliente_DNI853.Name = "lblNombreCliente_DNI853";
             lblNombreCliente_DNI853.Size = new Size(134, 41);
             lblNombreCliente_DNI853.TabIndex = 4;
+            lblNombreCliente_DNI853.Tag = "lblNombreCliente";
             lblNombreCliente_DNI853.Text = "Nombre";
             // 
             // txtNombreCliente_DNI853
@@ -239,6 +246,7 @@
             lblApellidoCliente_DNI853.Name = "lblApellidoCliente_DNI853";
             lblApellidoCliente_DNI853.Size = new Size(138, 41);
             lblApellidoCliente_DNI853.TabIndex = 6;
+            lblApellidoCliente_DNI853.Tag = "lblApellidoCliente";
             lblApellidoCliente_DNI853.Text = "Apellido";
             // 
             // txtApellidoCliente_DNI853
@@ -258,6 +266,7 @@
             lblCorreoCliente_DNI853.Name = "lblCorreoCliente_DNI853";
             lblCorreoCliente_DNI853.Size = new Size(269, 41);
             lblCorreoCliente_DNI853.TabIndex = 8;
+            lblCorreoCliente_DNI853.Tag = "lblCorreoCliente";
             lblCorreoCliente_DNI853.Text = "CorreoElectronico";
             // 
             // txtCorreoCliente_DNI853
@@ -277,6 +286,7 @@
             lblTelefonoCliente_DNI853.Name = "lblTelefonoCliente_DNI853";
             lblTelefonoCliente_DNI853.Size = new Size(140, 41);
             lblTelefonoCliente_DNI853.TabIndex = 10;
+            lblTelefonoCliente_DNI853.Tag = "lblTelefonoCliente";
             lblTelefonoCliente_DNI853.Text = "Telefono";
             // 
             // txtTelefonoCliente_DNI853
@@ -296,6 +306,7 @@
             lblDireccionCliente_DNI853.Name = "lblDireccionCliente_DNI853";
             lblDireccionCliente_DNI853.Size = new Size(150, 41);
             lblDireccionCliente_DNI853.TabIndex = 12;
+            lblDireccionCliente_DNI853.Tag = "lblDireccionCliente";
             lblDireccionCliente_DNI853.Text = "Direccion";
             // 
             // txtDireccionCliente_DNI853
@@ -316,6 +327,7 @@
             btnNuevoCliente_DNI853.Name = "btnNuevoCliente_DNI853";
             btnNuevoCliente_DNI853.Size = new Size(212, 72);
             btnNuevoCliente_DNI853.TabIndex = 13;
+            btnNuevoCliente_DNI853.Tag = "btnNuevo";
             btnNuevoCliente_DNI853.Text = "Nuevo";
             btnNuevoCliente_DNI853.UseVisualStyleBackColor = false;
             btnNuevoCliente_DNI853.Click += btnNuevoCliente_DNI853_Click;
@@ -331,6 +343,7 @@
             btnModificarCliente_DNI853.Name = "btnModificarCliente_DNI853";
             btnModificarCliente_DNI853.Size = new Size(212, 72);
             btnModificarCliente_DNI853.TabIndex = 14;
+            btnModificarCliente_DNI853.Tag = "btnModificar";
             btnModificarCliente_DNI853.Text = "Modificar";
             btnModificarCliente_DNI853.UseVisualStyleBackColor = false;
             btnModificarCliente_DNI853.Click += btnModificarCliente_DNI853_Click;
@@ -346,6 +359,7 @@
             btnEliminarCliente_DNI853.Name = "btnEliminarCliente_DNI853";
             btnEliminarCliente_DNI853.Size = new Size(212, 72);
             btnEliminarCliente_DNI853.TabIndex = 15;
+            btnEliminarCliente_DNI853.Tag = "btnEliminar";
             btnEliminarCliente_DNI853.Text = "Eliminar";
             btnEliminarCliente_DNI853.UseVisualStyleBackColor = false;
             btnEliminarCliente_DNI853.Click += btnEliminarCliente_DNI853_Click;
@@ -384,6 +398,7 @@
             lblUsuarioActivo_DNI853.Name = "lblUsuarioActivo_DNI853";
             lblUsuarioActivo_DNI853.Size = new Size(235, 41);
             lblUsuarioActivo_DNI853.TabIndex = 0;
+            lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
             // FormGestionClientes_DNI853

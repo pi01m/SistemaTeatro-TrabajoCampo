@@ -162,14 +162,15 @@ namespace DAL
 
             using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
             {
-                // Busca los sectores filtrando a través de la sala configurada en la función
-                string query_DNI853 = @"SELECT s.* FROM Sector_DNI853 s
-                                         INNER JOIN Funcion_DNI853 f ON s.IdSala_DNI853 = f.IdSala_DNI853
-                                         WHERE f.IdFuncion_DNI853 = @IdFuncion";
+                string query_DNI853 = @"SELECT s.IdSector_DNI853, s.IdSala_DNI853, s.NombreSector_DNI853, 
+                                               s.Ubicacion_DNI853, fs.CantidadDisponible_DNI853 AS Capacidad_DNI853, s.Precio_DNI853
+                                        FROM Sector_DNI853 s
+                                        INNER JOIN Funcion_Sector_DNI853 fs ON s.IdSector_DNI853 = fs.IdSector_DNI853
+                                        WHERE fs.IdFuncion_DNI853 = @IdFuncion_DNI853";
 
                 using (SqlCommand cmd_DNI853 = new SqlCommand(query_DNI853, conn_DNI853))
                 {
-                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdFuncion", SqlDbType.VarChar, 50) { Value = idFuncion_DNI853 });
+                    cmd_DNI853.Parameters.Add(new SqlParameter("@IdFuncion_DNI853", SqlDbType.NVarChar, 50) { Value = idFuncion_DNI853 });
 
                     SqlDataAdapter adapter_DNI853 = new SqlDataAdapter(cmd_DNI853);
                     DataTable tabla_DNI853 = new DataTable();
@@ -183,7 +184,7 @@ namespace DAL
                             IdSala_DNI853 = fila_DNI853["IdSala_DNI853"].ToString(),
                             NombreSector_DNI853 = fila_DNI853["NombreSector_DNI853"].ToString(),
                             Ubicacion_DNI853 = fila_DNI853["Ubicacion_DNI853"].ToString(),
-                            Capacidad_DNI853 = Convert.ToInt32(fila_DNI853["Capacidad_DNI853"]),
+                            Capacidad_DNI853 = Convert.ToInt32(fila_DNI853["Capacidad_DNI853"]), // Asigna la disponibilidad real del evento
                             Precio_DNI853 = Convert.ToDecimal(fila_DNI853["Precio_DNI853"])
                         };
 

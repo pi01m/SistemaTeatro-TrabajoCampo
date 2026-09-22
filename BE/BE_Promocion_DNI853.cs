@@ -30,8 +30,11 @@ namespace BE
             string fechaInicioStr_DNI853 = FechaInicio_DNI853.ToString("yyyy-MM-dd");
             string fechaFinStr_DNI853 = FechaFin_DNI853.ToString("yyyy-MM-dd");
 
-            // Incluimos el destino en el cálculo del hash
-            return $"{IdPromo_DNI853}|{NombrePromo_DNI853}|{TipoPromo_DNI853}|{ValorDescuento_DNI853}|{fechaInicioStr_DNI853}|{fechaFinStr_DNI853}|{EstadoPromo_DNI853}|{DestinoPromo_DNI853}";
+            // Vacuna contra el desfasaje del decimal:
+            string descuentoFormat_DNI853 = ValorDescuento_DNI853.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+
+            // Incluimos el destino y el descuento formateado en el cálculo del hash
+            return $"{IdPromo_DNI853}|{NombrePromo_DNI853}|{TipoPromo_DNI853}|{descuentoFormat_DNI853}|{fechaInicioStr_DNI853}|{fechaFinStr_DNI853}|{EstadoPromo_DNI853}|{DestinoPromo_DNI853}";
         }
 
         public override string ToString()

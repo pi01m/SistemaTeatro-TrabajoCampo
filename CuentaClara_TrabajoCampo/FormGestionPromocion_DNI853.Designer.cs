@@ -99,6 +99,7 @@
             btnSalir_DNI853.Name = "btnSalir_DNI853";
             btnSalir_DNI853.Size = new Size(255, 82);
             btnSalir_DNI853.TabIndex = 17;
+            btnSalir_DNI853.Tag = "btnSalir";
             btnSalir_DNI853.Text = "Salir";
             btnSalir_DNI853.UseVisualStyleBackColor = false;
             btnSalir_DNI853.Click += btnSalir_DNI853_Click;
@@ -113,6 +114,7 @@
             lblTitulo_DNI853.Name = "lblTitulo_DNI853";
             lblTitulo_DNI853.Size = new Size(644, 72);
             lblTitulo_DNI853.TabIndex = 0;
+            lblTitulo_DNI853.Tag = "lblGestionPromocionTitulo";
             lblTitulo_DNI853.Text = "Gestión de Promociones";
             // 
             // dgvPromociones_DNI853
@@ -142,6 +144,7 @@
             lblNombrePromo_DNI853.Name = "lblNombrePromo_DNI853";
             lblNombrePromo_DNI853.Size = new Size(294, 41);
             lblNombrePromo_DNI853.TabIndex = 2;
+            lblNombrePromo_DNI853.Tag = "lblNombrePromo";
             lblNombrePromo_DNI853.Text = "Nombre Promoción";
             // 
             // txtNombrePromo_DNI853
@@ -161,6 +164,7 @@
             lblTipoPromo_DNI853.Name = "lblTipoPromo_DNI853";
             lblTipoPromo_DNI853.Size = new Size(242, 41);
             lblTipoPromo_DNI853.TabIndex = 4;
+            lblTipoPromo_DNI853.Tag = "lblTipoPromo";
             lblTipoPromo_DNI853.Text = "Tipo Promoción";
             // 
             // cboTipoPromo_DNI853
@@ -183,6 +187,7 @@
             lblValorDescuento_DNI853.Name = "lblValorDescuento_DNI853";
             lblValorDescuento_DNI853.Size = new Size(246, 41);
             lblValorDescuento_DNI853.TabIndex = 6;
+            lblValorDescuento_DNI853.Tag = "lblValorDescuento";
             lblValorDescuento_DNI853.Text = "Valor Descuento";
             // 
             // txtValorDescuento_DNI853
@@ -202,6 +207,7 @@
             lblFechaInicio_DNI853.Name = "lblFechaInicio_DNI853";
             lblFechaInicio_DNI853.Size = new Size(184, 41);
             lblFechaInicio_DNI853.TabIndex = 8;
+            lblFechaInicio_DNI853.Tag = "lblFechaInicio";
             lblFechaInicio_DNI853.Text = "Fecha Inicio";
             // 
             // dtpFechaInicio_DNI853
@@ -222,6 +228,7 @@
             lblFechaFin_DNI853.Name = "lblFechaFin_DNI853";
             lblFechaFin_DNI853.Size = new Size(149, 41);
             lblFechaFin_DNI853.TabIndex = 10;
+            lblFechaFin_DNI853.Tag = "lblFechaFin";
             lblFechaFin_DNI853.Text = "Fecha Fin";
             // 
             // dtpFechaFin_DNI853
@@ -242,6 +249,7 @@
             lblEstadoPromo_DNI853.Name = "lblEstadoPromo_DNI853";
             lblEstadoPromo_DNI853.Size = new Size(272, 41);
             lblEstadoPromo_DNI853.TabIndex = 12;
+            lblEstadoPromo_DNI853.Tag = "lblEstadoPromo";
             lblEstadoPromo_DNI853.Text = "Estado Promoción";
             // 
             // cboEstadoPromo_DNI853
@@ -265,6 +273,7 @@
             btnNuevaPromo_DNI853.Name = "btnNuevaPromo_DNI853";
             btnNuevaPromo_DNI853.Size = new Size(212, 72);
             btnNuevaPromo_DNI853.TabIndex = 14;
+            btnNuevaPromo_DNI853.Tag = "btnNueva";
             btnNuevaPromo_DNI853.Text = "Nueva";
             btnNuevaPromo_DNI853.UseVisualStyleBackColor = false;
             btnNuevaPromo_DNI853.Click += btnNuevaPromo_DNI853_Click;
@@ -280,6 +289,7 @@
             btnModificarPromo_DNI853.Name = "btnModificarPromo_DNI853";
             btnModificarPromo_DNI853.Size = new Size(212, 72);
             btnModificarPromo_DNI853.TabIndex = 15;
+            btnModificarPromo_DNI853.Tag = "btnModificar";
             btnModificarPromo_DNI853.Text = "Modificar";
             btnModificarPromo_DNI853.UseVisualStyleBackColor = false;
             btnModificarPromo_DNI853.Click += btnModificarPromo_DNI853_Click;
@@ -295,6 +305,7 @@
             btnEliminarPromo_DNI853.Name = "btnEliminarPromo_DNI853";
             btnEliminarPromo_DNI853.Size = new Size(212, 72);
             btnEliminarPromo_DNI853.TabIndex = 16;
+            btnEliminarPromo_DNI853.Tag = "btnEliminar";
             btnEliminarPromo_DNI853.Text = "Eliminar";
             btnEliminarPromo_DNI853.UseVisualStyleBackColor = false;
             btnEliminarPromo_DNI853.Click += btnEliminarPromo_DNI853_Click;
@@ -333,6 +344,7 @@
             lblUsuarioActivo_DNI853.Name = "lblUsuarioActivo_DNI853";
             lblUsuarioActivo_DNI853.Size = new Size(235, 41);
             lblUsuarioActivo_DNI853.TabIndex = 0;
+            lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
             // label1
@@ -344,6 +356,7 @@
             label1.Name = "label1";
             label1.Size = new Size(286, 41);
             label1.TabIndex = 18;
+            label1.Tag = "lblDestinoPromo";
             label1.Text = "Destino Promoción";
             // 
             // cboDestinoPromo_DNI853

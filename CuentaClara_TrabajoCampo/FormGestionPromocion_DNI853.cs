@@ -68,7 +68,33 @@ namespace IU
                 dgvPromociones_DNI853.DataSource = null;
                 dgvPromociones_DNI853.DataSource = bllPromociones_DNI853.ListarPromociones_DNI853();
                 TraducirColumnasGrillas_DNI853();
-                LimpiarControlesPromocion_DNI853();
+
+                // Si hay al menos una fila (incluso si es 1 sola), forzamos la selección manual
+                // para garantizar que CurrentRow y DataBoundItem se asignen correctamente
+                // aunque Windows Forms no dispare el evento SelectionChanged.
+                if (dgvPromociones_DNI853.Rows.Count > 0)
+                {
+                    dgvPromociones_DNI853.ClearSelection();
+                    dgvPromociones_DNI853.Rows[0].Selected = true;
+                    if (dgvPromociones_DNI853.Columns.Count > 0)
+                    {
+                        dgvPromociones_DNI853.CurrentCell = dgvPromociones_DNI853.Rows[0].Cells[0];
+                    }
+
+                    // Forzamos manualmente la carga de los campos desde la primera fila
+                    promocionSeleccionada_DNI853 = (BE_Promocion_DNI853)dgvPromociones_DNI853.Rows[0].DataBoundItem;
+                    txtNombrePromo_DNI853.Text = promocionSeleccionada_DNI853.NombrePromo_DNI853;
+                    cboTipoPromo_DNI853.SelectedItem = promocionSeleccionada_DNI853.TipoPromo_DNI853;
+                    txtValorDescuento_DNI853.Text = promocionSeleccionada_DNI853.ValorDescuento_DNI853.ToString();
+                    dtpFechaInicio_DNI853.Value = promocionSeleccionada_DNI853.FechaInicio_DNI853;
+                    dtpFechaFin_DNI853.Value = promocionSeleccionada_DNI853.FechaFin_DNI853;
+                    cboEstadoPromo_DNI853.SelectedItem = promocionSeleccionada_DNI853.EstadoPromo_DNI853;
+                    cboDestinoPromo_DNI853.SelectedItem = promocionSeleccionada_DNI853.DestinoPromo_DNI853;
+                }
+                else
+                {
+                    LimpiarControlesPromocion_DNI853();
+                }
             }
             catch (Exception ex_DNI853)
             {
@@ -179,6 +205,7 @@ namespace IU
                 MessageBox.Show(TraducirExcepcion_DNI853(ex_DNI853), TraducirTexto_DNI853("TituloError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         // ====================================================================
         // EVENTOS GENERALES
         // ====================================================================
@@ -283,6 +310,12 @@ namespace IU
 
         private void TraducirColumnasGrillas_DNI853()
         {
+            if (dgvPromociones_DNI853.Columns.Contains("IdPromo_DNI853"))
+            {
+                dgvPromociones_DNI853.Columns["IdPromo_DNI853"].HeaderText = TraducirTexto_DNI853("ColIdPromo");
+                dgvPromociones_DNI853.Columns["IdPromo_DNI853"].Visible = true; 
+            }
+
             if (dgvPromociones_DNI853.Columns.Contains("NombrePromo_DNI853"))
                 dgvPromociones_DNI853.Columns["NombrePromo_DNI853"].HeaderText = TraducirTexto_DNI853("ColNombrePromo");
 

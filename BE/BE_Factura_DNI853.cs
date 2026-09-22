@@ -29,7 +29,9 @@ namespace BE
 
         public string ObtenerCadenaParaHash()
         {
-            return $"{Id_Factura_DNI853}|{DNI_C_DNI853}|{ImporteTotal_DNI853}|{TipoPago_DNI853}|{Banco_DNI853}|{NumeroTarjeta_DNI853}|{FechaVencimiento_DNI853}|{Fecha_DNI853:yyyy-MM-dd}|{Vendedor_DNI853}|{IdPromocion_DNI853}";
+            string importeFormat = ImporteTotal_DNI853.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+
+            return $"{Id_Factura_DNI853}|{DNI_C_DNI853}|{importeFormat}|{TipoPago_DNI853}|{Banco_DNI853}|{NumeroTarjeta_DNI853}|{FechaVencimiento_DNI853}|{Fecha_DNI853:yyyy-MM-dd}|{Vendedor_DNI853}|{IdPromocion_DNI853}";
         }
     }
 }

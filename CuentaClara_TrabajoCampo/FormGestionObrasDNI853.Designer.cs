@@ -83,6 +83,7 @@
             btnSalir_DNI853.Name = "btnSalir_DNI853";
             btnSalir_DNI853.Size = new Size(255, 82);
             btnSalir_DNI853.TabIndex = 9;
+            btnSalir_DNI853.Tag = "btnSalir";
             btnSalir_DNI853.Text = "Salir";
             btnSalir_DNI853.UseVisualStyleBackColor = false;
             btnSalir_DNI853.Click += btnSalir_DNI853_Click;
@@ -97,6 +98,7 @@
             lblTitulo_DNI853.Name = "lblTitulo_DNI853";
             lblTitulo_DNI853.Size = new Size(463, 72);
             lblTitulo_DNI853.TabIndex = 0;
+            lblTitulo_DNI853.Tag = "lblGestionObrasTitulo";
             lblTitulo_DNI853.Text = "Gestión de Obras";
             // 
             // dgvObras_DNI853
@@ -126,6 +128,7 @@
             lblNombreObra_DNI853.Name = "lblNombreObra_DNI853";
             lblNombreObra_DNI853.Size = new Size(212, 41);
             lblNombreObra_DNI853.TabIndex = 2;
+            lblNombreObra_DNI853.Tag = "lblNombreObra";
             lblNombreObra_DNI853.Text = "Nombre Obra";
             // 
             // txtNombreObra_DNI853
@@ -145,6 +148,7 @@
             lblDescripcionObra_DNI853.Name = "lblDescripcionObra_DNI853";
             lblDescripcionObra_DNI853.Size = new Size(182, 41);
             lblDescripcionObra_DNI853.TabIndex = 4;
+            lblDescripcionObra_DNI853.Tag = "lblDescripcionObra";
             lblDescripcionObra_DNI853.Text = "Descripción";
             // 
             // txtDescripcionObra_DNI853
@@ -166,6 +170,7 @@
             btnNuevaObra_DNI853.Name = "btnNuevaObra_DNI853";
             btnNuevaObra_DNI853.Size = new Size(212, 72);
             btnNuevaObra_DNI853.TabIndex = 6;
+            btnNuevaObra_DNI853.Tag = "btnNueva";
             btnNuevaObra_DNI853.Text = "Nueva";
             btnNuevaObra_DNI853.UseVisualStyleBackColor = false;
             btnNuevaObra_DNI853.Click += btnNuevaObra_DNI853_Click;
@@ -181,6 +186,7 @@
             btnModificarObra_DNI853.Name = "btnModificarObra_DNI853";
             btnModificarObra_DNI853.Size = new Size(212, 72);
             btnModificarObra_DNI853.TabIndex = 7;
+            btnModificarObra_DNI853.Tag = "btnModificar";
             btnModificarObra_DNI853.Text = "Modificar";
             btnModificarObra_DNI853.UseVisualStyleBackColor = false;
             btnModificarObra_DNI853.Click += btnModificarObra_DNI853_Click;
@@ -196,6 +202,7 @@
             btnEliminarObra_DNI853.Name = "btnEliminarObra_DNI853";
             btnEliminarObra_DNI853.Size = new Size(212, 72);
             btnEliminarObra_DNI853.TabIndex = 8;
+            btnEliminarObra_DNI853.Tag = "btnEliminar";
             btnEliminarObra_DNI853.Text = "Eliminar";
             btnEliminarObra_DNI853.UseVisualStyleBackColor = false;
             btnEliminarObra_DNI853.Click += btnEliminarObra_DNI853_Click;
@@ -234,6 +241,7 @@
             lblUsuarioActivo_DNI853.Name = "lblUsuarioActivo_DNI853";
             lblUsuarioActivo_DNI853.Size = new Size(235, 41);
             lblUsuarioActivo_DNI853.TabIndex = 0;
+            lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
             // lblEstadoObra_DNI853
@@ -245,6 +253,7 @@
             lblEstadoObra_DNI853.Name = "lblEstadoObra_DNI853";
             lblEstadoObra_DNI853.Size = new Size(190, 41);
             lblEstadoObra_DNI853.TabIndex = 10;
+            lblEstadoObra_DNI853.Tag = "lblEstadoObra";
             lblEstadoObra_DNI853.Text = "Estado Obra";
             // 
             // cmb_EstadoObra_DNI853

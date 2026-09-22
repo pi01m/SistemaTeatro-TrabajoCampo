@@ -47,34 +47,35 @@ namespace DAL
         }
 
         // Solo inserta la cabecera de la factura (retorna la conexión abierta y la transacción si se requiere, o recibe parámetros)
-        public string RegistrarFacturaUnica_DNI853(BE_Factura_DNI853 factura_DNI853, SqlConnection conexion_DNI853, SqlTransaction transaccion_DNI853)
+        public string RegistrarFacturaUnica_DNI853(BE_Factura_DNI853 factura_DNI853)
         {
-            SqlDataAdapter adapterFactura = new SqlDataAdapter("SELECT * FROM Factura_DNI853 WHERE 1 = 0", conexion_DNI853);
-            adapterFactura.SelectCommand.Transaction = transaccion_DNI853;
+            using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
+            {
+                SqlDataAdapter adapterFactura_DNI853 = new SqlDataAdapter("SELECT * FROM Factura_DNI853 WHERE 1 = 0", conn_DNI853);
+                DataSet dsFactura_DNI853 = new DataSet();
+                adapterFactura_DNI853.Fill(dsFactura_DNI853, "Factura");
+                DataTable tablaFactura_DNI853 = dsFactura_DNI853.Tables["Factura"];
 
-            DataSet dsFactura = new DataSet();
-            adapterFactura.Fill(dsFactura, "Factura");
-            DataTable tablaFactura = dsFactura.Tables["Factura"];
+                DataRow filaFactura_DNI853 = tablaFactura_DNI853.NewRow();
+                filaFactura_DNI853["Id_Factura_DNI853"] = factura_DNI853.Id_Factura_DNI853;
+                filaFactura_DNI853["Id_Cliente_DNI853"] = factura_DNI853.DNI_C_DNI853;
+                filaFactura_DNI853["ImporteTotal_DNI853"] = factura_DNI853.ImporteTotal_DNI853;
+                filaFactura_DNI853["TipoPago_DNI853"] = factura_DNI853.TipoPago_DNI853;
+                filaFactura_DNI853["Banco_DNI853"] = string.IsNullOrEmpty(factura_DNI853.Banco_DNI853) ? (object)DBNull.Value : factura_DNI853.Banco_DNI853;
+                filaFactura_DNI853["NumeroTarjeta_DNI853"] = string.IsNullOrEmpty(factura_DNI853.NumeroTarjeta_DNI853) ? (object)DBNull.Value : factura_DNI853.NumeroTarjeta_DNI853;
+                filaFactura_DNI853["FechaVencimiento_DNI853"] = string.IsNullOrEmpty(factura_DNI853.FechaVencimiento_DNI853) ? (object)DBNull.Value : factura_DNI853.FechaVencimiento_DNI853;
+                filaFactura_DNI853["Fecha_DNI853"] = DateTime.Now;
+                filaFactura_DNI853["Vendedor_DNI853"] = string.IsNullOrEmpty(factura_DNI853.Vendedor_DNI853) ? (object)DBNull.Value : factura_DNI853.Vendedor_DNI853;
+                filaFactura_DNI853["Id_Promocion_DNI853"] = string.IsNullOrEmpty(factura_DNI853.IdPromocion_DNI853) ? (object)DBNull.Value : factura_DNI853.IdPromocion_DNI853;
 
-            DataRow filaFactura = tablaFactura.NewRow();
-            filaFactura["Id_Factura_DNI853"] = factura_DNI853.Id_Factura_DNI853;
-            filaFactura["Id_Cliente_DNI853"] = factura_DNI853.DNI_C_DNI853;
-            filaFactura["ImporteTotal_DNI853"] = factura_DNI853.ImporteTotal_DNI853;
-            filaFactura["TipoPago_DNI853"] = factura_DNI853.TipoPago_DNI853;
-            filaFactura["Banco_DNI853"] = string.IsNullOrEmpty(factura_DNI853.Banco_DNI853) ? (object)DBNull.Value : factura_DNI853.Banco_DNI853;
-            filaFactura["NumeroTarjeta_DNI853"] = string.IsNullOrEmpty(factura_DNI853.NumeroTarjeta_DNI853) ? (object)DBNull.Value : factura_DNI853.NumeroTarjeta_DNI853;
-            filaFactura["FechaVencimiento_DNI853"] = string.IsNullOrEmpty(factura_DNI853.FechaVencimiento_DNI853) ? (object)DBNull.Value : factura_DNI853.FechaVencimiento_DNI853;
-            filaFactura["Fecha_DNI853"] = DateTime.Now;
-            filaFactura["Vendedor_DNI853"] = string.IsNullOrEmpty(factura_DNI853.Vendedor_DNI853) ? (object)DBNull.Value : factura_DNI853.Vendedor_DNI853;
-            filaFactura["Id_Promocion_DNI853"] = string.IsNullOrEmpty(factura_DNI853.IdPromocion_DNI853) ? (object)DBNull.Value : factura_DNI853.IdPromocion_DNI853; 
-            tablaFactura.Rows.Add(filaFactura);
+                tablaFactura_DNI853.Rows.Add(filaFactura_DNI853);
 
-            SqlCommandBuilder builderFactura = new SqlCommandBuilder(adapterFactura);
-            adapterFactura.Update(dsFactura, "Factura");
+                SqlCommandBuilder builderFactura_DNI853 = new SqlCommandBuilder(adapterFactura_DNI853);
+                adapterFactura_DNI853.Update(dsFactura_DNI853, "Factura");
 
-            return factura_DNI853.Id_Factura_DNI853;
+                return factura_DNI853.Id_Factura_DNI853;
+            }
         }
-
         public DataSet ObtenerDatosFacturaDesconectado_DNI853(string idFactura_DNI853)
         {
             DataSet ds_DNI853 = new DataSet();

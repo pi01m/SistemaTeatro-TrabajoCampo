@@ -215,6 +215,7 @@
             Controls.Add(panelLogin);
             Font = new Font("Segoe UI", 10F);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(497, 562);
             Name = "frmLogIn";
             StartPosition = FormStartPosition.CenterScreen;

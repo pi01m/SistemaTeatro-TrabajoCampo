@@ -25,8 +25,9 @@ namespace BE
 
         public string ObtenerCadenaParaHash()
         {
-            // Incluimos el precio en el cálculo del dígito verificador
-            return $"{IdSector_DNI853}|{IdSala_DNI853}|{NombreSector_DNI853}|{Ubicacion_DNI853}|{Capacidad_DNI853}|{Precio_DNI853}";
+            string precioFormat = Precio_DNI853.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+
+            return $"{IdSector_DNI853}|{IdSala_DNI853}|{NombreSector_DNI853}|{Ubicacion_DNI853}|{Capacidad_DNI853}|{precioFormat}";
         }
 
         public override string ToString()

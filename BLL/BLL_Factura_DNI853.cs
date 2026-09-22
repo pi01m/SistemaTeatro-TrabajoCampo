@@ -16,70 +16,61 @@ namespace BLL
 {
     public class BLL_Factura_DNI853
     {
-        private DAL_Factura_DNI853 dalFactura_DNI853 = new DAL_Factura_DNI853();
-        private BLL_Entrada_DNI853 bllEntrada_DNI853 = new BLL_Entrada_DNI853();
-        private string _connectionString_DNI853 = DAL_ConexionDB.ObtenerCadena();
+        private DAL_Factura_DNI853 objDalFactura_DNI853 = new DAL_Factura_DNI853();
+        private BLL_DigitoVerificador objBllDigitoVerif_DNI853 = new BLL_DigitoVerificador();
+        private BLL_BitacoraEvento objBllBitacora_DNI853 = new BLL_BitacoraEvento(); // Instancia de Bitácora
 
-        public string RegistrarFactura_DNI853(BE_Factura_DNI853 factura_DNI853, List<BE_Entrada_DNI853> entradas_DNI853)
+        // Inserta la Factura de forma independiente y recalcula los DVs
+        public string RegistrarFacturaUnica_DNI853(BE_Factura_DNI853 factura_DNI853)
         {
-            if (factura_DNI853 == null || entradas_DNI853 == null || entradas_DNI853.Count == 0)
-                throw new Exception("err_DatosFacturaIncompletos");
-
             if (string.IsNullOrEmpty(factura_DNI853.Id_Factura_DNI853))
-            {
                 factura_DNI853.Id_Factura_DNI853 = "FAC_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper();
-            }
 
-            string idFacturaGenerada = string.Empty;
+            string idGenerado_DNI853 = objDalFactura_DNI853.RegistrarFacturaUnica_DNI853(factura_DNI853);
 
-            // Manejo de la transacción unificada para asegurar atomicidad
-            using (SqlConnection conexion_DNI853 = new SqlConnection(_connectionString_DNI853))
-            {
-                conexion_DNI853.Open();
-                using (SqlTransaction transaccion_DNI853 = conexion_DNI853.BeginTransaction())
-                {
-                    try
-                    {
-                        // 1. Registramos la cabecera de la factura
-                        idFacturaGenerada = dalFactura_DNI853.RegistrarFacturaUnica_DNI853(factura_DNI853, conexion_DNI853, transaccion_DNI853);
+            // Actualizamos DVs
+            List<BE_Factura_DNI853> listaFacturas_DNI853 = objDalFactura_DNI853.ListarFacturas_DNI853();
+            objBllDigitoVerif_DNI853.ActualizarDigitos(factura_DNI853, listaFacturas_DNI853, "Factura_DNI853");
 
-                        // 2. Registramos las entradas con la misma transacción
-                        bllEntrada_DNI853.RegistrarEntradasDeFactura_DNI853(entradas_DNI853, idFacturaGenerada, conexion_DNI853, transaccion_DNI853);
-
-                        // 3. Confirmamos la transacción (Aquí se libera el bloqueo de la BD)
-                        transaccion_DNI853.Commit();
-                    }
-                    catch
-                    {
-                        transaccion_DNI853.Rollback();
-                        throw;
-                    }
-                }
-            }
-
-            // 4. Actualizar Dígitos Verificadores con la conexión ya cerrada y libre de bloqueos
-            if (!string.IsNullOrEmpty(idFacturaGenerada))
-            {
-                BLL_DigitoVerificador objDigitoVerificador = new BLL_DigitoVerificador();
-
-                // Actualizar Dígito de la Factura
-                List<BE_Factura_DNI853> listaFacturas = dalFactura_DNI853.ListarFacturas_DNI853();
-                objDigitoVerificador.ActualizarDigitos(factura_DNI853, listaFacturas, "Factura_DNI853");
-
-                // Actualizar Dígitos de las Entradas insertadas
-                List<BE_Entrada_DNI853> listaEntradas = bllEntrada_DNI853.ListarEntradas_DNI853();
-                foreach (var entrada in entradas_DNI853)
-                {
-                    objDigitoVerificador.ActualizarDigitos(entrada, listaEntradas, "Entrada_DNI853");
-                }
-            }
-
-            return idFacturaGenerada;
+            var usuarioActual = SessionManager.GetInstancia().GetUsuarioActual();
+            string loginUsuario = usuarioActual != null ? usuarioActual.Login : "Sistema";
+            objBllBitacora_DNI853.RegistrarBitacora($"Factura registrada con éxito: {idGenerado_DNI853} por $ {factura_DNI853.ImporteTotal_DNI853}", loginUsuario, "Ventas", 2);
+            return idGenerado_DNI853;
         }
+
+        public void ValidarDatosTarjeta_DNI853(string banco, string numeroTarjeta, string fechaVencimiento)
+        {
+            if (string.IsNullOrWhiteSpace(banco))
+                throw new Exception("err_BancoVacio");
+
+            // Validar que la tarjeta tenga exactamente 16 dígitos y sean solo números
+            if (string.IsNullOrWhiteSpace(numeroTarjeta) || numeroTarjeta.Length != 16 || !numeroTarjeta.All(char.IsDigit))
+                throw new Exception("err_TarjetaInvalida");
+
+            // Validar formato de fecha MM/AA
+            if (string.IsNullOrWhiteSpace(fechaVencimiento) || !fechaVencimiento.Contains("/") || fechaVencimiento.Length != 5)
+                throw new Exception("err_FormatoVencimiento");
+
+            string[] partesFecha = fechaVencimiento.Split('/');
+            if (partesFecha.Length != 2 || !int.TryParse(partesFecha[0], out int mes) || !int.TryParse(partesFecha[1], out int anio))
+                throw new Exception("err_FormatoVencimiento");
+
+            if (mes < 1 || mes > 12)
+                throw new Exception("err_MesInvalido");
+
+            // Validar que la tarjeta no esté vencida (comparando con el año y mes actual)
+            int anioActual = DateTime.Now.Year % 100; // Obtenemos los últimos dos dígitos del año (ej: 2026 -> 26)
+            int mesActual = DateTime.Now.Month;
+
+            if (anio < anioActual || (anio == anioActual && mes < mesActual))
+                throw new Exception("err_TarjetaVencida");
+        }
+
+
 
         public void GenerarFacturaPDF(string idFactura, string ruta)
         {
-            DataSet ds = dalFactura_DNI853.ObtenerDatosFacturaDesconectado_DNI853(idFactura);
+            DataSet ds = objDalFactura_DNI853.ObtenerDatosFacturaDesconectado_DNI853(idFactura);
             if (ds.Tables["Factura"].Rows.Count == 0) return;
 
             DataRow filaFactura = ds.Tables["Factura"].Rows[0];
@@ -101,16 +92,14 @@ namespace BLL
             BE_Cliente_DNI853 cliente = bllCliente.BuscarPorDNI_DNI853(dniCliente);
             string nombreCliente = cliente != null ? $"{cliente.Nombre_C_DNI853} {cliente.Apellido_C_DNI853}" : dniCliente;
 
-            // Buscar Nombre y Apellido del Vendedor (a través de la BLL de usuarios o servicios)
+            // Buscar Nombre y Apellido del Vendedor
             string nombreVendedor = loginVendedor;
             try
             {
-                BLL_Rol bllRol = new BLL_Rol();
-                // O puedes obtener el nombre del usuario logueado actualmente si coincide
                 var usuarioActual = SessionManager.GetInstancia().GetUsuarioActual();
                 if (usuarioActual != null && usuarioActual.Login == loginVendedor)
                 {
-                    nombreVendedor = $"{usuarioActual.Login}"; // O su nombre real si tu entidad de usuario lo tiene
+                    nombreVendedor = $"{usuarioActual.Login}";
                 }
             }
             catch { }
@@ -130,6 +119,20 @@ namespace BLL
                     valorDescuentoPromo = promoEncontrada.ValorDescuento_DNI853;
                 }
             }
+
+            // === AGRUPAR LAS ENTRADAS EN MEMORIA (Para mostrarlas como el carrito) ===
+            var entradasAgrupadas = tablaEntradas.AsEnumerable()
+                .GroupBy(row => new {
+                    Detalle = row["Detalle_DNI853"].ToString(),
+                    PrecioUnitario = Convert.ToDecimal(row["PrecioUnitario_DNI853"])
+                })
+                .Select(g => new {
+                    Detalle = g.Key.Detalle,
+                    Cantidad = g.Count(), // Cuenta cuántas entradas hay iguales para sumar la cantidad
+                    PrecioUnitario = g.Key.PrecioUnitario,
+                    Subtotal = g.Count() * g.Key.PrecioUnitario
+                })
+                .ToList();
 
             QuestPDF.Settings.License = LicenseType.Community;
 
@@ -176,7 +179,7 @@ namespace BLL
 
                         col.Item().LineHorizontal(0.5f).LineColor(QuestPDF.Helpers.Colors.Grey.Lighten2);
 
-                        // Tabla de Entradas
+                        // Tabla de Entradas Agrupadas
                         col.Item().Table(table =>
                         {
                             table.ColumnsDefinition(columns =>
@@ -195,23 +198,19 @@ namespace BLL
                                 header.Cell().Background(QuestPDF.Helpers.Colors.Grey.Lighten3).Padding(5).Text("Subtotal").Bold();
                             });
 
-                            foreach (DataRow fila in tablaEntradas.Rows)
+                            foreach (var grupo in entradasAgrupadas)
                             {
-                                table.Cell().Padding(5).Text(fila["Detalle_DNI853"].ToString());
-                                table.Cell().Padding(5).Text(fila["Cantidad_DNI853"].ToString());
-                                table.Cell().Padding(5).Text($"$ {Convert.ToDecimal(fila["PrecioUnitario_DNI853"]):N2}");
-                                table.Cell().Padding(5).Text($"$ {Convert.ToDecimal(fila["Subtotal_DNI853"]):N2}");
+                                table.Cell().Padding(5).Text(grupo.Detalle);
+                                table.Cell().Padding(5).Text(grupo.Cantidad.ToString());
+                                table.Cell().Padding(5).Text($"$ {grupo.PrecioUnitario:N2}");
+                                table.Cell().Padding(5).Text($"$ {grupo.Subtotal:N2}");
                             }
                         });
 
                         col.Item().PaddingTop(10).LineHorizontal(0.5f).LineColor(QuestPDF.Helpers.Colors.Grey.Lighten2);
 
-                        // Cálculo de Totales y Promoción
-                        decimal subtotalBruto = 0;
-                        foreach (DataRow fila in tablaEntradas.Rows)
-                        {
-                            subtotalBruto += Convert.ToDecimal(fila["Subtotal_DNI853"]);
-                        }
+                        // Cálculo de Totales y Promoción basados en los grupos
+                        decimal subtotalBruto = entradasAgrupadas.Sum(g => g.Subtotal);
 
                         col.Item().AlignRight().Column(c =>
                         {

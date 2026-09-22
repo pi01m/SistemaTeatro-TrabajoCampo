@@ -95,6 +95,7 @@
             btnSalir_DNI853.Name = "btnSalir_DNI853";
             btnSalir_DNI853.Size = new Size(255, 82);
             btnSalir_DNI853.TabIndex = 17;
+            btnSalir_DNI853.Tag = "btnSalir";
             btnSalir_DNI853.Text = "Salir";
             btnSalir_DNI853.UseVisualStyleBackColor = false;
             btnSalir_DNI853.Click += btnSalir_DNI853_Click;
@@ -109,6 +110,7 @@
             lblTitulo_DNI853.Name = "lblTitulo_DNI853";
             lblTitulo_DNI853.Size = new Size(569, 72);
             lblTitulo_DNI853.TabIndex = 0;
+            lblTitulo_DNI853.Tag = "lblGestionFuncionesTitulo";
             lblTitulo_DNI853.Text = "Gestión de Funciones";
             // 
             // dgvFunciones_DNI853
@@ -138,6 +140,7 @@
             lblObra_DNI853.Name = "lblObra_DNI853";
             lblObra_DNI853.Size = new Size(88, 41);
             lblObra_DNI853.TabIndex = 2;
+            lblObra_DNI853.Tag = "lblObra";
             lblObra_DNI853.Text = "Obra";
             // 
             // cboObra_DNI853
@@ -159,6 +162,7 @@
             lblSala_DNI853.Name = "lblSala_DNI853";
             lblSala_DNI853.Size = new Size(76, 41);
             lblSala_DNI853.TabIndex = 4;
+            lblSala_DNI853.Tag = "lblSala";
             lblSala_DNI853.Text = "Sala";
             // 
             // cboSala_DNI853
@@ -180,6 +184,7 @@
             lblFecha_DNI853.Name = "lblFecha_DNI853";
             lblFecha_DNI853.Size = new Size(98, 41);
             lblFecha_DNI853.TabIndex = 6;
+            lblFecha_DNI853.Tag = "lblFecha";
             lblFecha_DNI853.Text = "Fecha";
             // 
             // dtpFecha_DNI853
@@ -200,6 +205,7 @@
             lblHoraInicio_DNI853.Name = "lblHoraInicio_DNI853";
             lblHoraInicio_DNI853.Size = new Size(173, 41);
             lblHoraInicio_DNI853.TabIndex = 8;
+            lblHoraInicio_DNI853.Tag = "lblHoraInicio";
             lblHoraInicio_DNI853.Text = "Hora Inicio";
             // 
             // txtHoraInicio_DNI853
@@ -219,6 +225,7 @@
             lblHoraFinalizacion_DNI853.Name = "lblHoraFinalizacion_DNI853";
             lblHoraFinalizacion_DNI853.Size = new Size(261, 41);
             lblHoraFinalizacion_DNI853.TabIndex = 10;
+            lblHoraFinalizacion_DNI853.Tag = "lblHoraFinalizacion";
             lblHoraFinalizacion_DNI853.Text = "Hora Finalización";
             // 
             // txtHoraFinalizacion_DNI853
@@ -238,6 +245,7 @@
             lblEstado_DNI853.Name = "lblEstado_DNI853";
             lblEstado_DNI853.Size = new Size(256, 41);
             lblEstado_DNI853.TabIndex = 12;
+            lblEstado_DNI853.Tag = "lblEstado";
             lblEstado_DNI853.Text = "Estado Funcional";
             // 
             // cboEstado_DNI853
@@ -261,6 +269,7 @@
             btnNuevaFuncion_DNI853.Name = "btnNuevaFuncion_DNI853";
             btnNuevaFuncion_DNI853.Size = new Size(212, 72);
             btnNuevaFuncion_DNI853.TabIndex = 14;
+            btnNuevaFuncion_DNI853.Tag = "btnNueva";
             btnNuevaFuncion_DNI853.Text = "Nueva";
             btnNuevaFuncion_DNI853.UseVisualStyleBackColor = false;
             btnNuevaFuncion_DNI853.Click += btnNuevaFuncion_DNI853_Click;
@@ -276,6 +285,7 @@
             btnModificarFuncion_DNI853.Name = "btnModificarFuncion_DNI853";
             btnModificarFuncion_DNI853.Size = new Size(212, 72);
             btnModificarFuncion_DNI853.TabIndex = 15;
+            btnModificarFuncion_DNI853.Tag = "btnModificar";
             btnModificarFuncion_DNI853.Text = "Modificar";
             btnModificarFuncion_DNI853.UseVisualStyleBackColor = false;
             btnModificarFuncion_DNI853.Click += btnModificarFuncion_DNI853_Click;
@@ -291,6 +301,7 @@
             btnEliminarFuncion_DNI853.Name = "btnEliminarFuncion_DNI853";
             btnEliminarFuncion_DNI853.Size = new Size(212, 72);
             btnEliminarFuncion_DNI853.TabIndex = 16;
+            btnEliminarFuncion_DNI853.Tag = "btnEliminar";
             btnEliminarFuncion_DNI853.Text = "Eliminar";
             btnEliminarFuncion_DNI853.UseVisualStyleBackColor = false;
             btnEliminarFuncion_DNI853.Click += btnEliminarFuncion_DNI853_Click;
@@ -329,6 +340,7 @@
             lblUsuarioActivo_DNI853.Name = "lblUsuarioActivo_DNI853";
             lblUsuarioActivo_DNI853.Size = new Size(235, 41);
             lblUsuarioActivo_DNI853.TabIndex = 0;
+            lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
             // FormGestionFunciones_DNI853

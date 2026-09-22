@@ -112,6 +112,7 @@
             btnSalir_DNI853.Name = "btnSalir_DNI853";
             btnSalir_DNI853.Size = new Size(255, 82);
             btnSalir_DNI853.TabIndex = 22;
+            btnSalir_DNI853.Tag = "btnSalir";
             btnSalir_DNI853.Text = "Salir";
             btnSalir_DNI853.UseVisualStyleBackColor = false;
             btnSalir_DNI853.Click += btnSalir_DNI853_Click;
@@ -126,6 +127,7 @@
             lblTitulo_DNI853.Name = "lblTitulo_DNI853";
             lblTitulo_DNI853.Size = new Size(714, 72);
             lblTitulo_DNI853.TabIndex = 0;
+            lblTitulo_DNI853.Tag = "lblGestionSalasySectoresTitulo";
             lblTitulo_DNI853.Text = "Gestión de Salas y Sectores";
             // 
             // lblSubSalas_DNI853
@@ -138,6 +140,7 @@
             lblSubSalas_DNI853.Name = "lblSubSalas_DNI853";
             lblSubSalas_DNI853.Size = new Size(299, 50);
             lblSubSalas_DNI853.TabIndex = 1;
+            lblSubSalas_DNI853.Tag = "lblSubSalas";
             lblSubSalas_DNI853.Text = "Listado de Salas";
             // 
             // dgvSalas_DNI853
@@ -167,6 +170,7 @@
             lblNombreSala_DNI853.Name = "lblNombreSala_DNI853";
             lblNombreSala_DNI853.Size = new Size(200, 41);
             lblNombreSala_DNI853.TabIndex = 3;
+            lblNombreSala_DNI853.Tag = "lblNombreSala";
             lblNombreSala_DNI853.Text = "Nombre Sala";
             // 
             // txtNombreSala_DNI853
@@ -186,6 +190,7 @@
             lblUbicacionSala_DNI853.Name = "lblUbicacionSala_DNI853";
             lblUbicacionSala_DNI853.Size = new Size(157, 41);
             lblUbicacionSala_DNI853.TabIndex = 5;
+            lblUbicacionSala_DNI853.Tag = "lblUbicacionSala";
             lblUbicacionSala_DNI853.Text = "Ubicación";
             // 
             // txtUbicacionSala_DNI853
@@ -205,6 +210,7 @@
             lblCapacidadSala_DNI853.Name = "lblCapacidadSala_DNI853";
             lblCapacidadSala_DNI853.Size = new Size(165, 41);
             lblCapacidadSala_DNI853.TabIndex = 7;
+            lblCapacidadSala_DNI853.Tag = "lblCapacidadSala";
             lblCapacidadSala_DNI853.Text = "Capacidad";
             // 
             // txtCapacidadSala_DNI853
@@ -225,6 +231,7 @@
             btnNuevaSala_DNI853.Name = "btnNuevaSala_DNI853";
             btnNuevaSala_DNI853.Size = new Size(212, 72);
             btnNuevaSala_DNI853.TabIndex = 9;
+            btnNuevaSala_DNI853.Tag = "btnNueva";
             btnNuevaSala_DNI853.Text = "Nueva";
             btnNuevaSala_DNI853.UseVisualStyleBackColor = false;
             btnNuevaSala_DNI853.Click += btnNuevaSala_DNI853_Click;
@@ -240,6 +247,7 @@
             btnModificarSala_DNI853.Name = "btnModificarSala_DNI853";
             btnModificarSala_DNI853.Size = new Size(212, 72);
             btnModificarSala_DNI853.TabIndex = 10;
+            btnModificarSala_DNI853.Tag = "btnModificar";
             btnModificarSala_DNI853.Text = "Modificar";
             btnModificarSala_DNI853.UseVisualStyleBackColor = false;
             btnModificarSala_DNI853.Click += btnModificarSala_DNI853_Click;
@@ -255,6 +263,7 @@
             btnEliminarSala_DNI853.Name = "btnEliminarSala_DNI853";
             btnEliminarSala_DNI853.Size = new Size(212, 72);
             btnEliminarSala_DNI853.TabIndex = 11;
+            btnEliminarSala_DNI853.Tag = "btnEliminar";
             btnEliminarSala_DNI853.Text = "Eliminar";
             btnEliminarSala_DNI853.UseVisualStyleBackColor = false;
             btnEliminarSala_DNI853.Click += btnEliminarSala_DNI853_Click;
@@ -269,6 +278,7 @@
             lblSubSectores_DNI853.Name = "lblSubSectores_DNI853";
             lblSubSectores_DNI853.Size = new Size(345, 50);
             lblSubSectores_DNI853.TabIndex = 12;
+            lblSubSectores_DNI853.Tag = "lblSubSectores";
             lblSubSectores_DNI853.Text = "Sectores de la Sala";
             // 
             // dgvSectores_DNI853
@@ -298,6 +308,7 @@
             lblNombreSector_DNI853.Name = "lblNombreSector_DNI853";
             lblNombreSector_DNI853.Size = new Size(231, 41);
             lblNombreSector_DNI853.TabIndex = 14;
+            lblNombreSector_DNI853.Tag = "lblNombreSector";
             lblNombreSector_DNI853.Text = "Nombre Sector";
             // 
             // txtNombreSector_DNI853
@@ -317,6 +328,7 @@
             lblUbicacionSector_DNI853.Name = "lblUbicacionSector_DNI853";
             lblUbicacionSector_DNI853.Size = new Size(157, 41);
             lblUbicacionSector_DNI853.TabIndex = 16;
+            lblUbicacionSector_DNI853.Tag = "lblUbicacionSector";
             lblUbicacionSector_DNI853.Text = "Ubicación";
             // 
             // txtUbicacionSector_DNI853
@@ -336,6 +348,7 @@
             lblCapacidadSector_DNI853.Name = "lblCapacidadSector_DNI853";
             lblCapacidadSector_DNI853.Size = new Size(165, 41);
             lblCapacidadSector_DNI853.TabIndex = 18;
+            lblCapacidadSector_DNI853.Tag = "lblCapacidadSector";
             lblCapacidadSector_DNI853.Text = "Capacidad";
             // 
             // txtCapacidadSector_DNI853
@@ -356,6 +369,7 @@
             btnNuevoSector_DNI853.Name = "btnNuevoSector_DNI853";
             btnNuevoSector_DNI853.Size = new Size(212, 72);
             btnNuevoSector_DNI853.TabIndex = 20;
+            btnNuevoSector_DNI853.Tag = "btnNuevo";
             btnNuevoSector_DNI853.Text = "Nuevo";
             btnNuevoSector_DNI853.UseVisualStyleBackColor = false;
             btnNuevoSector_DNI853.Click += btnNuevoSector_DNI853_Click;
@@ -371,6 +385,7 @@
             btnModificarSector_DNI853.Name = "btnModificarSector_DNI853";
             btnModificarSector_DNI853.Size = new Size(212, 72);
             btnModificarSector_DNI853.TabIndex = 21;
+            btnModificarSector_DNI853.Tag = "btnModificar";
             btnModificarSector_DNI853.Text = "Modificar";
             btnModificarSector_DNI853.UseVisualStyleBackColor = false;
             btnModificarSector_DNI853.Click += btnModificarSector_DNI853_Click;
@@ -386,6 +401,7 @@
             btnEliminarSector_DNI853.Name = "btnEliminarSector_DNI853";
             btnEliminarSector_DNI853.Size = new Size(212, 72);
             btnEliminarSector_DNI853.TabIndex = 22;
+            btnEliminarSector_DNI853.Tag = "btnEliminar";
             btnEliminarSector_DNI853.Text = "Eliminar";
             btnEliminarSector_DNI853.UseVisualStyleBackColor = false;
             btnEliminarSector_DNI853.Click += btnEliminarSector_DNI853_Click;
@@ -424,6 +440,7 @@
             lblUsuarioActivo_DNI853.Name = "lblUsuarioActivo_DNI853";
             lblUsuarioActivo_DNI853.Size = new Size(235, 41);
             lblUsuarioActivo_DNI853.TabIndex = 0;
+            lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
             // Precio
@@ -435,6 +452,7 @@
             Precio.Name = "Precio";
             Precio.Size = new Size(105, 41);
             Precio.TabIndex = 23;
+            Precio.Tag = "lblPrecioSector";
             Precio.Text = "Precio";
             Precio.Click += label1_Click;
             // 
@@ -467,7 +485,6 @@
             panelInferior_DNI853.ResumeLayout(false);
             panelInferior_DNI853.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion
