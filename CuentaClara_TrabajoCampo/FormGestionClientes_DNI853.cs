@@ -207,17 +207,15 @@ namespace IU
 
                 if (operacionActual_DNI853 == "NUEVO")
                 {
-                    BE_Cliente_DNI853 objNuevoCliente_DNI853 = new BE_Cliente_DNI853
-                    {
-                        DNI_C_DNI853 = txtDniCliente_DNI853.Text,
-                        Nombre_C_DNI853 = txtNombreCliente_DNI853.Text,
-                        Apellido_C_DNI853 = txtApellidoCliente_DNI853.Text,
-                        CorreoElectronico_C_DNI853 = txtCorreoCliente_DNI853.Text,
-                        Telefono_C_DNI853 = txtTelefonoCliente_DNI853.Text,
-                        Direccion_C_DNI853 = txtDireccionCliente_DNI853.Text
-                    };
+                    bool resultadoProc_DNI853 = bllClientes_DNI853.CrearCliente_DNI853(
+                        txtDniCliente_DNI853.Text,
+                        txtNombreCliente_DNI853.Text,
+                        txtApellidoCliente_DNI853.Text,
+                        txtCorreoCliente_DNI853.Text,
+                        txtTelefonoCliente_DNI853.Text,
+                        txtDireccionCliente_DNI853.Text
+                    );
 
-                    bool resultadoProc_DNI853 = bllClientes_DNI853.CrearCliente_DNI853(objNuevoCliente_DNI853);
                     if (resultadoProc_DNI853)
                     {
                         MessageBox.Show(TraducirTexto_DNI853("Exito_ClienteCreado"), TraducirTexto_DNI853("TituloExito"), MessageBoxButtons.OK, MessageBoxIcon.Information);

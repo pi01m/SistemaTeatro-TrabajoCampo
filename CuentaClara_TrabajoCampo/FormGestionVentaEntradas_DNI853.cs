@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL_Negocio; 
 
 namespace IU
 {
@@ -87,7 +88,7 @@ namespace IU
             btnImprimirFactura_DNI853.Enabled = ventaFinalizada_DNI853;
             btnImprimirEntradas_DNI853.Enabled = ventaFinalizada_DNI853;
 
-            btnLimpiar_DNI853.Text = ventaFinalizada_DNI853 ? TraducirTexto_DNI853("BtnNuevaVenta") : TraducirTexto_DNI853("BtnCancelarVenta");
+            
         }
 
         // ====================================================================
@@ -244,44 +245,47 @@ namespace IU
                 return;
             }
 
-            if (!int.TryParse(txtCantidad_DNI853.Text, out int cantidad_DNI853) || cantidad_DNI853 <= 0)
+            try
             {
-                MessageBox.Show(TraducirTexto_DNI853("MsgCantidadValida"), TraducirTexto_DNI853("TituloAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Captura de datos planos desde los controles de la UI
+                string idFuncion_DNI853 = dgvFunciones_DNI853.CurrentRow.Cells["IdFuncion_DNI853"].Value?.ToString();
+                string idSector_DNI853 = dgvSectores_DNI853.CurrentRow.Cells["IdSector_DNI853"].Value?.ToString();
+                string nombreObra_DNI853 = cboObra_DNI853.Text;
+                DateTime fechaFunc_DNI853 = Convert.ToDateTime(dgvFunciones_DNI853.CurrentRow.Cells["Fecha_DNI853"].Value);
+                string horaInicioFunc_DNI853 = dgvFunciones_DNI853.CurrentRow.Cells["HoraInicio_DNI853"].Value?.ToString();
+                string nombreSector_DNI853 = dgvSectores_DNI853.CurrentRow.Cells["NombreSector_DNI853"].Value?.ToString();
+                decimal precioSector_DNI853 = Convert.ToDecimal(dgvSectores_DNI853.CurrentRow.Cells["Precio_DNI853"].Value);
+                int dispActual_DNI853 = Convert.ToInt32(dgvSectores_DNI853.CurrentRow.Cells["Capacidad_DNI853"].Value);
+
+                // Se delega todo el trabajo duro, validación y encapsulamiento a la BLL
+                objBllCarrito_DNI853.AgregarItem_DNI853(
+                    idFuncion_DNI853,
+                    idSector_DNI853,
+                    nombreObra_DNI853,
+                    fechaFunc_DNI853,
+                    horaInicioFunc_DNI853,
+                    nombreSector_DNI853,
+                    txtCantidad_DNI853.Text,
+                    precioSector_DNI853,
+                    dispActual_DNI853
+                );
+
+                ConfigurarCarrito_DNI853();
+                RecalcularTotalCarrito_DNI853();
+                txtCantidad_DNI853.Clear();
             }
-
-            int dispActual_DNI853 = Convert.ToInt32(dgvSectores_DNI853.CurrentRow.Cells["Capacidad_DNI853"].Value);
-            if (cantidad_DNI853 > dispActual_DNI853)
+            catch (Exception ex)
             {
-                MessageBox.Show($"{TraducirTexto_DNI853("MsgSuperaDisponibilidad")} ({dispActual_DNI853})", TraducirTexto_DNI853("TituloSinDisponibilidad"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Manejo centralizado de excepciones lanzadas por la BLL mediante traducciones
+                string mensajeError = TraducirTexto_DNI853(ex.Message);
+                if (ex.Message == "err_SuperaDisponibilidad")
+                {
+                    int dispActual_DNI853 = Convert.ToInt32(dgvSectores_DNI853.CurrentRow.Cells["Capacidad_DNI853"].Value);
+                    mensajeError = $"{mensajeError} ({dispActual_DNI853})";
+                }
+
+                MessageBox.Show(mensajeError, TraducirTexto_DNI853("TituloAtencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            string idFuncion_DNI853 = dgvFunciones_DNI853.CurrentRow.Cells["IdFuncion_DNI853"].Value?.ToString();
-            string idSector_DNI853 = dgvSectores_DNI853.CurrentRow.Cells["IdSector_DNI853"].Value?.ToString();
-            decimal precioSector_DNI853 = Convert.ToDecimal(dgvSectores_DNI853.CurrentRow.Cells["Precio_DNI853"].Value);
-
-            string nombreSector_DNI853 = dgvSectores_DNI853.CurrentRow.Cells["NombreSector_DNI853"].Value?.ToString();
-            string horaInicioFunc_DNI853 = dgvFunciones_DNI853.CurrentRow.Cells["HoraInicio_DNI853"].Value?.ToString();
-            DateTime fechaFunc_DNI853 = Convert.ToDateTime(dgvFunciones_DNI853.CurrentRow.Cells["Fecha_DNI853"].Value);
-
-            string detalleFormateado_DNI853 = $"Obra: {cboObra_DNI853.Text} | Func: {fechaFunc_DNI853.ToShortDateString()} {horaInicioFunc_DNI853}hs | Sector: {nombreSector_DNI853}";
-
-            // Agregamos el ítem agrupado al carrito con su cantidad
-            BE_Entrada_DNI853 nuevoItem_DNI853 = new BE_Entrada_DNI853
-            {
-                IdFuncion_DNI853 = idFuncion_DNI853,
-                IdSector_DNI853 = idSector_DNI853,
-                Detalle_DNI853 = detalleFormateado_DNI853,
-                Cantidad_DNI853 = cantidad_DNI853,
-                PrecioUnitario_DNI853 = precioSector_DNI853
-            };
-
-            objBllCarrito_DNI853.AgregarItem_DNI853(nuevoItem_DNI853);
-
-            ConfigurarCarrito_DNI853();
-            RecalcularTotalCarrito_DNI853();
-            txtCantidad_DNI853.Clear();
         }
 
         private void btnQuitarItem_DNI853_Click(object sender, EventArgs e)
@@ -399,7 +403,7 @@ namespace IU
             btnQuitarItem_DNI853.Enabled = false;
         }
 
-        // Paso 3: Procesa, Descuenta, Graba Factura y Entradas por separado (Bitácora excluida de UI)
+        // Paso 3: Procesa, Descuenta, Graba Factura y Entradas por separado 
         private void btnCobrarEntradas_DNI853_Click(object sender, EventArgs e)
         {
             try
@@ -661,7 +665,7 @@ namespace IU
             if (dgvCarrito_DNI853.Columns.Contains("Detalle_DNI853"))
             {
                 dgvCarrito_DNI853.Columns["Detalle_DNI853"].HeaderText = TraducirTexto_DNI853("ColDetalle");
-                dgvCarrito_DNI853.Columns["Detalle_DNI853"].Width = 250;
+                
             }
 
             if (dgvCarrito_DNI853.Columns.Contains("Cantidad_DNI853"))
@@ -690,6 +694,11 @@ namespace IU
         private void cboObra_DNI853_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarGrillaFunciones_DNI853();
+        }
+
+        private void btnNuevaVenta_DNI853_Click(object sender, EventArgs e)
+        {
+            btnLimpiar_DNI853_Click(sender, e);
         }
     }
 }

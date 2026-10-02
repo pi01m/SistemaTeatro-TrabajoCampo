@@ -33,6 +33,10 @@ namespace DAL
                         IdFuncion_DNI853 = fila_DNI853["Id_Funcion_DNI853"].ToString(),
                         IdSector_DNI853 = fila_DNI853["Id_Sector_DNI853"].ToString(),
                         Detalle_DNI853 = fila_DNI853["Detalle_DNI853"].ToString(),
+
+                        // SOLUCIÓN: Recuperar la cantidad (o forzarla a 1 si no es una columna de la tabla)
+                        Cantidad_DNI853 = fila_DNI853.Table.Columns.Contains("Cantidad_DNI853") ? Convert.ToInt32(fila_DNI853["Cantidad_DNI853"]) : 1,
+
                         PrecioUnitario_DNI853 = Convert.ToDecimal(fila_DNI853["PrecioUnitario_DNI853"])
                     };
 
@@ -43,7 +47,6 @@ namespace DAL
             return listaEntradas_DNI853;
         }
 
-        // Método encargado exclusivamente de insertar las entradas usando la misma transacción abierta
         public void RegistrarEntradas_DNI853(List<BE_Entrada_DNI853> entradas_DNI853)
         {
             using (SqlConnection conn_DNI853 = new SqlConnection(_connectionString_DNI853))
@@ -61,6 +64,13 @@ namespace DAL
                     filaEntrada_DNI853["Id_Funcion_DNI853"] = entrada_DNI853.IdFuncion_DNI853;
                     filaEntrada_DNI853["Id_Sector_DNI853"] = entrada_DNI853.IdSector_DNI853;
                     filaEntrada_DNI853["Detalle_DNI853"] = entrada_DNI853.Detalle_DNI853;
+
+                    // Si la columna existe en BD, asegúrate de guardarla:
+                    if (tablaEntrada_DNI853.Columns.Contains("Cantidad_DNI853"))
+                    {
+                        filaEntrada_DNI853["Cantidad_DNI853"] = entrada_DNI853.Cantidad_DNI853;
+                    }
+
                     filaEntrada_DNI853["PrecioUnitario_DNI853"] = entrada_DNI853.PrecioUnitario_DNI853;
 
                     tablaEntrada_DNI853.Rows.Add(filaEntrada_DNI853);

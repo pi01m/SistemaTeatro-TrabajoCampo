@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="BE/BE.csproj" Id="ef973ba6-66e6-43b5-9b6a-f6b6d8dd7354" />
   <Project Path="BLL/BLL.csproj" Id="3fc9606e-598a-4b40-a7bb-6fddcabf1df3" />
+  <Project Path="BLL_Negocio/BLL_Negocio.csproj" Id="75af9c9f-c458-443e-8f55-172b4dd6e713" />
   <Project Path="CuentaClara_TrabajoCampo/IU.csproj" />
   <Project Path="DAL/DAL.csproj" Id="8f771a1e-633a-4114-a0a0-4fd8212614cc" />
   <Project Path="Instalador_CuentaClara/Instalador_CuentaClara.vdproj" Type="Installer">

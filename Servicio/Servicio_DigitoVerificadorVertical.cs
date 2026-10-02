@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Servicio
 {
-    public class Servicio_DigitoVerificadorVertical
+    public class Servicio_DigitoVerificadorVertical //este en el diagrama de clases llamalo Servicio_DigitoVerificador asi tambien yo lo llame en el diagrama de secuencia
     {
         public string Nombre { get; set; }
         public string DVV { get; set; }

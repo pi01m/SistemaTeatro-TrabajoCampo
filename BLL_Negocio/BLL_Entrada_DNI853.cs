@@ -66,7 +66,7 @@ namespace BLL
             // 3. Bitácora
             var usuarioActual = SessionManager.GetInstancia().GetUsuarioActual();
             string loginUsuario = usuarioActual != null ? usuarioActual.Login : "Sistema";
-            objBllBitacora_DNI853.RegistrarBitacora($"Se registraron {ticketsIndividualesParaBD.Count} entradas individuales vinculadas a la factura {idFactura_DNI853}", loginUsuario, "Ventas", 2);
+            objBllBitacora_DNI853.RegistrarBitacora($"Registro de entradas", loginUsuario, "Ventas", 2);
         }
 
         // Genera el PDF de entradas llamándose directamente desde la UI o BLL usando el ID de factura

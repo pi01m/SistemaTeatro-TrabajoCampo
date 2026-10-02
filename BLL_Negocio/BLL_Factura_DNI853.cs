@@ -34,7 +34,7 @@ namespace BLL
 
             var usuarioActual = SessionManager.GetInstancia().GetUsuarioActual();
             string loginUsuario = usuarioActual != null ? usuarioActual.Login : "Sistema";
-            objBllBitacora_DNI853.RegistrarBitacora($"Factura registrada con éxito: {idGenerado_DNI853} por $ {factura_DNI853.ImporteTotal_DNI853}", loginUsuario, "Ventas", 2);
+            objBllBitacora_DNI853.RegistrarBitacora($"Factura registrada", loginUsuario, "Ventas", 2);
             return idGenerado_DNI853;
         }
 

@@ -27,9 +27,12 @@ namespace BLL
             return objDalCliente_DNI853.ListarClientes_DNI853();
         }
 
-        public bool CrearCliente_DNI853(BE_Cliente_DNI853 clienteParam_DNI853)
+        // Método privado a parte para validar las reglas de negocio
+        private void ValidarCliente_DNI853(BE_Cliente_DNI853 clienteParam_DNI853)
         {
-            // 1. Validaciones de negocio
+            if (clienteParam_DNI853 == null)
+                throw new Exception("err_ClienteNulo");
+
             if (string.IsNullOrWhiteSpace(clienteParam_DNI853.DNI_C_DNI853))
                 throw new Exception("err_DniClienteObligatorio");
 
@@ -38,19 +41,37 @@ namespace BLL
 
             if (string.IsNullOrWhiteSpace(clienteParam_DNI853.Apellido_C_DNI853))
                 throw new Exception("err_ApellidoClienteObligatorio");
+        }
 
-            // 2. Inserción en Base de Datos
-            bool resultado_DNI853 = objDalCliente_DNI853.InsertarCliente_DNI853(clienteParam_DNI853);
+        // La BLL es la que instancia y arma la BE a partir de los datos enviados por la UI
+        public bool CrearCliente_DNI853(string dni, string nombre, string apellido, string correo, string telefono, string direccion)
+        {
+            // 1. Crear y armar la BE en la capa de negocio
+            BE_Cliente_DNI853 objNuevoCliente_DNI853 = new BE_Cliente_DNI853
+            {
+                DNI_C_DNI853 = dni,
+                Nombre_C_DNI853 = nombre,
+                Apellido_C_DNI853 = apellido,
+                CorreoElectronico_C_DNI853 = correo,
+                Telefono_C_DNI853 = telefono,
+                Direccion_C_DNI853 = direccion
+            };
+
+            // 2. Ejecutar validaciones usando el método aparte
+            ValidarCliente_DNI853(objNuevoCliente_DNI853);
+
+            // 3. Inserción en Base de Datos
+            bool resultado_DNI853 = objDalCliente_DNI853.InsertarCliente_DNI853(objNuevoCliente_DNI853);
 
             if (resultado_DNI853)
             {
                 string loginActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual().Login;
 
-                // 3. Actualización de Dígitos Verificadores
+                // 4. Actualización de Dígitos Verificadores
                 List<BE_Cliente_DNI853> listaCompleta_DNI853 = this.ListarClientes_DNI853();
-                objDigitoVerificador_DNI853.ActualizarDigitos(clienteParam_DNI853, listaCompleta_DNI853, "Cliente_DNI853");
+                objDigitoVerificador_DNI853.ActualizarDigitos(objNuevoCliente_DNI853, listaCompleta_DNI853, "Cliente_DNI853");
 
-                // 4. Registro Obligatorio en Bitácora
+                // 5. Registro Obligatorio en Bitácora
                 objBitacora_DNI853.RegistrarBitacora(
                     "Alta de Cliente",
                     loginActual_DNI853,
@@ -127,7 +148,21 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(dni_DNI853))
                 throw new Exception("err_DniClienteObligatorio");
 
-            return objDalCliente_DNI853.BuscarPorDNI_DNI853(dni_DNI853);
+            BE_Cliente_DNI853 cliente_DNI853 = objDalCliente_DNI853.BuscarPorDNI_DNI853(dni_DNI853);
+
+            // 2. Si se encuentra el cliente, registrar el evento en la bitácora
+            if (cliente_DNI853 != null)
+            {
+                string loginActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual().Login;
+
+                objBitacora_DNI853.RegistrarBitacora(
+                    $"Cliente Encontrado",
+                    loginActual_DNI853,
+                    "Gestión Clientes",
+                    1); // Criticidad Baja (informativa)
+            }
+
+            return cliente_DNI853;
         }
     }
 }

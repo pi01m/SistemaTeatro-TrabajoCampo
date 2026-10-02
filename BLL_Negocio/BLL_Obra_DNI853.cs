@@ -134,7 +134,7 @@ namespace BLL
 
                 // 5. Registro en Bitácora
                 objBitacora_DNI853.RegistrarBitacora(
-                    "Modificación de Obra (Inactivación)",
+                    "Modificación de Obra",
                     loginActual_DNI853,
                     "Gestión Obras",
                     2);
