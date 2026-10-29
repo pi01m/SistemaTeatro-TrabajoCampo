@@ -136,6 +136,32 @@ namespace BLL.BLL_Servicio
         {
             List<ExcepcionIntegridad> errores = new List<ExcepcionIntegridad>();
 
+            // ---------- Producto_DNI853 ----------
+            DAL_Producto_DNI853 dalProducto_DNI853 = new DAL_Producto_DNI853();
+            var errorProducto_DNI853 = ValidarIntegridad(
+                dalProducto_DNI853.ListarProductos_DNI853(),
+                "Producto_DNI853");
+
+            if (errorProducto_DNI853 != null)
+                errores.Add(errorProducto_DNI853);
+
+            // ---------- ItemCarrito_DNI853  ----------
+            DAL_Carrito_DNI853 dalCarrito_DNI853 = new DAL_Carrito_DNI853();
+            var errorItem_DNI853 = ValidarIntegridad(
+                dalCarrito_DNI853.ListarTodosLosItems_DNI853(), 
+                "ItemCarrito_DNI853");
+
+            if (errorItem_DNI853 != null)
+                errores.Add(errorItem_DNI853);
+
+            // ---------- PedidoCantina_DNI853 ----------
+            var errorPedido_DNI853 = ValidarIntegridad(
+                dalCarrito_DNI853.ListarPedidosCantina_DNI853(),
+                "PedidoCantina_DNI853");
+
+            if (errorPedido_DNI853 != null)
+                errores.Add(errorPedido_DNI853);
+
             // ---------- Sector_DNI853 ----------
             DAL_Sector_DNI853 dalSector_DNI853 = new DAL_Sector_DNI853();
             var errorSector_DNI853 = ValidarIntegridad(
@@ -370,6 +396,9 @@ namespace BLL.BLL_Servicio
             RecalcularPromociones_DNI853(log);
             RecalcularSalas_DNI853(log);
             RecalcularSectores_DNI853(log);
+            RecalcularProductos_DNI853(log);
+            RecalcularItemsCarrito_DNI853(log);
+            RecalcularPedidosCantina_DNI853(log);
         }
 
         private void RecalcularUsuarios(string log)
@@ -908,6 +937,108 @@ namespace BLL.BLL_Servicio
             dalDigito.GuardarDVV(maestro_DNI853);
 
             bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Sectores", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularProductos_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("Producto_DNI853");
+
+            DAL_Producto_DNI853 dalProducto_DNI853 = new DAL_Producto_DNI853();
+            List<BE_Producto_DNI853> productos_DNI853 = dalProducto_DNI853.ListarProductos_DNI853()
+                .OrderBy(p_DNI853 => p_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Producto_DNI853 producto_DNI853 in productos_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(producto_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "Producto_DNI853_" + producto_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "Producto_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Productos", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularItemsCarrito_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("ItemCarrito_DNI853");
+
+            DAL_Carrito_DNI853 dalCarrito_DNI853 = new DAL_Carrito_DNI853();
+            List<BE_ItemCarrito_DNI853> items_DNI853 = dalCarrito_DNI853.ListarTodosLosItems_DNI853()
+                .OrderBy(i_DNI853 => i_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_ItemCarrito_DNI853 item_DNI853 in items_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(item_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "ItemCarrito_DNI853_" + item_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "ItemCarrito_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Items de Carrito", log_DNI853, "Seguridad", 1);
+        }
+
+        private void RecalcularPedidosCantina_DNI853(string log_DNI853)
+        {
+            dalDigito.EliminarDVHDeTabla("PedidoCantina_DNI853");
+
+            DAL_Carrito_DNI853 dalCarrito_DNI853 = new DAL_Carrito_DNI853();
+            List<BE_Pedido_DNI853> pedidos_DNI853 = dalCarrito_DNI853.ListarPedidosCantina_DNI853()
+                .OrderBy(p_DNI853 => p_DNI853.ObtenerIdentificadorFila())
+                .ToList();
+
+            string cadenaDVV_DNI853 = "";
+
+            foreach (BE_Pedido_DNI853 pedido_DNI853 in pedidos_DNI853)
+            {
+                string dvh_DNI853 = servicioCalcular.CalcularDVH(pedido_DNI853);
+
+                Servicio_DigitoVerificadorVertical reg_DNI853 = new Servicio_DigitoVerificadorVertical();
+                reg_DNI853.Nombre = "PedidoCantina_DNI853_" + pedido_DNI853.ObtenerIdentificadorFila();
+                reg_DNI853.DVH = dvh_DNI853;
+
+                dalDigito.GuardarDVH(reg_DNI853);
+                cadenaDVV_DNI853 += dvh_DNI853;
+            }
+
+            string dvvFinal_DNI853 = servicioCalcular.CalcularHash(cadenaDVV_DNI853);
+
+            Servicio_DigitoVerificadorVertical maestro_DNI853 = new Servicio_DigitoVerificadorVertical();
+            maestro_DNI853.Nombre = "PedidoCantina_DNI853_MAESTRO";
+            maestro_DNI853.DVV = dvvFinal_DNI853;
+
+            dalDigito.GuardarDVV(maestro_DNI853);
+
+            bllBitacora.RegistrarBitacora("Recalculo de Dígitos Verificadores de Pedidos de Cantina", log_DNI853, "Seguridad", 1);
         }
     }
 }

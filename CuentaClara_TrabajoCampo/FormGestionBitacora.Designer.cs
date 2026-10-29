@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panelContenedor = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -148,23 +148,23 @@
             dgvBitacora.BorderStyle = BorderStyle.None;
             dgvBitacora.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvBitacora.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle21.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle21.ForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle21.SelectionForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
-            dgvBitacora.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvBitacora.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvBitacora.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = Color.White;
-            dataGridViewCellStyle22.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle22.ForeColor = Color.FromArgb(50, 50, 50);
-            dataGridViewCellStyle22.SelectionBackColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle22.SelectionForeColor = Color.White;
-            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.False;
-            dgvBitacora.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvBitacora.DefaultCellStyle = dataGridViewCellStyle4;
             dgvBitacora.EnableHeadersVisualStyles = false;
             dgvBitacora.GridColor = Color.FromArgb(220, 220, 220);
             dgvBitacora.Location = new Point(73, 191);
@@ -312,7 +312,7 @@
             // 
             cboModulo.DropDownStyle = ComboBoxStyle.DropDownList;
             cboModulo.Font = new Font("Segoe UI", 10F);
-            cboModulo.Items.AddRange(new object[] { "Administración", "Seguridad", "Gestión de Perfiles y Autorización", "Gestión Clientes", "Ventas", "Gestión Funciones", "Gestión Obras", "Gestión Promociones", "Gestión Salas", "Gestión Sectores" });
+            cboModulo.Items.AddRange(new object[] { "Administración", "Seguridad", "Gestión de Perfiles y Autorización", "Gestión Clientes", "Ventas", "Gestión Funciones", "Gestión Obras", "Gestión Promociones", "Gestión Salas", "Gestión Sectores", "Gestión Cantina" });
             cboModulo.Location = new Point(1634, 1460);
             cboModulo.Margin = new Padding(7, 8, 7, 8);
             cboModulo.Name = "cboModulo";
@@ -336,7 +336,7 @@
             // 
             cboEvento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEvento.Font = new Font("Segoe UI", 10F);
-            cboEvento.Items.AddRange(new object[] { "Login Correcto", "Login Incorrecto", "Logout", "Usuario Desbloqueado", "Intento de login bloqueado", "Usuario Bloqueado o Inactivo", "Usuario Modificado", "Usuario Creado", "Modificar Usuario", "Activar Usuario", "Desactivar Usuario", "Impresión/Exportación de Bitácora", "Cambio Clave", "Asignación familia a rol", "Asignación familia a familia", "Asignación permiso a rol", "Asignación permiso a familia", "Permiso asignado a Familia", "Permiso desasignado de Familia", "Subfamilia desasignada de Familia", "Modificación Familia", "Baja Familia", "Alta Familia", "Desasignación en Perfiles", "Cambio de Idioma en Sesión", "Actualización de Idioma", "Violación de integridad detectada", "Recalculo de Dígitos Verificadores de Usuario", "Acceso de emergencia por violación de integridad", "Violación de integridad en la tabla", "Violación de integridad crítica", "Cliente Encontrado", "Alta de Cliente", "Modificación de Cliente", "Baja de Cliente", "Registro de entradas", "Factura registrada", "Alta de Función", "Modificación de Función", "Baja de Función", "Alta de Obra", "Modificación de Obra", "Baja de Obra", "Alta de Promoción", "Modificación de Promoción", "Baja de Promoción", "Alta de Sala", "Modificación de Sala", "Baja de Sala", "Alta de Sector", "Modificación de Sector", "Baja de Sector" });
+            cboEvento.Items.AddRange(new object[] { "Login Correcto", "Login Incorrecto", "Logout", "Usuario Desbloqueado", "Intento de login bloqueado", "Usuario Bloqueado o Inactivo", "Usuario Modificado", "Usuario Creado", "Modificar Usuario", "Activar Usuario", "Desactivar Usuario", "Impresión/Exportación de Bitácora", "Cambio Clave", "Asignación familia a rol", "Asignación familia a familia", "Asignación permiso a rol", "Asignación permiso a familia", "Permiso asignado a Familia", "Permiso desasignado de Familia", "Subfamilia desasignada de Familia", "Modificación Familia", "Baja Familia", "Alta Familia", "Desasignación en Perfiles", "Cambio de Idioma en Sesión", "Actualización de Idioma", "Violación de integridad detectada", "Recalculo de Dígitos Verificadores de Usuario", "Acceso de emergencia por violación de integridad", "Violación de integridad en la tabla", "Violación de integridad crítica", "Cliente Encontrado", "Alta de Cliente", "Modificación de Cliente", "Baja de Cliente", "Registro de entradas", "Factura registrada", "Alta de Función", "Modificación de Función", "Baja de Función", "Alta de Obra", "Modificación de Obra", "Baja de Obra", "Alta de Promoción", "Modificación de Promoción", "Baja de Promoción", "Alta de Sala", "Modificación de Sala", "Baja de Sala", "Alta de Sector", "Modificación de Sector", "Baja de Sector", "Registro de Pedido de Cantina", "Estado de pedido actualizado" });
             cboEvento.Location = new Point(1999, 1460);
             cboEvento.Margin = new Padding(7, 8, 7, 8);
             cboEvento.Name = "cboEvento";

@@ -86,6 +86,11 @@ namespace CuentaClara_TrabajoCampo
         {
             dgvBitacora.DataSource = bll.ListarUltimos3Dias();
 
+            
+            if (dgvBitacora.Columns["Id_Evento"] != null)
+            {
+                dgvBitacora.Columns["Id_Evento"].Visible = false;
+            }
             dgvBitacora.Columns["Login"].HeaderText = TraducirTexto("Login");
             dgvBitacora.Columns["Evento"].HeaderText = TraducirTexto("Evento");
             dgvBitacora.Columns["Modulo"].HeaderText = TraducirTexto("Modulo");
@@ -172,6 +177,10 @@ namespace CuentaClara_TrabajoCampo
 
             string.IsNullOrEmpty(cboCriticidad.Text) ? (int?)null : Convert.ToInt32(cboCriticidad.Text));
 
+            if (dgvBitacora.Columns["Id_Evento"] != null)
+            {
+                dgvBitacora.Columns["Id_Evento"].Visible = false;
+            }
             dgvBitacora.Refresh();
 
             ActualizarContador();

@@ -37,6 +37,7 @@ namespace DAL
                         Fecha_DNI853 = Convert.ToDateTime(fila_DNI853["Fecha_DNI853"]),
                         Vendedor_DNI853 = fila_DNI853["Vendedor_DNI853"] != DBNull.Value ? fila_DNI853["Vendedor_DNI853"].ToString() : string.Empty,
                         IdPromocion_DNI853 = fila_DNI853["Id_Promocion_DNI853"] != DBNull.Value ? fila_DNI853["Id_Promocion_DNI853"].ToString() : string.Empty
+                        IdPedido_DNI853 = fila_DNI853["IdPedido_DNI853"] != DBNull.Value ? fila_DNI853["IdPedido_DNI853"].ToString() : string.Empty,
                     };
 
                     listaFacturas_DNI853.Add(factura_DNI853);
@@ -67,7 +68,7 @@ namespace DAL
                 filaFactura_DNI853["Fecha_DNI853"] = DateTime.Now;
                 filaFactura_DNI853["Vendedor_DNI853"] = string.IsNullOrEmpty(factura_DNI853.Vendedor_DNI853) ? (object)DBNull.Value : factura_DNI853.Vendedor_DNI853;
                 filaFactura_DNI853["Id_Promocion_DNI853"] = string.IsNullOrEmpty(factura_DNI853.IdPromocion_DNI853) ? (object)DBNull.Value : factura_DNI853.IdPromocion_DNI853;
-
+                filaFactura_DNI853["IdPedido_DNI853"] = string.IsNullOrEmpty(factura_DNI853.IdPedido_DNI853) ? (object)DBNull.Value : factura_DNI853.IdPedido_DNI853;
                 tablaFactura_DNI853.Rows.Add(filaFactura_DNI853);
 
                 SqlCommandBuilder builderFactura_DNI853 = new SqlCommandBuilder(adapterFactura_DNI853);

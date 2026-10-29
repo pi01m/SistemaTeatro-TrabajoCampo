@@ -14,7 +14,7 @@ namespace BE
         public string NombreSector_DNI853 { get; set; }
         public string Ubicacion_DNI853 { get; set; }
         public int Capacidad_DNI853 { get; set; }
-        public decimal Precio_DNI853 { get; set; } // <--- NUEVA PROPIEDAD DE PRECIO
+        public decimal Precio_DNI853 { get; set; } 
 
         public BE_Sector_DNI853() { }
 

@@ -36,6 +36,7 @@ namespace IU
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionVentaEntradas_DNI853));
             panelContenedor_DNI853 = new Panel();
+            btnNuevaVenta_DNI853 = new Button();
             btnCobrarEntradas_DNI853 = new Button();
             lblTitulo_DNI853 = new Label();
             lblObra_DNI853 = new Label();
@@ -75,7 +76,6 @@ namespace IU
             panelInferior_DNI853 = new Panel();
             lblUsuarioValor_DNI853 = new Label();
             lblUsuarioActivo_DNI853 = new Label();
-            btnNuevaVenta_DNI853 = new Button();
             panelContenedor_DNI853.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFunciones_DNI853).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSectores_DNI853).BeginInit();
@@ -130,6 +130,22 @@ namespace IU
             panelContenedor_DNI853.Size = new Size(3196, 2036);
             panelContenedor_DNI853.TabIndex = 1;
             // 
+            // btnNuevaVenta_DNI853
+            // 
+            btnNuevaVenta_DNI853.BackColor = Color.FromArgb(120, 20, 40);
+            btnNuevaVenta_DNI853.FlatAppearance.BorderSize = 0;
+            btnNuevaVenta_DNI853.FlatStyle = FlatStyle.Flat;
+            btnNuevaVenta_DNI853.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnNuevaVenta_DNI853.ForeColor = Color.White;
+            btnNuevaVenta_DNI853.Location = new Point(76, 1757);
+            btnNuevaVenta_DNI853.Name = "btnNuevaVenta_DNI853";
+            btnNuevaVenta_DNI853.Size = new Size(320, 119);
+            btnNuevaVenta_DNI853.TabIndex = 39;
+            btnNuevaVenta_DNI853.Tag = "btnNuevaVenta_DNI853";
+            btnNuevaVenta_DNI853.Text = "Nueva Venta";
+            btnNuevaVenta_DNI853.UseVisualStyleBackColor = false;
+            btnNuevaVenta_DNI853.Click += btnNuevaVenta_DNI853_Click;
+            // 
             // btnCobrarEntradas_DNI853
             // 
             btnCobrarEntradas_DNI853.BackColor = Color.FromArgb(120, 20, 40);
@@ -137,11 +153,11 @@ namespace IU
             btnCobrarEntradas_DNI853.FlatStyle = FlatStyle.Flat;
             btnCobrarEntradas_DNI853.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnCobrarEntradas_DNI853.ForeColor = Color.White;
-            btnCobrarEntradas_DNI853.Location = new Point(1765, 1758);
+            btnCobrarEntradas_DNI853.Location = new Point(1832, 1783);
             btnCobrarEntradas_DNI853.Name = "btnCobrarEntradas_DNI853";
             btnCobrarEntradas_DNI853.Size = new Size(320, 119);
             btnCobrarEntradas_DNI853.TabIndex = 38;
-            btnCobrarEntradas_DNI853.Tag = "btnConfirmarVenta";
+            btnCobrarEntradas_DNI853.Tag = "btnCobrarEntradas";
             btnCobrarEntradas_DNI853.Text = "Cobrar Entradas";
             btnCobrarEntradas_DNI853.UseVisualStyleBackColor = false;
             btnCobrarEntradas_DNI853.Click += btnCobrarEntradas_DNI853_Click;
@@ -680,22 +696,6 @@ namespace IU
             lblUsuarioActivo_DNI853.TabIndex = 0;
             lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
-            // 
-            // btnNuevaVenta_DNI853
-            // 
-            btnNuevaVenta_DNI853.BackColor = Color.FromArgb(120, 20, 40);
-            btnNuevaVenta_DNI853.FlatAppearance.BorderSize = 0;
-            btnNuevaVenta_DNI853.FlatStyle = FlatStyle.Flat;
-            btnNuevaVenta_DNI853.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnNuevaVenta_DNI853.ForeColor = Color.White;
-            btnNuevaVenta_DNI853.Location = new Point(76, 1757);
-            btnNuevaVenta_DNI853.Name = "btnNuevaVenta_DNI853";
-            btnNuevaVenta_DNI853.Size = new Size(320, 119);
-            btnNuevaVenta_DNI853.TabIndex = 39;
-            btnNuevaVenta_DNI853.Tag = "btnNuevaVenta_DNI853";
-            btnNuevaVenta_DNI853.Text = "Nueva Venta";
-            btnNuevaVenta_DNI853.UseVisualStyleBackColor = false;
-            btnNuevaVenta_DNI853.Click += btnNuevaVenta_DNI853_Click;
             // 
             // FormGestionVentaEntradas_DNI853
             // 

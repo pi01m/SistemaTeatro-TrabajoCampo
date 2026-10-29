@@ -81,13 +81,51 @@ namespace CuentaClara_TrabajoCampo
 
             try
             {
-
                 bool loginExitoso = _bllUsuario.CargarCredenciales(nombreUsuario, contrasena);
 
                 if (loginExitoso)
                 {
                     string idIdioma = comboBox1.SelectedValue.ToString();
                     _bllUsuario.CambiarIdiomaEnSesion(idIdioma);
+
+                    // --- NUEVO: Control de Fallas de Integridad (Modo Emergencia) ---
+                    Servicio_Usuario usuarioActual = SessionManager.GetInstancia().GetUsuarioActual();
+
+                    if (usuarioActual != null && (usuarioActual.ModoEmergencia || usuarioActual.ErrorIntegridad != null))
+                    {
+                        BLL_Rol bllRol = new BLL_Rol();
+                        // Verificamos si es administrador (Asumo que "P36" es el permiso de Gestión de Respaldo, según tu FormMenu)
+                        bool esAdmin = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P36");
+
+                        if (esAdmin)
+                        {
+                            // Mostramos el detalle del error antes de abrir el form
+                            MostrarMensajeEmergencia(usuarioActual);
+
+                            // Mostramos directamente el form de Respaldo
+                            FormGestionRespaldo formRespaldo = new FormGestionRespaldo();
+                            this.Hide();
+                            formRespaldo.ShowDialog();
+                            this.Show(); // Volvemos a mostrar el login cuando cierre la ventana
+
+                            // Al salir del Respaldo, deslogueamos al usuario obligándolo a autenticarse otra vez
+                            _bllUsuario.CerrarSesion();
+                            txtContrasena.Clear();
+                            return; // IMPORTANTE: Cortamos el flujo aquí para que NO entre al FormMenu
+                        }
+                        else
+                        {
+                            // Si un usuario normal intenta entrar durante una falla
+                            MessageBox.Show(TraducirTexto("SistemaMantenimiento") ?? "El sistema se encuentra fuera de servicio por fallas de integridad. Contacte al administrador.",
+                                            TraducirTexto("Error") ?? "Acceso Denegado",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            _bllUsuario.CerrarSesion();
+                            txtContrasena.Clear();
+                            return; // Cortamos el flujo
+                        }
+                    }
+                    // --- FIN NUEVO ---
 
                     ConfigurarMenu();
                     MostrarPantallaPrincipal();
@@ -96,7 +134,6 @@ namespace CuentaClara_TrabajoCampo
             }
             catch (Exception ex)
             {
-
                 string mensaje = TraducirExcepcion(ex);
                 string tituloError = TraducirTexto("msg_TituloErrorLogin") != "msg_TituloErrorLogin"
                                      ? TraducirTexto("msg_TituloErrorLogin")
@@ -106,9 +143,55 @@ namespace CuentaClara_TrabajoCampo
             }
             finally
             {
-
                 btnIngresar.Enabled = true;
             }
+        }
+
+        private void MostrarMensajeEmergencia(Servicio_Usuario usuarioActual)
+        {
+            string mensaje = TraducirTexto("Atencion") + Environment.NewLine + Environment.NewLine +
+                             TraducirTexto("ViolacionIntegridad") + Environment.NewLine + Environment.NewLine;
+
+            if (usuarioActual.ErrorIntegridad != null && usuarioActual.ErrorIntegridad.Errores != null)
+            {
+                foreach (ExcepcionIntegridad error in usuarioActual.ErrorIntegridad.Errores)
+                {
+                    mensaje += TraducirTexto("Tabla") + ": " + error.Tabla + Environment.NewLine;
+
+                    if (error.RegistrosModificados.Count > 0)
+                    {
+                        mensaje += TraducirTexto("RegistrosModificados") + Environment.NewLine;
+                        foreach (string reg in error.RegistrosModificados)
+                        {
+                            mensaje += "- " + reg + Environment.NewLine;
+                        }
+                    }
+
+                    if (error.RegistrosEliminados.Count > 0)
+                    {
+                        mensaje += TraducirTexto("RegistrosEliminados") + Environment.NewLine;
+                        foreach (string reg in error.RegistrosEliminados)
+                        {
+                            mensaje += "- " + reg + Environment.NewLine;
+                        }
+                    }
+
+                    if (error.ErrorDVV)
+                    {
+                        mensaje += TraducirTexto("ErrorDVV") + Environment.NewLine;
+                    }
+
+                    if (error.RegistrosModificados.Count == 0 && error.RegistrosEliminados.Count == 0 && !error.ErrorDVV)
+                    {
+                        mensaje += TraducirTexto("AlteracionEstructural") + Environment.NewLine;
+                    }
+
+                    mensaje += Environment.NewLine;
+                }
+            }
+
+            mensaje += Environment.NewLine + TraducirTexto("ModoEmergenciaFinal");
+            MessageBox.Show(mensaje, TraducirTexto("ModoEmergencia"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private string TraducirExcepcion(Exception ex)
         {

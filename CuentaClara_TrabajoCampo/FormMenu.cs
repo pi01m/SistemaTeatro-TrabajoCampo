@@ -72,7 +72,7 @@ namespace CuentaClara_TrabajoCampo
             btnGraficos_DNI853.Enabled = false;
             btn_Obras_DNI853.Enabled = false;
             btn_Ventas_DNI853.Enabled = false;
-           
+
             button7.Enabled = false;
         }
 
@@ -121,6 +121,9 @@ namespace CuentaClara_TrabajoCampo
             btn_Ventas_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P23");
             btn_Clientes_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P47");
             button7.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P36");
+            btn_CobrarCantina_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P50");
+            btn_VentaCantina_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P49");
+            btn_GestionProductos_DNI853.Enabled = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P48");
         }
 
         public void ActualizarIdioma()
@@ -418,6 +421,30 @@ namespace CuentaClara_TrabajoCampo
         private void btn_Clientes_DNI853_Click(object sender, EventArgs e)
         {
             FormGestionClientes_DNI853 frm = new FormGestionClientes_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_VentaCantina_DNI853_Click(object sender, EventArgs e)
+        {
+            FormGestionCarritoCantina_DNI853 frm = new FormGestionCarritoCantina_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_CobrarCantina_DNI853_Click(object sender, EventArgs e)
+        {
+            FormGestionVentaCantina_DNI853 frm = new FormGestionVentaCantina_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_GestionProductos_DNI853_Click(object sender, EventArgs e)
+        {
+            FormGestionProducto_DNI853 frm = new FormGestionProducto_DNI853();
             this.Hide();
             frm.ShowDialog();
             this.Show();

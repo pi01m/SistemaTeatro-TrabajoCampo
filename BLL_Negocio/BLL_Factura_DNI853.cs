@@ -21,12 +21,25 @@ namespace BLL
         private BLL_BitacoraEvento objBllBitacora_DNI853 = new BLL_BitacoraEvento(); // Instancia de Bitácora
 
         // Inserta la Factura de forma independiente y recalcula los DVs
-        public string RegistrarFacturaUnica_DNI853(BE_Factura_DNI853 factura_DNI853)
+        public string RegistrarFacturaUnica_DNI853(string dniCliente, decimal importeTotal, string tipoPago, string banco, string numeroTarjeta, string fechaVencimiento, string vendedor, string idPromocion, string idPedido = null) 
         {
-            if (string.IsNullOrEmpty(factura_DNI853.Id_Factura_DNI853))
-                factura_DNI853.Id_Factura_DNI853 = "FAC_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper();
+            BE_Factura_DNI853 factura_DNI853 = new BE_Factura_DNI853
+            {
+                Id_Factura_DNI853 = "FAC_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                DNI_C_DNI853 = dniCliente,
+                ImporteTotal_DNI853 = importeTotal,
+                TipoPago_DNI853 = tipoPago,
+                Banco_DNI853 = banco,
+                NumeroTarjeta_DNI853 = numeroTarjeta,
+                FechaVencimiento_DNI853 = fechaVencimiento,
+                Fecha_DNI853 = DateTime.Now,
+                Vendedor_DNI853 = vendedor,
+                IdPromocion_DNI853 = idPromocion,
+                IdPedido_DNI853 = idPedido
+            };
 
-            string idGenerado_DNI853 = objDalFactura_DNI853.RegistrarFacturaUnica_DNI853(factura_DNI853);
+            string idGenerado_DNI853 =objDalFactura_DNI853.RegistrarFacturaUnica_DNI853(factura_DNI853);
+                
 
             // Actualizamos DVs
             List<BE_Factura_DNI853> listaFacturas_DNI853 = objDalFactura_DNI853.ListarFacturas_DNI853();
@@ -65,10 +78,9 @@ namespace BLL
             if (anio < anioActual || (anio == anioActual && mes < mesActual))
                 throw new Exception("err_TarjetaVencida");
         }
+         
 
-
-
-        public void GenerarFacturaPDF(string idFactura, string ruta)
+        public void GenerarFacturaEntradasPDF(string idFactura, string ruta)//solo entradas
         {
             DataSet ds = objDalFactura_DNI853.ObtenerDatosFacturaDesconectado_DNI853(idFactura);
             if (ds.Tables["Factura"].Rows.Count == 0) return;
@@ -228,7 +240,150 @@ namespace BLL
                     // Pie de página
                     page.Footer().AlignCenter().Text(x =>
                     {
-                        x.Span("Gracias por su compra en TeatroLux - Comprobante válido como entrada/factura. Página ");
+                        x.Span("Gracias por su compra en TeatroLux - Comprobante válido como factura. Página ");
+                        x.CurrentPageNumber();
+                    });
+                });
+            })
+            .GeneratePdf(ruta);
+        }
+
+        public void GenerarFacturaCantinaPDF(string idFactura, string dniCliente, string vendedor, string tipoPago, string banco, string nroTarjeta, decimal importeTotal, List<BE_ItemCarrito_DNI853> itemsCantina, string ruta)
+        {
+            // === 1. BUSCAR LOS DATOS DE LA FACTURA PARA EXTRAER EL ID DE LA PROMOCIÓN ===
+            DataSet ds = objDalFactura_DNI853.ObtenerDatosFacturaDesconectado_DNI853(idFactura);
+            if (ds.Tables["Factura"].Rows.Count == 0) return;
+            DataRow filaFactura = ds.Tables["Factura"].Rows[0];
+            string idPromocion = filaFactura["Id_Promocion_DNI853"] != DBNull.Value ? filaFactura["Id_Promocion_DNI853"].ToString() : string.Empty;
+
+            // === 2. BUSCAR DATOS DE LA PROMOCIÓN ===
+            string nombrePromo = string.Empty;
+            decimal valorDescuentoPromo = 0;
+            if (!string.IsNullOrEmpty(idPromocion))
+            {
+                BLL_Promocion_DNI853 bllPromo = new BLL_Promocion_DNI853();
+                var promoEncontrada = bllPromo.ObtenerPromocionesVigentes_DNI853()
+                    .FirstOrDefault(p => p.IdPromo_DNI853 == idPromocion);
+
+                if (promoEncontrada != null)
+                {
+                    nombrePromo = promoEncontrada.NombrePromo_DNI853;
+                    valorDescuentoPromo = promoEncontrada.ValorDescuento_DNI853;
+                }
+            }
+
+
+            // Buscar Nombre y Apellido del Cliente
+            BLL_Cliente_DNI853 bllCliente = new BLL_Cliente_DNI853();
+            BE_Cliente_DNI853 cliente = bllCliente.BuscarPorDNI_DNI853(dniCliente);
+            string nombreCliente = cliente != null ? $"{cliente.Nombre_C_DNI853} {cliente.Apellido_C_DNI853}" : dniCliente;
+
+            DateTime fechaEmision = DateTime.Now;
+
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Margin(30);
+                    page.Size(QuestPDF.Helpers.PageSizes.A4);
+
+                    // Cabecera del PDF
+                    page.Header().Column(col =>
+                    {
+                        col.Item().Text("TeatroLux - Factura de Cantina").FontSize(20).Bold().FontColor(QuestPDF.Helpers.Colors.Red.Medium);
+                        col.Item().Text($"Comprobante Nro: {idFactura}").FontSize(12).SemiBold();
+                        col.Item().LineHorizontal(1).LineColor(QuestPDF.Helpers.Colors.Grey.Lighten1);
+                    });
+
+                    // Contenido Principal
+                    page.Content().Column(col =>
+                    {
+                        col.Spacing(10);
+                        col.Item().PaddingBottom(5);
+
+                        // Bloque de Datos (Cliente, Vendedor, Pago, Fechas)
+                        col.Item().Row(row =>
+                        {
+                            row.RelativeItem().Column(c =>
+                            {
+                                c.Item().Text($"Cliente: {nombreCliente}").Bold();
+                                c.Item().Text($"DNI Cliente: {dniCliente}");
+                                c.Item().Text($"Vendedor: {vendedor}");
+                            });
+                            row.RelativeItem().Column(c =>
+                            {
+                                c.Item().Text($"Fecha Emisión: {fechaEmision:dd/MM/yyyy HH:mm}").AlignRight();
+                                c.Item().Text($"Tipo de Pago: {tipoPago}").AlignRight();
+                                if (!string.IsNullOrEmpty(banco) && !string.IsNullOrEmpty(nroTarjeta))
+                                    c.Item().Text($"Banco: {banco} | Tarj: ****{nroTarjeta.Substring(Math.Max(0, nroTarjeta.Length - 4))}").AlignRight();
+                            });
+                        });
+
+                        col.Item().LineHorizontal(0.5f).LineColor(QuestPDF.Helpers.Colors.Grey.Lighten2);
+
+                        // Tabla de Productos de Cantina
+                        col.Item().Table(table =>
+                        {
+                            table.ColumnsDefinition(columns =>
+                            {
+                                columns.RelativeColumn(3); // Producto
+                                columns.RelativeColumn(1); // Cantidad
+                                columns.RelativeColumn(1); // Precio Unit.
+                                columns.RelativeColumn(1); // Subtotal
+                            });
+
+                            table.Header(header =>
+                            {
+                                header.Cell().Background(QuestPDF.Helpers.Colors.Grey.Lighten3).Padding(5).Text("Producto").Bold();
+                                header.Cell().Background(QuestPDF.Helpers.Colors.Grey.Lighten3).Padding(5).Text("Cant.").Bold();
+                                header.Cell().Background(QuestPDF.Helpers.Colors.Grey.Lighten3).Padding(5).Text("P. Unit.").Bold();
+                                header.Cell().Background(QuestPDF.Helpers.Colors.Grey.Lighten3).Padding(5).Text("Subtotal").Bold();
+                            });
+
+                            foreach (var item in itemsCantina)
+                            {
+                                table.Cell().Padding(5).Text(item.NombreProducto_DNI853);
+                                table.Cell().Padding(5).Text(item.CantidadSolicitada_DNI853.ToString());
+                                table.Cell().Padding(5).Text($"$ {item.PrecioUnitario_DNI853:N2}");
+                                table.Cell().Padding(5).Text($"$ {item.Subtotal_DNI853:N2}");
+                            }
+                        });
+
+                        col.Item().PaddingTop(10).LineHorizontal(0.5f).LineColor(QuestPDF.Helpers.Colors.Grey.Lighten2);
+
+                        // Cálculo de Totales y lógicas matemáticas para Donaciones / Promo
+                        decimal subtotalBruto = itemsCantina.Sum(g => g.Subtotal_DNI853);
+
+                        // Calculamos si hubo donación
+                        // La cuenta original era: Total = Subtotal + Donacion - Promocion
+                        // Por ende: Donacion = Total - Subtotal + Promocion
+                        decimal donacionCalculada = importeTotal - subtotalBruto + valorDescuentoPromo;
+
+                        col.Item().AlignRight().Column(c =>
+                        {
+                            c.Item().Text($"Subtotal: $ {subtotalBruto:N2}");
+
+                            if (donacionCalculada > 0)
+                            {
+                                c.Item().Text($"Aporte/Donación: + $ {donacionCalculada:N2}").FontColor(QuestPDF.Helpers.Colors.Blue.Darken2);
+                            }
+
+                            // === 3. IMPRIMIR EL RENGLÓN DE PROMOCIÓN SI EXISTE ===
+                            if (!string.IsNullOrEmpty(nombrePromo) && valorDescuentoPromo > 0)
+                            {
+                                c.Item().Text($"Promoción Aplicada ({nombrePromo}): - $ {valorDescuentoPromo:N2}").FontColor(QuestPDF.Helpers.Colors.Green.Darken2);
+                            }
+
+                            c.Item().PaddingTop(5).Text($"IMPORTE TOTAL: $ {importeTotal:N2}").FontSize(14).Bold();
+                        });
+                    });
+
+                    // Pie de página
+                    page.Footer().AlignCenter().Text(x =>
+                    {
+                        x.Span("Gracias por su compra en la Cantina TeatroLux. Página ");
                         x.CurrentPageNumber();
                     });
                 });

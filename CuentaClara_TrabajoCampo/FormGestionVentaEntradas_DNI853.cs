@@ -433,22 +433,22 @@ namespace IU
                     idPromocionSeleccionada_DNI853 = ((BE_Promocion_DNI853)cboPromocion_DNI853.SelectedItem).IdPromo_DNI853;
                 }
 
-                BE_Factura_DNI853 nuevaFactura_DNI853 = new BE_Factura_DNI853
-                {
-                    Id_Factura_DNI853 = "FAC_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
-                    DNI_C_DNI853 = idClienteActual_DNI853,
-                    ImporteTotal_DNI853 = importeTotal_DNI853,
-                    TipoPago_DNI853 = cboMedioPago_DNI853.Text,
-                    Banco_DNI853 = txtBanco_DNI853.Enabled ? txtBanco_DNI853.Text : string.Empty,
-                    NumeroTarjeta_DNI853 = txtNroTarjeta_DNI853.Enabled ? txtNroTarjeta_DNI853.Text : string.Empty,
-                    FechaVencimiento_DNI853 = txtVencimiento_DNI853.Enabled ? txtVencimiento_DNI853.Text : string.Empty,
-                    Fecha_DNI853 = DateTime.Now,
-                    Vendedor_DNI853 = loginVendedor_DNI853,
-                    IdPromocion_DNI853 = idPromocionSeleccionada_DNI853
-                };
+                //BE_Factura_DNI853 nuevaFactura_DNI853 = new BE_Factura_DNI853
+                //{
+                //    Id_Factura_DNI853 = "FAC_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
+                //    DNI_C_DNI853 = idClienteActual_DNI853,
+                //    ImporteTotal_DNI853 = importeTotal_DNI853,
+                //    TipoPago_DNI853 = cboMedioPago_DNI853.Text,
+                //    Banco_DNI853 = txtBanco_DNI853.Enabled ? txtBanco_DNI853.Text : string.Empty,
+                //    NumeroTarjeta_DNI853 = txtNroTarjeta_DNI853.Enabled ? txtNroTarjeta_DNI853.Text : string.Empty,
+                //    FechaVencimiento_DNI853 = txtVencimiento_DNI853.Enabled ? txtVencimiento_DNI853.Text : string.Empty,
+                //    Fecha_DNI853 = DateTime.Now,
+                //    Vendedor_DNI853 = loginVendedor_DNI853,
+                //    IdPromocion_DNI853 = idPromocionSeleccionada_DNI853
+                //};
 
                 // 3. Registrar Factura (Actualiza sus DVs internamente)
-                idVentaConfirmada_DNI853 = objBllFactura_DNI853.RegistrarFacturaUnica_DNI853(nuevaFactura_DNI853);
+                idVentaConfirmada_DNI853 = objBllFactura_DNI853.RegistrarFacturaUnica_DNI853(idClienteActual_DNI853, importeTotal_DNI853, cboMedioPago_DNI853.Text, txtBanco_DNI853.Enabled ? txtBanco_DNI853.Text : string.Empty, txtNroTarjeta_DNI853.Enabled ? txtNroTarjeta_DNI853.Text : string.Empty, txtVencimiento_DNI853.Enabled ? txtVencimiento_DNI853.Text : string.Empty, loginVendedor_DNI853, idPromocionSeleccionada_DNI853);
 
                 // 4. Registrar Entradas (Actualiza sus DVs internamente)
                 List<BE_Entrada_DNI853> listaEntradas_DNI853 = objBllCarrito_DNI853.ObtenerCarrito_DNI853().ToList();
@@ -479,7 +479,7 @@ namespace IU
                 {
                     if (sfd_DNI853.ShowDialog() == DialogResult.OK)
                     {
-                        objBllFactura_DNI853.GenerarFacturaPDF(idVentaConfirmada_DNI853, sfd_DNI853.FileName);
+                        objBllFactura_DNI853.GenerarFacturaEntradasPDF(idVentaConfirmada_DNI853, sfd_DNI853.FileName);
                         MessageBox.Show(TraducirTexto_DNI853("MsgPdfFacturaGenerado"), TraducirTexto_DNI853("TituloExito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

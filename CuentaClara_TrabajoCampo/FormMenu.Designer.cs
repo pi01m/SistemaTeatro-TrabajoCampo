@@ -58,6 +58,9 @@
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            btn_VentaCantina_DNI853 = new Button();
+            btn_CobrarCantina_DNI853 = new Button();
+            btn_GestionProductos_DNI853 = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             panelUsuario.SuspendLayout();
@@ -521,6 +524,60 @@
             dataGridViewTextBoxColumn3.ReadOnly = true;
             dataGridViewTextBoxColumn3.Width = 250;
             // 
+            // btn_VentaCantina_DNI853
+            // 
+            btn_VentaCantina_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_VentaCantina_DNI853.FlatAppearance.BorderSize = 0;
+            btn_VentaCantina_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_VentaCantina_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_VentaCantina_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_VentaCantina_DNI853.Location = new Point(772, 1006);
+            btn_VentaCantina_DNI853.Margin = new Padding(0);
+            btn_VentaCantina_DNI853.Name = "btn_VentaCantina_DNI853";
+            btn_VentaCantina_DNI853.Size = new Size(437, 93);
+            btn_VentaCantina_DNI853.TabIndex = 20;
+            btn_VentaCantina_DNI853.Tag = "btn_VentaCantina_DNI853";
+            btn_VentaCantina_DNI853.Text = "VentaCantina";
+            btn_VentaCantina_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_VentaCantina_DNI853.UseVisualStyleBackColor = false;
+            btn_VentaCantina_DNI853.Click += btn_VentaCantina_DNI853_Click;
+            // 
+            // btn_CobrarCantina_DNI853
+            // 
+            btn_CobrarCantina_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_CobrarCantina_DNI853.FlatAppearance.BorderSize = 0;
+            btn_CobrarCantina_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_CobrarCantina_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_CobrarCantina_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_CobrarCantina_DNI853.Location = new Point(704, 1250);
+            btn_CobrarCantina_DNI853.Margin = new Padding(0);
+            btn_CobrarCantina_DNI853.Name = "btn_CobrarCantina_DNI853";
+            btn_CobrarCantina_DNI853.Size = new Size(437, 93);
+            btn_CobrarCantina_DNI853.TabIndex = 20;
+            btn_CobrarCantina_DNI853.Tag = "btn_CobrarCantina";
+            btn_CobrarCantina_DNI853.Text = "Cobrar Cantina";
+            btn_CobrarCantina_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_CobrarCantina_DNI853.UseVisualStyleBackColor = false;
+            btn_CobrarCantina_DNI853.Click += btn_CobrarCantina_DNI853_Click;
+            // 
+            // btn_GestionProductos_DNI853
+            // 
+            btn_GestionProductos_DNI853.BackColor = Color.FromArgb(245, 243, 240);
+            btn_GestionProductos_DNI853.FlatAppearance.BorderSize = 0;
+            btn_GestionProductos_DNI853.FlatStyle = FlatStyle.Flat;
+            btn_GestionProductos_DNI853.Font = new Font("Segoe UI", 11F);
+            btn_GestionProductos_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
+            btn_GestionProductos_DNI853.Location = new Point(1315, 1008);
+            btn_GestionProductos_DNI853.Margin = new Padding(0);
+            btn_GestionProductos_DNI853.Name = "btn_GestionProductos_DNI853";
+            btn_GestionProductos_DNI853.Size = new Size(437, 93);
+            btn_GestionProductos_DNI853.TabIndex = 21;
+            btn_GestionProductos_DNI853.Tag = "btn_GestionProductos_DNI853";
+            btn_GestionProductos_DNI853.Text = "Gestion de Productos";
+            btn_GestionProductos_DNI853.TextAlign = ContentAlignment.MiddleLeft;
+            btn_GestionProductos_DNI853.UseVisualStyleBackColor = false;
+            btn_GestionProductos_DNI853.Click += btn_GestionProductos_DNI853_Click;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
@@ -529,6 +586,9 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(3067, 2108);
+            Controls.Add(btn_GestionProductos_DNI853);
+            Controls.Add(btn_CobrarCantina_DNI853);
+            Controls.Add(btn_VentaCantina_DNI853);
             Controls.Add(panelUsuario);
             Controls.Add(panelMenu);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -581,5 +641,8 @@
         private Button btn_Clientes_DNI853;
         private Button btn_Promociones_DNI853;
         private Button btn_SalasySectores_DNI853;
+        private Button btn_VentaCantina_DNI853;
+        private Button btn_CobrarCantina_DNI853;
+        private Button btn_GestionProductos_DNI853;
     }
 }
