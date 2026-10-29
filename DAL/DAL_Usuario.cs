@@ -158,6 +158,7 @@ namespace DAL
                 fila["Activo"] = usuario.Activo;
                 fila["Bloqueo"] = usuario.Bloqueo;
                 fila["IdRol"] = usuario.IdRol;
+                fila["Id_Idioma"] = usuario.Id_Idioma;
                 ds.Tables["Usuario"].Rows.Add(fila);
 
                 SqlCommandBuilder builder =new SqlCommandBuilder(adapter);

@@ -37,7 +37,7 @@ namespace CuentaClara_TrabajoCampo
                 usuario.IdRol = cmbRol.SelectedValue.ToString();
                 usuario.Activo = chkActivo.Checked ? 1 : 0;
                 usuario.Login = txtNombre.Text + txtDNI.Text;
-
+                usuario.Id_Idioma = "1";
                 BLL_Usuario bll = new BLL_Usuario();
 
 
