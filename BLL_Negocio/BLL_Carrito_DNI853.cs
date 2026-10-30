@@ -123,17 +123,32 @@ namespace BLL
                 Items_DNI853 = listaCarritoProducto_DNI853.ToList()
             };
 
-            // Guardar en base de datos mediante la DAL
+            // Al asignar los items a la BE del pedido, me aseguro que tengan el IdPedido correcto
+            foreach (var item in nuevoPedido.Items_DNI853)
+            {
+                item.IdPedido_DNI853 = idPedido;
+            }
+
+            // Guardar en base de datos mediante la DAL (Guarda cabecera y detalle)
             bool resultado = objDalCantina_DNI853.GuardarPedidoCantina_DNI853(nuevoPedido);
-            
+
             if (resultado)
             {
-                // Actualizar Dígitos Verificadores y registrar en la Bitácora del sistema
-                List<BE_Pedido_DNI853> listaCompleta = objDalCantina_DNI853.ListarPedidosCantina_DNI853();
-                objDigitoVerificador_DNI853.ActualizarDigitos(nuevoPedido, listaCompleta, "PedidoCantina_DNI853");
+                // 1. Actualizar Dígitos Verificadores de la CABECERA (PedidoCantina)
+                List<BE_Pedido_DNI853> listaPedidos = objDalCantina_DNI853.ListarPedidosCantina_DNI853();
+                objDigitoVerificador_DNI853.ActualizarDigitos(nuevoPedido, listaPedidos, "PedidoCantina_DNI853");
 
+                // 2. NUEVO: Actualizar Dígitos Verificadores del DETALLE (Items del Carrito)
+                List<BE_ItemCarrito_DNI853> listaTodosLosItems = objDalCantina_DNI853.ListarTodosLosItems_DNI853();
+
+                foreach (var itemGuardado in nuevoPedido.Items_DNI853)
+                {
+                    objDigitoVerificador_DNI853.ActualizarDigitos(itemGuardado, listaTodosLosItems, "ItemCarrito_DNI853");
+                }
+
+                // 3. Registrar en bitácora
                 objBitacora_DNI853.RegistrarBitacora(
-                    "Registro de Pedido de Cantina",
+                    "Registro de Pedido de Cantina y sus Items",
                     idVendedor,
                     "Gestión Cantina",
                     2);

@@ -36,7 +36,7 @@ namespace DAL
                         FechaVencimiento_DNI853 = fila_DNI853["FechaVencimiento_DNI853"] != DBNull.Value ? fila_DNI853["FechaVencimiento_DNI853"].ToString() : string.Empty,
                         Fecha_DNI853 = Convert.ToDateTime(fila_DNI853["Fecha_DNI853"]),
                         Vendedor_DNI853 = fila_DNI853["Vendedor_DNI853"] != DBNull.Value ? fila_DNI853["Vendedor_DNI853"].ToString() : string.Empty,
-                        IdPromocion_DNI853 = fila_DNI853["Id_Promocion_DNI853"] != DBNull.Value ? fila_DNI853["Id_Promocion_DNI853"].ToString() : string.Empty
+                        IdPromocion_DNI853 = fila_DNI853["Id_Promocion_DNI853"] != DBNull.Value ? fila_DNI853["Id_Promocion_DNI853"].ToString() : string.Empty,
                         IdPedido_DNI853 = fila_DNI853["IdPedido_DNI853"] != DBNull.Value ? fila_DNI853["IdPedido_DNI853"].ToString() : string.Empty,
                     };
 

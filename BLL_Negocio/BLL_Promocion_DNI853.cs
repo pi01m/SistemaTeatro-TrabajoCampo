@@ -140,5 +140,13 @@ namespace BLL
                        .Where(p => p.DestinoPromo_DNI853 == "Entradas")
                        .ToList();
         }
+
+        public List<BE_Promocion_DNI853> ObtenerPromocionesVigentesParaCantina_DNI853()
+        {
+            // Llama al método existente en la DAL y aplica el filtro por destino en memoria
+            return this.ObtenerPromocionesVigentes_DNI853()
+                       .Where(p => p.DestinoPromo_DNI853 == "Cantina")
+                       .ToList();
+        }
     }
 }

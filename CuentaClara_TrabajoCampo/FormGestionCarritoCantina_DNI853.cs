@@ -90,17 +90,21 @@ namespace IU
 
             dgvProductos_DNI853.DataSource = null;
             dgvProductos_DNI853.DataSource = productosFiltrados;
-            TraducirColumnasGrillas_DNI853();
+            TraducirColumnasGrillas_DNI853(); // ¡Aquí ocultas la columna ID!
 
             if (dgvProductos_DNI853.Rows.Count > 0)
             {
                 dgvProductos_DNI853.ClearSelection();
                 dgvProductos_DNI853.Rows[0].Selected = true;
 
-                // Esto es clave para que el CurrentRow no sea nulo al tocar el botón de "Agregar"
-                if (dgvProductos_DNI853.Columns.Count > 0)
+                // NUEVO CÓDIGO: Buscar la primera columna visible
+                foreach (DataGridViewColumn columna in dgvProductos_DNI853.Columns)
                 {
-                    dgvProductos_DNI853.CurrentCell = dgvProductos_DNI853.Rows[0].Cells[0];
+                    if (columna.Visible)
+                    {
+                        dgvProductos_DNI853.CurrentCell = dgvProductos_DNI853.Rows[0].Cells[columna.Index];
+                        break; // Se detiene al encontrar la primera visible
+                    }
                 }
             }
         }

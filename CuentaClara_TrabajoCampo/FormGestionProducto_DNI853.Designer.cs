@@ -130,6 +130,7 @@
             lblNombreProducto_DNI853.Name = "lblNombreProducto_DNI853";
             lblNombreProducto_DNI853.Size = new Size(271, 41);
             lblNombreProducto_DNI853.TabIndex = 4;
+            lblNombreProducto_DNI853.Tag = "lblNombreProducto";
             lblNombreProducto_DNI853.Text = "Nombre Producto";
             // 
             // txtNombreProducto_DNI853
@@ -147,6 +148,7 @@
             lblCategoria_DNI853.Name = "lblCategoria_DNI853";
             lblCategoria_DNI853.Size = new Size(155, 41);
             lblCategoria_DNI853.TabIndex = 6;
+            lblCategoria_DNI853.Tag = "lblCategoria";
             lblCategoria_DNI853.Text = "Categoría";
             // 
             // cmbCategoria_DNI853
@@ -166,6 +168,7 @@
             lblPrecio_DNI853.Name = "lblPrecio_DNI853";
             lblPrecio_DNI853.Size = new Size(223, 41);
             lblPrecio_DNI853.TabIndex = 8;
+            lblPrecio_DNI853.Tag = "lblPrecioVigente";
             lblPrecio_DNI853.Text = "Precio Vigente";
             // 
             // txtPrecio_DNI853
@@ -183,6 +186,7 @@
             lblStock_DNI853.Name = "lblStock_DNI853";
             lblStock_DNI853.Size = new Size(193, 41);
             lblStock_DNI853.TabIndex = 10;
+            lblStock_DNI853.Tag = "lblStockActual";
             lblStock_DNI853.Text = "Stock Actual";
             // 
             // txtStock_DNI853
@@ -287,6 +291,7 @@
             Margin = new Padding(6);
             Name = "FormGestionProducto_DNI853";
             StartPosition = FormStartPosition.CenterScreen;
+            Tag = "FormGestionProducto_Titulo";
             Text = "TeatroLux - Gestión de Productos";
             Load += FormGestionProducto_DNI853_Load_1;
             panelContenedor_DNI853.ResumeLayout(false);

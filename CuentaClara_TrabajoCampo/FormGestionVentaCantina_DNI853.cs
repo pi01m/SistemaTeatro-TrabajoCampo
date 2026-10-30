@@ -459,7 +459,7 @@ namespace IU
             try
             {
                 
-                cboPromocion_DNI853.DataSource = bllPromocion_DNI853.ObtenerPromocionesVigentes_DNI853();
+                cboPromocion_DNI853.DataSource = bllPromocion_DNI853.ObtenerPromocionesVigentesParaCantina_DNI853();
                 cboPromocion_DNI853.DisplayMember = "NombrePromo_DNI853";
                 cboPromocion_DNI853.ValueMember = "IdPromo_DNI853";
                 cboPromocion_DNI853.SelectedIndex = -1;
