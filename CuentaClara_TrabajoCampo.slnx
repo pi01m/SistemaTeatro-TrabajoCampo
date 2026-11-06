@@ -4,8 +4,5 @@
   <Project Path="BLL_Negocio/BLL_Negocio.csproj" Id="75af9c9f-c458-443e-8f55-172b4dd6e713" />
   <Project Path="CuentaClara_TrabajoCampo/IU.csproj" />
   <Project Path="DAL/DAL.csproj" Id="8f771a1e-633a-4114-a0a0-4fd8212614cc" />
-  <Project Path="Instalador_CuentaClara/Instalador_CuentaClara.vdproj" Type="Installer">
-    <Build />
-  </Project>
   <Project Path="Servicio/Servicio.csproj" Id="0afb1d81-a0c0-42a3-bf68-c4f32f0c7e1a" />
 </Solution>
