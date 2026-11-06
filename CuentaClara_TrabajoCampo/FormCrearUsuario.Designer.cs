@@ -254,6 +254,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1122, 850);
             Controls.Add(panelPrincipal);
             Font = new Font("Segoe UI", 10F);

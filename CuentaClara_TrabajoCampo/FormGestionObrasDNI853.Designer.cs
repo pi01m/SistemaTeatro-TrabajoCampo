@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionObrasDNI853));
             panelContenedor_DNI853 = new Panel();
             cmb_EstadoObra_DNI853 = new ComboBox();
             lblEstadoObra_DNI853 = new Label();
@@ -268,6 +269,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(2682, 1548);
             Controls.Add(panelInferior_DNI853);
             Controls.Add(panelContenedor_DNI853);

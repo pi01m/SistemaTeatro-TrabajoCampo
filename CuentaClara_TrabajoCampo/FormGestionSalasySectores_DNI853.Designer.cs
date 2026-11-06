@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionSalasySectores_DNI853));
             panelContenedor_DNI853 = new Panel();
             Precio = new Label();
             txtPrecioSector_DNI853 = new TextBox();
@@ -468,6 +469,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(2682, 1650);
             Controls.Add(panelInferior_DNI853);
             Controls.Add(panelContenedor_DNI853);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionPromocion_DNI853));
             panelContenedor_DNI853 = new Panel();
             label1 = new Label();
             cboDestinoPromo_DNI853 = new ComboBox();
@@ -374,6 +375,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(2682, 1548);
             Controls.Add(panelInferior_DNI853);
             Controls.Add(panelContenedor_DNI853);
