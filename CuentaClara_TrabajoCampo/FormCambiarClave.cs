@@ -41,7 +41,7 @@ namespace CuentaClara_TrabajoCampo
             {
                 if (string.IsNullOrWhiteSpace(txtClaveActual.Text) || string.IsNullOrWhiteSpace(txtNuevaClave.Text))
                 {
-                    MessageBox.Show(TraducirTexto("msg_CamposObligatorios"),TraducirTexto("msg_Atencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(TraducirTexto("msg_CamposObligatorios"), TraducirTexto("msg_Atencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 string ClaveVieja = txtClaveActual.Text;
@@ -50,12 +50,12 @@ namespace CuentaClara_TrabajoCampo
 
                 if (resultado)
                 {
-                    MessageBox.Show(TraducirTexto("msg_ClaveModificadaCorrectamente"),TraducirTexto("msg_Exito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(TraducirTexto("msg_ClaveModificadaCorrectamente"), TraducirTexto("msg_Exito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show(TraducirTexto("msg_ErrorCambioClave"),TraducirTexto("msg_Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(TraducirTexto("msg_ErrorCambioClave"), TraducirTexto("msg_Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace CuentaClara_TrabajoCampo
         {
             GestorIdioma.GetInstancia().Desuscribir(this);
 
-            
+
         }
 
         private string TraducirExcepcion(Exception ex)
@@ -149,6 +149,16 @@ namespace CuentaClara_TrabajoCampo
 
                 if (c.HasChildren)
                     TraducirControles(c.Controls, idioma);
+            }
+        }
+
+        private void FormCambiarClave_Resize(object sender, EventArgs e)
+        {
+            if (panelContenedor != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelContenedor.Left = (this.ClientSize.Width - panelContenedor.Width) / 2;
+                panelContenedor.Top = (this.ClientSize.Height - panelContenedor.Height) / 2;
             }
         }
     }

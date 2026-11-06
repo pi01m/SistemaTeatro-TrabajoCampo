@@ -201,5 +201,54 @@ namespace IU
         {
             GestorIdioma.GetInstancia().Desuscribir(this);
         }
+
+        internal void CargarErroresIntegridad(ExcepcionIntegridad errorIntegridad)
+        {
+            listBoxFallasBD_DNI853.Items.Clear();
+
+            if (errorIntegridad == null || errorIntegridad.Errores == null)
+            {
+                listBoxFallasBD_DNI853.Items.Add("No se encontraron detalles de la falla.");
+                return;
+            }
+
+            listBoxFallasBD_DNI853.Items.Add("=== REPORTES DE VIOLACIÓN DE INTEGRIDAD ===");
+            listBoxFallasBD_DNI853.Items.Add("");
+
+            foreach (var error in errorIntegridad.Errores)
+            {
+                listBoxFallasBD_DNI853.Items.Add($"Tabla: {error.Tabla}");
+
+                if (error.RegistrosModificados.Count > 0)
+                {
+                    listBoxFallasBD_DNI853.Items.Add("  [+] Registros Modificados:");
+                    foreach (string reg in error.RegistrosModificados)
+                    {
+                        listBoxFallasBD_DNI853.Items.Add($"      - {reg}");
+                    }
+                }
+
+                if (error.RegistrosEliminados.Count > 0)
+                {
+                    listBoxFallasBD_DNI853.Items.Add("  [-] Registros Eliminados:");
+                    foreach (string reg in error.RegistrosEliminados)
+                    {
+                        listBoxFallasBD_DNI853.Items.Add($"      - {reg}");
+                    }
+                }
+
+                if (error.ErrorDVV)
+                {
+                    listBoxFallasBD_DNI853.Items.Add("  [!] Error en Dígito Verificador Vertical (DVV)");
+                }
+
+                if (error.RegistrosModificados.Count == 0 && error.RegistrosEliminados.Count == 0 && !error.ErrorDVV)
+                {
+                    listBoxFallasBD_DNI853.Items.Add("  [!] Alteración estructural detectada.");
+                }
+
+                listBoxFallasBD_DNI853.Items.Add("--------------------------------------------------");
+            }
+        }
     }
 }

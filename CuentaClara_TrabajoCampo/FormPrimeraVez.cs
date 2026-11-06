@@ -102,9 +102,9 @@ namespace IU
                 return;
             }
 
-            string servidorElegido = listaServidores.SelectedItem != null? listaServidores.SelectedItem.ToString() : listaServidores.Text.Trim();
-               
-                
+            string servidorElegido = listaServidores.SelectedItem != null ? listaServidores.SelectedItem.ToString() : listaServidores.Text.Trim();
+
+
             this.Cursor = Cursors.WaitCursor;
             btnGuardar.Enabled = false;
 
@@ -175,6 +175,11 @@ namespace IU
                     }
                 }
             }
+        }
+
+        private void FormPrimeraVez_Resize(object sender, EventArgs e)
+        {
+            
         }
     }
 }

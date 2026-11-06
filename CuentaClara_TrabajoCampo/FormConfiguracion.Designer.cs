@@ -95,11 +95,11 @@
             panelLogin.Size = new Size(792, 476);
             panelLogin.TabIndex = 1;
             panelLogin.Paint += panelLogin_Paint;
+            panelLogin.Resize += panelLogin_Resize;
             // 
             // FormConfiguracion
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(792, 476);
             Controls.Add(panelLogin);

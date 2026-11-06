@@ -38,6 +38,7 @@
             btn_RecalcularDv = new Button();
             picLogo = new PictureBox();
             lblTitulo = new Label();
+            listBoxFallasBD_DNI853 = new ListBox();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             SuspendLayout();
             // 
@@ -151,12 +152,21 @@
             lblTitulo.Tag = "lbl_GestionDeRespaldo";
             lblTitulo.Text = "Gestión de Respaldo";
             // 
+            // listBoxFallasBD_DNI853
+            // 
+            listBoxFallasBD_DNI853.FormattingEnabled = true;
+            listBoxFallasBD_DNI853.ItemHeight = 41;
+            listBoxFallasBD_DNI853.Location = new Point(1038, 265);
+            listBoxFallasBD_DNI853.Name = "listBoxFallasBD_DNI853";
+            listBoxFallasBD_DNI853.Size = new Size(542, 619);
+            listBoxFallasBD_DNI853.TabIndex = 15;
+            // 
             // FormGestionRespaldo
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
-            ClientSize = new Size(1054, 1020);
+            ClientSize = new Size(1653, 1020);
+            Controls.Add(listBoxFallasBD_DNI853);
             Controls.Add(lblTitulo);
             Controls.Add(picLogo);
             Controls.Add(btn_RecalcularDv);
@@ -189,5 +199,6 @@
         private Button btn_RecalcularDv;
         private PictureBox picLogo;
         private Label lblTitulo;
+        private ListBox listBoxFallasBD_DNI853;
     }
 }

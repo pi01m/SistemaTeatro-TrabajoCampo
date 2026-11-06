@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             panelContenedor_DNI853 = new Panel();
             lblPromocion_DNI853 = new Label();
             cboPromocion_DNI853 = new ComboBox();
@@ -238,23 +238,23 @@
             dgvPedidos_DNI853.BorderStyle = BorderStyle.None;
             dgvPedidos_DNI853.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvPedidos_DNI853.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvPedidos_DNI853.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvPedidos_DNI853.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvPedidos_DNI853.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(50, 50, 50);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvPedidos_DNI853.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvPedidos_DNI853.DefaultCellStyle = dataGridViewCellStyle6;
             dgvPedidos_DNI853.EnableHeadersVisualStyles = false;
             dgvPedidos_DNI853.GridColor = Color.FromArgb(220, 220, 220);
             dgvPedidos_DNI853.Location = new Point(76, 425);
@@ -290,23 +290,23 @@
             dgvDetalleVenta_DNI853.BorderStyle = BorderStyle.None;
             dgvDetalleVenta_DNI853.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvDetalleVenta_DNI853.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvDetalleVenta_DNI853.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvDetalleVenta_DNI853.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvDetalleVenta_DNI853.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(50, 50, 50);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvDetalleVenta_DNI853.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle8.SelectionForeColor = Color.White;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvDetalleVenta_DNI853.DefaultCellStyle = dataGridViewCellStyle8;
             dgvDetalleVenta_DNI853.EnableHeadersVisualStyles = false;
             dgvDetalleVenta_DNI853.GridColor = Color.FromArgb(220, 220, 220);
             dgvDetalleVenta_DNI853.Location = new Point(76, 920);
@@ -535,8 +535,7 @@
             // 
             // FormGestionVentaCantina_DNI853
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(3254, 2108);
             Controls.Add(panelInferior_DNI853);
@@ -548,6 +547,7 @@
             Text = "TeatroLux - Cobro y Facturación de Cantina";
             FormClosed += FormGestionVentaCantina_DNI853_FormClosed;
             Load += FormGestionVentaCantina_DNI853_Load;
+            Resize += FormGestionVentaCantina_DNI853_Resize;
             panelContenedor_DNI853.ResumeLayout(false);
             panelContenedor_DNI853.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos_DNI853).EndInit();

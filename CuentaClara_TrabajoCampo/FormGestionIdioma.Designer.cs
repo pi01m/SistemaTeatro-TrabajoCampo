@@ -29,8 +29,8 @@ namespace IU
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTitulo = new Label();
             lblSeccionIdioma = new Label();
             cboIdiomas = new ComboBox();
@@ -99,24 +99,24 @@ namespace IU
             dgvEtiquetas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEtiquetas.BackgroundColor = Color.FromArgb(120, 20, 40);
             dgvEtiquetas.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(235, 230, 225);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvEtiquetas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(235, 230, 225);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvEtiquetas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvEtiquetas.ColumnHeadersHeight = 30;
             dgvEtiquetas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(50, 50, 50);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(120, 20, 40);
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvEtiquetas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(120, 20, 40);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvEtiquetas.DefaultCellStyle = dataGridViewCellStyle2;
             dgvEtiquetas.EnableHeadersVisualStyles = false;
             dgvEtiquetas.Location = new Point(134, 549);
             dgvEtiquetas.Margin = new Padding(7, 8, 7, 8);
@@ -337,8 +337,7 @@ namespace IU
             // 
             // FormGestionIdioma
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(3191, 2108);
             Controls.Add(btnCancelar);

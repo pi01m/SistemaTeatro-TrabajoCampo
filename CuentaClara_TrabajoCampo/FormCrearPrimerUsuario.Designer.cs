@@ -50,6 +50,7 @@
             // 
             // panelPrincipal
             // 
+            panelPrincipal.Anchor = AnchorStyles.None;
             panelPrincipal.BackColor = Color.White;
             panelPrincipal.BorderStyle = BorderStyle.FixedSingle;
             panelPrincipal.Controls.Add(label1);
@@ -251,8 +252,7 @@
             // 
             // FormCrearPrimerUsuario
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(1627, 1320);
             Controls.Add(panelPrincipal);
@@ -264,6 +264,7 @@
             Tag = "lbl_Form_CrearPrimerUsuario";
             Text = "TeatroLux - Crear Primer Usuario";
             Load += FormCrearPrimerUsuario_Load;
+            Resize += FormCrearPrimerUsuario_Resize;
             panelPrincipal.ResumeLayout(false);
             panelPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();

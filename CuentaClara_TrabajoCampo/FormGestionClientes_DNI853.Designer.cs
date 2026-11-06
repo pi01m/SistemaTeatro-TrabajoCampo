@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionClientes_DNI853));
             panelContenedor_DNI853 = new Panel();
+            btnSerializarXML_DNI853 = new Button();
+            btnDeserializarXML_DNI853 = new Button();
+            btnLimpiar_DNI853 = new Button();
             btnActualizar_DNI853 = new Button();
             listaPasos_DNI853 = new ListBox();
             btnCancelar_DNI853 = new Button();
@@ -55,6 +59,7 @@
             panelInferior_DNI853 = new Panel();
             lblUsuarioValor_DNI853 = new Label();
             lblUsuarioActivo_DNI853 = new Label();
+            toolTip_DNI853 = new ToolTip(components);
             panelContenedor_DNI853.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes_DNI853).BeginInit();
             panelInferior_DNI853.SuspendLayout();
@@ -64,6 +69,9 @@
             // 
             panelContenedor_DNI853.Anchor = AnchorStyles.None;
             panelContenedor_DNI853.BackColor = Color.FromArgb(240, 238, 235);
+            panelContenedor_DNI853.Controls.Add(btnSerializarXML_DNI853);
+            panelContenedor_DNI853.Controls.Add(btnDeserializarXML_DNI853);
+            panelContenedor_DNI853.Controls.Add(btnLimpiar_DNI853);
             panelContenedor_DNI853.Controls.Add(btnActualizar_DNI853);
             panelContenedor_DNI853.Controls.Add(listaPasos_DNI853);
             panelContenedor_DNI853.Controls.Add(btnCancelar_DNI853);
@@ -91,7 +99,56 @@
             panelContenedor_DNI853.Name = "panelContenedor_DNI853";
             panelContenedor_DNI853.Size = new Size(2550, 1435);
             panelContenedor_DNI853.TabIndex = 1;
-            panelContenedor_DNI853.Paint += panelContenedor_DNI853_Paint;
+            // 
+            // btnSerializarXML_DNI853
+            // 
+            btnSerializarXML_DNI853.BackColor = Color.FromArgb(120, 20, 40);
+            btnSerializarXML_DNI853.FlatStyle = FlatStyle.Flat;
+            btnSerializarXML_DNI853.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnSerializarXML_DNI853.ForeColor = Color.White;
+            btnSerializarXML_DNI853.Location = new Point(1450, 1134);
+            btnSerializarXML_DNI853.Margin = new Padding(6);
+            btnSerializarXML_DNI853.Name = "btnSerializarXML_DNI853";
+            btnSerializarXML_DNI853.Size = new Size(420, 72);
+            btnSerializarXML_DNI853.TabIndex = 21;
+            btnSerializarXML_DNI853.Tag = "btnSerializarXML";
+            btnSerializarXML_DNI853.Text = "Exportar Clientes";
+            btnSerializarXML_DNI853.UseVisualStyleBackColor = false;
+            btnSerializarXML_DNI853.Click += btnSerializarXML_DNI853_Click;
+            // 
+            // btnDeserializarXML_DNI853
+            // 
+            btnDeserializarXML_DNI853.BackColor = Color.White;
+            btnDeserializarXML_DNI853.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
+            btnDeserializarXML_DNI853.FlatStyle = FlatStyle.Flat;
+            btnDeserializarXML_DNI853.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnDeserializarXML_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
+            btnDeserializarXML_DNI853.Location = new Point(1450, 1240);
+            btnDeserializarXML_DNI853.Margin = new Padding(6);
+            btnDeserializarXML_DNI853.Name = "btnDeserializarXML_DNI853";
+            btnDeserializarXML_DNI853.Size = new Size(420, 72);
+            btnDeserializarXML_DNI853.TabIndex = 22;
+            btnDeserializarXML_DNI853.Tag = "btnDeserializarXML";
+            btnDeserializarXML_DNI853.Text = "Importar Clientes ";
+            btnDeserializarXML_DNI853.UseVisualStyleBackColor = false;
+            btnDeserializarXML_DNI853.Click += btnDeserializarXML_DNI853_Click;
+            // 
+            // btnLimpiar_DNI853
+            // 
+            btnLimpiar_DNI853.BackColor = Color.White;
+            btnLimpiar_DNI853.FlatAppearance.BorderColor = Color.FromArgb(120, 20, 40);
+            btnLimpiar_DNI853.FlatStyle = FlatStyle.Flat;
+            btnLimpiar_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
+            btnLimpiar_DNI853.Location = new Point(1024, 1240);
+            btnLimpiar_DNI853.Margin = new Padding(6);
+            btnLimpiar_DNI853.Name = "btnLimpiar_DNI853";
+            btnLimpiar_DNI853.Size = new Size(212, 72);
+            btnLimpiar_DNI853.TabIndex = 23;
+            btnLimpiar_DNI853.Tag = "btnLimpiar";
+            btnLimpiar_DNI853.Text = "Limpiar";
+            toolTip_DNI853.SetToolTip(btnLimpiar_DNI853, "Limpia los campos del formulario de clientes");
+            btnLimpiar_DNI853.UseVisualStyleBackColor = false;
+            btnLimpiar_DNI853.Click += btnLimpiar_DNI853_Click;
             // 
             // btnActualizar_DNI853
             // 
@@ -106,6 +163,7 @@
             btnActualizar_DNI853.TabIndex = 20;
             btnActualizar_DNI853.Tag = "btnActualizar";
             btnActualizar_DNI853.Text = "Actualizar";
+            toolTip_DNI853.SetToolTip(btnActualizar_DNI853, "Actualiza la grilla recargando los datos desde la fuente activa");
             btnActualizar_DNI853.UseVisualStyleBackColor = false;
             btnActualizar_DNI853.Click += btnActualizar_DNI853_Click;
             // 
@@ -403,8 +461,7 @@
             // 
             // FormGestionClientes_DNI853
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(2682, 1548);
@@ -457,5 +514,9 @@
         private Button btnAplicar_DNI853;
         private ListBox listaPasos_DNI853;
         private Button btnActualizar_DNI853;
+        private Button btnSerializarXML_DNI853;
+        private Button btnDeserializarXML_DNI853;
+        private Button btnLimpiar_DNI853;
+        private ToolTip toolTip_DNI853;
     }
 }

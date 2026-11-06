@@ -12,8 +12,16 @@ namespace CuentaClara_TrabajoCampo
         [STAThread]
         static void Main()
         {
-        
-            ApplicationConfiguration.Initialize();
+
+            //ApplicationConfiguration.Initialize();
+
+            //Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
             BLL_Instalador gestorInstalacion = new BLL.BLL_Servicio.BLL_Instalador();
 

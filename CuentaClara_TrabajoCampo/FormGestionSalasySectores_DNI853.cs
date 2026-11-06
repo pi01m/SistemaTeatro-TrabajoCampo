@@ -497,5 +497,15 @@ namespace IU
         {
 
         }
+
+        private void FormGestionSalasySectores_DNI853_Resize_1(object sender, EventArgs e)
+        {
+            if (panelContenedor_DNI853 != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelContenedor_DNI853.Left = (this.ClientSize.Width - panelContenedor_DNI853.Width) / 2;
+                panelContenedor_DNI853.Top = (this.ClientSize.Height - panelContenedor_DNI853.Height) / 2;
+            }
+        }
     }
 }

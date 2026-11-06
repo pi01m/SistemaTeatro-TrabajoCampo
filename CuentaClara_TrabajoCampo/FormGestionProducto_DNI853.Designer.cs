@@ -282,8 +282,7 @@
             // 
             // FormGestionProducto_DNI853
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(2682, 1548);
             Controls.Add(panelInferior_DNI853);
@@ -294,6 +293,7 @@
             Tag = "FormGestionProducto_Titulo";
             Text = "TeatroLux - Gestión de Productos";
             Load += FormGestionProducto_DNI853_Load_1;
+            Resize += FormGestionProducto_DNI853_Resize_1;
             panelContenedor_DNI853.ResumeLayout(false);
             panelContenedor_DNI853.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProductos_DNI853).EndInit();

@@ -45,6 +45,7 @@
             // 
             // panelContenedor
             // 
+            panelContenedor.Anchor = AnchorStyles.None;
             panelContenedor.BackColor = Color.White;
             panelContenedor.Controls.Add(lblTitulo);
             panelContenedor.Controls.Add(lblClaveActual);
@@ -176,8 +177,7 @@
             // 
             // FormCambiarClave
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1549, 1061);
@@ -193,6 +193,7 @@
             Text = "TeatroLux - Cambiar Contraseña";
             FormClosed += FormCambiarClave_FormClosed;
             Load += FormCambiarClave_Load_1;
+            Resize += FormCambiarClave_Resize;
             panelContenedor.ResumeLayout(false);
             panelContenedor.PerformLayout();
             panelInferior.ResumeLayout(false);

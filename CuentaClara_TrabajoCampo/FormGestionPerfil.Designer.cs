@@ -334,7 +334,7 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(240, 238, 235);
             panel1.Controls.Add(treeViewVistaPrevia);
             panel1.Controls.Add(cmbFamilia);
@@ -507,8 +507,7 @@
             // 
             // FormGestionPerfil
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             AutoScroll = true;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");

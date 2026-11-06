@@ -94,24 +94,25 @@ namespace CuentaClara_TrabajoCampo
                     if (usuarioActual != null && (usuarioActual.ModoEmergencia || usuarioActual.ErrorIntegridad != null))
                     {
                         BLL_Rol bllRol = new BLL_Rol();
-                        // Verificamos si es administrador (Asumo que "P36" es el permiso de Gestión de Respaldo, según tu FormMenu)
                         bool esAdmin = bllRol.ValidarPermisoEnArbol(usuarioActual.Permisos, "P36");
 
                         if (esAdmin)
                         {
-                            // Mostramos el detalle del error antes de abrir el form
-                            MostrarMensajeEmergencia(usuarioActual);
-
-                            // Mostramos directamente el form de Respaldo
+                            // 1. Instanciamos el formulario de respaldo
                             FormGestionRespaldo formRespaldo = new FormGestionRespaldo();
+
+                            // 2. Cargamos los errores de integridad directamente en su ListBox
+                            formRespaldo.CargarErroresIntegridad(usuarioActual.ErrorIntegridad);
+
+                            // 3. Mostramos la pantalla de emergencia/respaldo directamente
                             this.Hide();
                             formRespaldo.ShowDialog();
-                            this.Show(); // Volvemos a mostrar el login cuando cierre la ventana
+                            this.Show();
 
-                            // Al salir del Respaldo, deslogueamos al usuario obligándolo a autenticarse otra vez
+                            // 4. Cerrar sesión al volver para forzar la reautenticación
                             _bllUsuario.CerrarSesion();
                             txtContrasena.Clear();
-                            return; // IMPORTANTE: Cortamos el flujo aquí para que NO entre al FormMenu
+                            return;
                         }
                         else
                         {
@@ -355,8 +356,15 @@ namespace CuentaClara_TrabajoCampo
         }
         private void CambiarImagenOjo(Bitmap imagen)
         {
-            ojo.Image = new Bitmap(imagen, new Size(38, 34));
-            ojo.ImageAlign = ContentAlignment.MiddleCenter;
+            //ojo.Image = new Bitmap(imagen, new Size(38, 34));
+            //ojo.ImageAlign = ContentAlignment.MiddleCenter;
+
+            // Limpiamos la propiedad Image por si quedó algo ahí
+            ojo.Image = null;
+
+            // Usamos BackgroundImage, que sí respeta el ImageLayout.Zoom
+            ojo.BackgroundImage = imagen;
+            ojo.BackgroundImageLayout = ImageLayout.Zoom;
         }
 
         private void panelLogin_Paint(object sender, PaintEventArgs e)

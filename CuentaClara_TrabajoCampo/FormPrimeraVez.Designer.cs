@@ -139,8 +139,7 @@
             // 
             // FormPrimeraVez
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(1083, 1285);
             Controls.Add(picLogo);
@@ -157,6 +156,7 @@
             Tag = "";
             Text = "TeatroLux";
             Load += FormPrimeraVez_Load;
+            Resize += FormPrimeraVez_Resize;
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();

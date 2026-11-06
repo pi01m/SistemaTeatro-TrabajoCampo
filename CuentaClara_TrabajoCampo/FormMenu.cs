@@ -449,6 +449,22 @@ namespace CuentaClara_TrabajoCampo
             frm.ShowDialog();
             this.Show();
         }
+
+        private void btn_cambiosProducto_Click(object sender, EventArgs e)
+        {
+            FormBitacoraCambiosProductos_DNI853 frm = new FormBitacoraCambiosProductos_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_CambiosSectores_DNI853_Click(object sender, EventArgs e)
+        {
+            FormBitacoraCambiosSector_DNI853 frm= new FormBitacoraCambiosSector_DNI853();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }
 

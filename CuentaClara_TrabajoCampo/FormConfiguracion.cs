@@ -41,7 +41,7 @@ namespace IU
         {
             if (cmbIdioma.SelectedValue == null) return;
             string nuevoIdioma = cmbIdioma.SelectedValue.ToString();
-            
+
             bllUsuario.CambiarIdiomaEnSesion(nuevoIdioma);
         }
 
@@ -99,13 +99,23 @@ namespace IU
         private void FormConfiguracion_FormClosed(object sender, FormClosedEventArgs e)
         {
 
-          GestorIdioma.GetInstancia().Desuscribir(this);
+            GestorIdioma.GetInstancia().Desuscribir(this);
 
         }
 
         private void cmbIdioma_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarIdioma();
+        }
+
+        private void panelLogin_Resize(object sender, EventArgs e)
+        {
+            if (panelLogin != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelLogin.Left = (this.ClientSize.Width - panelLogin.Width) / 2;
+                panelLogin.Top = (this.ClientSize.Height - panelLogin.Height) / 2;
+            }
         }
     }
 }

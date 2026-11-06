@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 namespace BLL
 {
     public class BLL_Cliente_DNI853
@@ -163,6 +164,53 @@ namespace BLL
             }
 
             return cliente_DNI853;
+        }
+
+        public bool SerializarClientesXML_DNI853(List<BE_Cliente_DNI853> listaClientes_DNI853, string rutaArchivo_DNI853)
+        {
+            if (listaClientes_DNI853 == null || listaClientes_DNI853.Count == 0)
+                throw new Exception("err_NoHayClientesParaSerializar");
+
+            if (string.IsNullOrWhiteSpace(rutaArchivo_DNI853))
+                throw new Exception("err_RutaArchivoInvalida");
+
+            XmlSerializer serializer_DNI853 = new XmlSerializer(typeof(List<BE_Cliente_DNI853>));
+            using (StreamWriter writer_DNI853 = new StreamWriter(rutaArchivo_DNI853))
+            {
+                serializer_DNI853.Serialize(writer_DNI853, listaClientes_DNI853);
+            }
+
+            string loginActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual()?.Login ?? "Sistema";
+            objBitacora_DNI853.RegistrarBitacora(
+                "Exportación de Clientes XML",
+                loginActual_DNI853,
+                "Gestión Clientes",
+                1);
+
+            return true;
+        }
+
+        public List<BE_Cliente_DNI853> DeserializarClientesXML_DNI853(string rutaArchivo_DNI853)
+        {
+            if (string.IsNullOrWhiteSpace(rutaArchivo_DNI853) || !File.Exists(rutaArchivo_DNI853))
+                throw new Exception("err_ArchivoXMLNoExiste");
+
+            XmlSerializer serializer_DNI853 = new XmlSerializer(typeof(List<BE_Cliente_DNI853>));
+            List<BE_Cliente_DNI853> listaDeserializada_DNI853;
+
+            using (StreamReader reader_DNI853 = new StreamReader(rutaArchivo_DNI853))
+            {
+                listaDeserializada_DNI853 = (List<BE_Cliente_DNI853>)serializer_DNI853.Deserialize(reader_DNI853);
+            }
+
+            string loginActual_DNI853 = SessionManager.GetInstancia().GetUsuarioActual()?.Login ?? "Sistema";
+            objBitacora_DNI853.RegistrarBitacora(
+                "Importación de Clientes XML",
+                loginActual_DNI853,
+                "Gestión Clientes",
+                1);
+
+            return listaDeserializada_DNI853;
         }
     }
 }

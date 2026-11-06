@@ -103,5 +103,15 @@ namespace IU
         {
             txt_Login.Text = txtNombre.Text + txtDNI.Text;
         }
+
+        private void FormCrearPrimerUsuario_Resize(object sender, EventArgs e)
+        {
+            if (panelPrincipal != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelPrincipal.Left = (this.ClientSize.Width - panelPrincipal.Width) / 2;
+                panelPrincipal.Top = (this.ClientSize.Height - panelPrincipal.Height) / 2;
+            }
+        }
     }
 }

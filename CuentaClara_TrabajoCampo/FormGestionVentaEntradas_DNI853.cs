@@ -26,7 +26,7 @@ namespace IU
         private BLL_Entrada_DNI853 objBllEntrada_DNI853 = new BLL_Entrada_DNI853();
         private BLL_Obra_DNI853 objBllObra_DNI853 = new BLL_Obra_DNI853();
         private BLL_Sector_DNI853 objBllSector_DNI853 = new BLL_Sector_DNI853();
-
+        Servicio_Cripto cripto_DNI853 = new Servicio_Cripto();
         // Servicios
         private BLL_Rol objBllRol_DNI853 = new BLL_Rol();
         private BLL_Idioma objBllIdioma_DNI853 = new BLL_Idioma();
@@ -88,7 +88,7 @@ namespace IU
             btnImprimirFactura_DNI853.Enabled = ventaFinalizada_DNI853;
             btnImprimirEntradas_DNI853.Enabled = ventaFinalizada_DNI853;
 
-            
+
         }
 
         // ====================================================================
@@ -433,22 +433,25 @@ namespace IU
                     idPromocionSeleccionada_DNI853 = ((BE_Promocion_DNI853)cboPromocion_DNI853.SelectedItem).IdPromo_DNI853;
                 }
 
-                //BE_Factura_DNI853 nuevaFactura_DNI853 = new BE_Factura_DNI853
-                //{
-                //    Id_Factura_DNI853 = "FAC_" + Guid.NewGuid().ToString().Substring(0, 6).ToUpper(),
-                //    DNI_C_DNI853 = idClienteActual_DNI853,
-                //    ImporteTotal_DNI853 = importeTotal_DNI853,
-                //    TipoPago_DNI853 = cboMedioPago_DNI853.Text,
-                //    Banco_DNI853 = txtBanco_DNI853.Enabled ? txtBanco_DNI853.Text : string.Empty,
-                //    NumeroTarjeta_DNI853 = txtNroTarjeta_DNI853.Enabled ? txtNroTarjeta_DNI853.Text : string.Empty,
-                //    FechaVencimiento_DNI853 = txtVencimiento_DNI853.Enabled ? txtVencimiento_DNI853.Text : string.Empty,
-                //    Fecha_DNI853 = DateTime.Now,
-                //    Vendedor_DNI853 = loginVendedor_DNI853,
-                //    IdPromocion_DNI853 = idPromocionSeleccionada_DNI853
-                //};
+                // Encriptar solamente el número de tarjeta
+                string nroTarjetaParaGuardar_DNI853 = string.Empty;
+
+                if (txtNroTarjeta_DNI853.Enabled && !string.IsNullOrWhiteSpace(txtNroTarjeta_DNI853.Text))
+                {
+                    nroTarjetaParaGuardar_DNI853 = cripto_DNI853.Encriptar_DNI853(txtNroTarjeta_DNI853.Text.Trim());
+                }
 
                 // 3. Registrar Factura (Actualiza sus DVs internamente)
-                idVentaConfirmada_DNI853 = objBllFactura_DNI853.RegistrarFacturaUnica_DNI853(idClienteActual_DNI853, importeTotal_DNI853, cboMedioPago_DNI853.Text, txtBanco_DNI853.Enabled ? txtBanco_DNI853.Text : string.Empty, txtNroTarjeta_DNI853.Enabled ? txtNroTarjeta_DNI853.Text : string.Empty, txtVencimiento_DNI853.Enabled ? txtVencimiento_DNI853.Text : string.Empty, loginVendedor_DNI853, idPromocionSeleccionada_DNI853);
+                idVentaConfirmada_DNI853 = objBllFactura_DNI853.RegistrarFacturaUnica_DNI853(
+                    idClienteActual_DNI853,
+                    importeTotal_DNI853,
+                    cboMedioPago_DNI853.Text,
+                    txtBanco_DNI853.Enabled ? txtBanco_DNI853.Text : string.Empty,
+                    nroTarjetaParaGuardar_DNI853,
+                    txtVencimiento_DNI853.Enabled ? txtVencimiento_DNI853.Text : string.Empty,
+                    loginVendedor_DNI853,
+                    idPromocionSeleccionada_DNI853
+                );
 
                 // 4. Registrar Entradas (Actualiza sus DVs internamente)
                 List<BE_Entrada_DNI853> listaEntradas_DNI853 = objBllCarrito_DNI853.ObtenerCarrito_DNI853().ToList();
@@ -665,7 +668,7 @@ namespace IU
             if (dgvCarrito_DNI853.Columns.Contains("Detalle_DNI853"))
             {
                 dgvCarrito_DNI853.Columns["Detalle_DNI853"].HeaderText = TraducirTexto_DNI853("ColDetalle");
-                
+
             }
 
             if (dgvCarrito_DNI853.Columns.Contains("Cantidad_DNI853"))
@@ -699,6 +702,16 @@ namespace IU
         private void btnNuevaVenta_DNI853_Click(object sender, EventArgs e)
         {
             btnLimpiar_DNI853_Click(sender, e);
+        }
+
+        private void FormGestionVentaEntradas_DNI853_Resize(object sender, EventArgs e)
+        {
+            if (panelContenedor_DNI853 != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelContenedor_DNI853.Left = (this.ClientSize.Width - panelContenedor_DNI853.Width) / 2;
+                panelContenedor_DNI853.Top = (this.ClientSize.Height - panelContenedor_DNI853.Height) / 2;
+            }
         }
     }
 }

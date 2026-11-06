@@ -274,7 +274,7 @@ namespace IU
             if (cboMedioPago_DNI853.Items.Count > 0) cboMedioPago_DNI853.SelectedIndex = 0;
             if (CmbDonacionPorcentaje_DNI853.Items.Count > 0) CmbDonacionPorcentaje_DNI853.SelectedIndex = 0;
 
-            cboPromocion_DNI853.SelectedIndex = -1; 
+            cboPromocion_DNI853.SelectedIndex = -1;
 
             btnConfirmarVenta_DNI853.Enabled = false;
             btnImprimirFactura_DNI853.Enabled = false;
@@ -458,7 +458,7 @@ namespace IU
         {
             try
             {
-                
+
                 cboPromocion_DNI853.DataSource = bllPromocion_DNI853.ObtenerPromocionesVigentesParaCantina_DNI853();
                 cboPromocion_DNI853.DisplayMember = "NombrePromo_DNI853";
                 cboPromocion_DNI853.ValueMember = "IdPromo_DNI853";
@@ -467,6 +467,16 @@ namespace IU
             catch (Exception ex)
             {
                 MessageBox.Show(TraducirExcepcion_DNI853(ex), TraducirTexto_DNI853("TituloError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FormGestionVentaCantina_DNI853_Resize(object sender, EventArgs e)
+        {
+            if (panelContenedor_DNI853 != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelContenedor_DNI853.Left = (this.ClientSize.Width - panelContenedor_DNI853.Width) / 2;
+                panelContenedor_DNI853.Top = (this.ClientSize.Height - panelContenedor_DNI853.Height) / 2;
             }
         }
     }

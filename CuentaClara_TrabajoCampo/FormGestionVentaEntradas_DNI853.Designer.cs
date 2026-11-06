@@ -699,8 +699,7 @@ namespace IU
             // 
             // FormGestionVentaEntradas_DNI853
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(3254, 2108);
@@ -712,6 +711,7 @@ namespace IU
             Tag = "lblFormVentaEntradasTitulo";
             Text = "TeatroLux - Gestión de Venta de Entradas";
             Load += FormGestionVentaEntradas_DNI853_Load;
+            Resize += FormGestionVentaEntradas_DNI853_Resize;
             panelContenedor_DNI853.ResumeLayout(false);
             panelContenedor_DNI853.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFunciones_DNI853).EndInit();

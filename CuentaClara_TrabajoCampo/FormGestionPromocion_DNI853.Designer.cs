@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panelContenedor_DNI853 = new Panel();
+            label1 = new Label();
+            cboDestinoPromo_DNI853 = new ComboBox();
             btnSalir_DNI853 = new Button();
             lblTitulo_DNI853 = new Label();
             dgvPromociones_DNI853 = new DataGridView();
@@ -50,8 +52,6 @@
             panelInferior_DNI853 = new Panel();
             lblUsuarioValor_DNI853 = new Label();
             lblUsuarioActivo_DNI853 = new Label();
-            label1 = new Label();
-            cboDestinoPromo_DNI853 = new ComboBox();
             panelContenedor_DNI853.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPromociones_DNI853).BeginInit();
             panelInferior_DNI853.SuspendLayout();
@@ -86,6 +86,29 @@
             panelContenedor_DNI853.Name = "panelContenedor_DNI853";
             panelContenedor_DNI853.Size = new Size(2550, 1435);
             panelContenedor_DNI853.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.Location = new Point(53, 1058);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(286, 41);
+            label1.TabIndex = 18;
+            label1.Tag = "lblDestinoPromo";
+            label1.Text = "Destino Promoción";
+            // 
+            // cboDestinoPromo_DNI853
+            // 
+            cboDestinoPromo_DNI853.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDestinoPromo_DNI853.FormattingEnabled = true;
+            cboDestinoPromo_DNI853.Items.AddRange(new object[] { "Entradas", "Cantina" });
+            cboDestinoPromo_DNI853.Location = new Point(53, 1109);
+            cboDestinoPromo_DNI853.Margin = new Padding(6);
+            cboDestinoPromo_DNI853.Name = "cboDestinoPromo_DNI853";
+            cboDestinoPromo_DNI853.Size = new Size(420, 49);
+            cboDestinoPromo_DNI853.TabIndex = 19;
             // 
             // btnSalir_DNI853
             // 
@@ -347,33 +370,9 @@
             lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label1.Location = new Point(53, 1058);
-            label1.Margin = new Padding(6, 0, 6, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(286, 41);
-            label1.TabIndex = 18;
-            label1.Tag = "lblDestinoPromo";
-            label1.Text = "Destino Promoción";
-            // 
-            // cboDestinoPromo_DNI853
-            // 
-            cboDestinoPromo_DNI853.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboDestinoPromo_DNI853.FormattingEnabled = true;
-            cboDestinoPromo_DNI853.Items.AddRange(new object[] { "Entradas", "Cantina" });
-            cboDestinoPromo_DNI853.Location = new Point(53, 1109);
-            cboDestinoPromo_DNI853.Margin = new Padding(6);
-            cboDestinoPromo_DNI853.Name = "cboDestinoPromo_DNI853";
-            cboDestinoPromo_DNI853.Size = new Size(420, 49);
-            cboDestinoPromo_DNI853.TabIndex = 19;
-            // 
             // FormGestionPromocion_DNI853
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(2682, 1548);
             Controls.Add(panelInferior_DNI853);

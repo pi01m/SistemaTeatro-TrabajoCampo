@@ -354,5 +354,15 @@ namespace IU
             if (partes.Length > 1) mensaje += " " + partes[1];
             return mensaje;
         }
+
+        private void FormGestionCarritoCantina_DNI853_Resize(object sender, EventArgs e)
+        {
+            if (panelContenedor_DNI853 != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelContenedor_DNI853.Left = (this.ClientSize.Width - panelContenedor_DNI853.Width) / 2;
+                panelContenedor_DNI853.Top = (this.ClientSize.Height - panelContenedor_DNI853.Height) / 2;
+            }
+        }
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panelContenedor_DNI853 = new Panel();
+            Precio = new Label();
+            txtPrecioSector_DNI853 = new TextBox();
             btnSalir_DNI853 = new Button();
             lblTitulo_DNI853 = new Label();
             lblSubSalas_DNI853 = new Label();
@@ -56,8 +58,6 @@
             panelInferior_DNI853 = new Panel();
             lblUsuarioValor_DNI853 = new Label();
             lblUsuarioActivo_DNI853 = new Label();
-            Precio = new Label();
-            txtPrecioSector_DNI853 = new TextBox();
             panelContenedor_DNI853.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSalas_DNI853).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSectores_DNI853).BeginInit();
@@ -99,6 +99,27 @@
             panelContenedor_DNI853.Name = "panelContenedor_DNI853";
             panelContenedor_DNI853.Size = new Size(2550, 1538);
             panelContenedor_DNI853.TabIndex = 1;
+            // 
+            // Precio
+            // 
+            Precio.AutoSize = true;
+            Precio.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            Precio.Location = new Point(521, 1233);
+            Precio.Margin = new Padding(6, 0, 6, 0);
+            Precio.Name = "Precio";
+            Precio.Size = new Size(105, 41);
+            Precio.TabIndex = 23;
+            Precio.Tag = "lblPrecioSector";
+            Precio.Text = "Precio";
+            Precio.Click += label1_Click;
+            // 
+            // txtPrecioSector_DNI853
+            // 
+            txtPrecioSector_DNI853.Location = new Point(521, 1284);
+            txtPrecioSector_DNI853.Margin = new Padding(6);
+            txtPrecioSector_DNI853.Name = "txtPrecioSector_DNI853";
+            txtPrecioSector_DNI853.Size = new Size(250, 47);
+            txtPrecioSector_DNI853.TabIndex = 24;
             // 
             // btnSalir_DNI853
             // 
@@ -443,31 +464,9 @@
             lblUsuarioActivo_DNI853.Tag = "lblUsuarioActivo";
             lblUsuarioActivo_DNI853.Text = "Usuario activo: ";
             // 
-            // Precio
-            // 
-            Precio.AutoSize = true;
-            Precio.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            Precio.Location = new Point(521, 1233);
-            Precio.Margin = new Padding(6, 0, 6, 0);
-            Precio.Name = "Precio";
-            Precio.Size = new Size(105, 41);
-            Precio.TabIndex = 23;
-            Precio.Tag = "lblPrecioSector";
-            Precio.Text = "Precio";
-            Precio.Click += label1_Click;
-            // 
-            // txtPrecioSector_DNI853
-            // 
-            txtPrecioSector_DNI853.Location = new Point(521, 1284);
-            txtPrecioSector_DNI853.Margin = new Padding(6);
-            txtPrecioSector_DNI853.Name = "txtPrecioSector_DNI853";
-            txtPrecioSector_DNI853.Size = new Size(250, 47);
-            txtPrecioSector_DNI853.TabIndex = 24;
-            // 
             // FormGestionSalasySectores_DNI853
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             ClientSize = new Size(2682, 1650);
             Controls.Add(panelInferior_DNI853);
@@ -478,6 +477,7 @@
             Text = "FormGestionSalasySectores_DNI853";
             FormClosed += FormGestionSalasySectores_DNI853_FormClosed;
             Load += FormGestionSalasySectores_DNI853_Load;
+            Resize += FormGestionSalasySectores_DNI853_Resize_1;
             panelContenedor_DNI853.ResumeLayout(false);
             panelContenedor_DNI853.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSalas_DNI853).EndInit();

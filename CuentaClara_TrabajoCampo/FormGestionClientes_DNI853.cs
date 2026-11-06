@@ -441,5 +441,81 @@ namespace IU
             }
             return mensajeTraducido_DNI853;
         }
+
+        private void btnLimpiar_DNI853_Click(object sender, EventArgs e)
+        {
+            LimpiarControlesCliente_DNI853();
+            ConfigurarEstadoInicial_DNI853();
+        }
+
+        private void btnSerializarXML_DNI853_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<BE_Cliente_DNI853> listaActual_DNI853 = dgvClientes_DNI853.DataSource as List<BE_Cliente_DNI853>;
+                if (listaActual_DNI853 == null || listaActual_DNI853.Count == 0)
+                {
+                    MessageBox.Show(TraducirTexto_DNI853("Aviso_NoHayClientesSerializar"), TraducirTexto_DNI853("TituloAviso"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (SaveFileDialog sfd_DNI853 = new SaveFileDialog())
+                {
+                    sfd_DNI853.Filter = "Archivos XML (*.xml)|*.xml";
+                    sfd_DNI853.Title = TraducirTexto_DNI853("TituloGuardarXML");
+                    sfd_DNI853.FileName = $"Clientes_{DateTime.Now:yyyyMMdd_HHmmss}.xml";
+
+                    if (sfd_DNI853.ShowDialog() == DialogResult.OK)
+                    {
+                        bool exito_DNI853 = bllClientes_DNI853.SerializarClientesXML_DNI853(listaActual_DNI853, sfd_DNI853.FileName);
+                        if (exito_DNI853)
+                        {
+                            MessageBox.Show(TraducirTexto_DNI853("Exito_SerializacionXML"), TraducirTexto_DNI853("TituloExito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex_DNI853)
+            {
+                MessageBox.Show(TraducirExcepcion_DNI853(ex_DNI853), TraducirTexto_DNI853("TituloError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDeserializarXML_DNI853_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog ofd_DNI853 = new OpenFileDialog())
+                {
+                    ofd_DNI853.Filter = "Archivos XML (*.xml)|*.xml";
+                    ofd_DNI853.Title = TraducirTexto_DNI853("TituloSeleccionarXML");
+
+                    if (ofd_DNI853.ShowDialog() == DialogResult.OK)
+                    {
+                        List<BE_Cliente_DNI853> listaImportada_DNI853 = bllClientes_DNI853.DeserializarClientesXML_DNI853(ofd_DNI853.FileName);
+
+                        if (listaImportada_DNI853 != null)
+                        {
+                            dgvClientes_DNI853.DataSource = null;
+                            dgvClientes_DNI853.DataSource = listaImportada_DNI853;
+                            TraducirColumnasGrillas_DNI853();
+
+                            if (dgvClientes_DNI853.Rows.Count > 0)
+                            {
+                                dgvClientes_DNI853.ClearSelection();
+                                dgvClientes_DNI853.Rows[0].Selected = true;
+                                clienteSeleccionado_DNI853 = (BE_Cliente_DNI853)dgvClientes_DNI853.Rows[0].DataBoundItem;
+                            }
+
+                            MessageBox.Show(TraducirTexto_DNI853("Exito_DeserializacionXML"), TraducirTexto_DNI853("TituloExito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex_DNI853)
+            {
+                MessageBox.Show(TraducirExcepcion_DNI853(ex_DNI853), TraducirTexto_DNI853("TituloError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -49,12 +49,12 @@ namespace IU
             {
                 cmbCategoria_DNI853.Items.Clear();
 
-               
+
                 cmbCategoria_DNI853.Items.Add("Bebidas");
                 cmbCategoria_DNI853.Items.Add("Snacks");
                 cmbCategoria_DNI853.Items.Add("Golosinas");
                 cmbCategoria_DNI853.Items.Add("Comida Rápida");
-                
+
 
                 if (cmbCategoria_DNI853.Items.Count > 0)
                     cmbCategoria_DNI853.SelectedIndex = 0;
@@ -101,19 +101,19 @@ namespace IU
         {
             if (productoParam_DNI853 != null)
             {
-                
+
                 txtNombreProducto_DNI853.Text = productoParam_DNI853.NombreProducto_DNI853;
                 cmbCategoria_DNI853.SelectedItem = productoParam_DNI853.Categoria_DNI853;
                 txtPrecio_DNI853.Text = productoParam_DNI853.Precio_DNI853.ToString();
                 txtStock_DNI853.Text = productoParam_DNI853.Stock_DNI853.ToString();
 
-               
+
             }
         }
 
         private void LimpiarControlesProducto_DNI853()
         {
-            
+
             txtNombreProducto_DNI853.Text = string.Empty;
             txtPrecio_DNI853.Text = string.Empty;
             txtStock_DNI853.Text = string.Empty;
@@ -324,6 +324,14 @@ namespace IU
             return mensajeTraducido_DNI853;
         }
 
-        
+        private void FormGestionProducto_DNI853_Resize_1(object sender, EventArgs e)
+        {
+            if (panelContenedor_DNI853 != null)
+            {
+                // Esta matemática calcula el centro exacto de la pantalla
+                panelContenedor_DNI853.Left = (this.ClientSize.Width - panelContenedor_DNI853.Width) / 2;
+                panelContenedor_DNI853.Top = (this.ClientSize.Height - panelContenedor_DNI853.Height) / 2;
+            }
+        }
     }
 }
