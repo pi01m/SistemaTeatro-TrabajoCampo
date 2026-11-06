@@ -72,17 +72,17 @@
             panelContenedor_DNI853.Controls.Add(lblCodProd_DNI853);
             panelContenedor_DNI853.Controls.Add(dgvBitacora_DNI853);
             panelContenedor_DNI853.Controls.Add(lblTitulo_DNI853);
-            panelContenedor_DNI853.Location = new Point(62, 68);
+            panelContenedor_DNI853.Location = new Point(53, 76);
             panelContenedor_DNI853.Margin = new Padding(6);
             panelContenedor_DNI853.Name = "panelContenedor_DNI853";
-            panelContenedor_DNI853.Size = new Size(4526, 2378);
+            panelContenedor_DNI853.Size = new Size(2721, 1659);
             panelContenedor_DNI853.TabIndex = 0;
             // 
             // txt_codProductoFiltro_DNI853
             // 
             txt_codProductoFiltro_DNI853.BorderStyle = BorderStyle.FixedSingle;
             txt_codProductoFiltro_DNI853.Font = new Font("Segoe UI", 10F);
-            txt_codProductoFiltro_DNI853.Location = new Point(323, 1493);
+            txt_codProductoFiltro_DNI853.Location = new Point(384, 1138);
             txt_codProductoFiltro_DNI853.Margin = new Padding(6);
             txt_codProductoFiltro_DNI853.Name = "txt_codProductoFiltro_DNI853";
             txt_codProductoFiltro_DNI853.Size = new Size(438, 52);
@@ -95,7 +95,7 @@
             btnSalir_DNI853.FlatStyle = FlatStyle.Flat;
             btnSalir_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnSalir_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
-            btnSalir_DNI853.Location = new Point(1544, 1622);
+            btnSalir_DNI853.Location = new Point(1605, 1267);
             btnSalir_DNI853.Margin = new Padding(6);
             btnSalir_DNI853.Name = "btnSalir_DNI853";
             btnSalir_DNI853.Size = new Size(425, 82);
@@ -112,7 +112,7 @@
             btnActivar_DNI853.FlatStyle = FlatStyle.Flat;
             btnActivar_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnActivar_DNI853.ForeColor = Color.White;
-            btnActivar_DNI853.Location = new Point(1544, 1766);
+            btnActivar_DNI853.Location = new Point(1605, 1411);
             btnActivar_DNI853.Margin = new Padding(6);
             btnActivar_DNI853.Name = "btnActivar_DNI853";
             btnActivar_DNI853.Size = new Size(425, 82);
@@ -129,7 +129,7 @@
             btnLimpiar_DNI853.FlatStyle = FlatStyle.Flat;
             btnLimpiar_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnLimpiar_DNI853.ForeColor = Color.FromArgb(120, 20, 40);
-            btnLimpiar_DNI853.Location = new Point(928, 1766);
+            btnLimpiar_DNI853.Location = new Point(989, 1411);
             btnLimpiar_DNI853.Margin = new Padding(6);
             btnLimpiar_DNI853.Name = "btnLimpiar_DNI853";
             btnLimpiar_DNI853.Size = new Size(425, 82);
@@ -146,7 +146,7 @@
             btnAplicar_DNI853.FlatStyle = FlatStyle.Flat;
             btnAplicar_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnAplicar_DNI853.ForeColor = Color.White;
-            btnAplicar_DNI853.Location = new Point(928, 1622);
+            btnAplicar_DNI853.Location = new Point(989, 1267);
             btnAplicar_DNI853.Margin = new Padding(6);
             btnAplicar_DNI853.Name = "btnAplicar_DNI853";
             btnAplicar_DNI853.Size = new Size(425, 82);
@@ -160,7 +160,7 @@
             // 
             dtpFechaFin_DNI853.Font = new Font("Segoe UI", 10F);
             dtpFechaFin_DNI853.Format = DateTimePickerFormat.Short;
-            dtpFechaFin_DNI853.Location = new Point(333, 1776);
+            dtpFechaFin_DNI853.Location = new Point(394, 1421);
             dtpFechaFin_DNI853.Margin = new Padding(6);
             dtpFechaFin_DNI853.Name = "dtpFechaFin_DNI853";
             dtpFechaFin_DNI853.Size = new Size(420, 52);
@@ -171,7 +171,7 @@
             lblFechaFin_DNI853.AutoSize = true;
             lblFechaFin_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblFechaFin_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblFechaFin_DNI853.Location = new Point(78, 1786);
+            lblFechaFin_DNI853.Location = new Point(139, 1431);
             lblFechaFin_DNI853.Margin = new Padding(6, 0, 6, 0);
             lblFechaFin_DNI853.Name = "lblFechaFin_DNI853";
             lblFechaFin_DNI853.Size = new Size(177, 46);
@@ -183,7 +183,7 @@
             // 
             dtpFechaIni_DNI853.Font = new Font("Segoe UI", 10F);
             dtpFechaIni_DNI853.Format = DateTimePickerFormat.Short;
-            dtpFechaIni_DNI853.Location = new Point(333, 1632);
+            dtpFechaIni_DNI853.Location = new Point(394, 1277);
             dtpFechaIni_DNI853.Margin = new Padding(6);
             dtpFechaIni_DNI853.Name = "dtpFechaIni_DNI853";
             dtpFechaIni_DNI853.Size = new Size(420, 52);
@@ -194,7 +194,7 @@
             lblFechaIni_DNI853.AutoSize = true;
             lblFechaIni_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblFechaIni_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblFechaIni_DNI853.Location = new Point(85, 1641);
+            lblFechaIni_DNI853.Location = new Point(146, 1286);
             lblFechaIni_DNI853.Margin = new Padding(6, 0, 6, 0);
             lblFechaIni_DNI853.Name = "lblFechaIni_DNI853";
             lblFechaIni_DNI853.Size = new Size(217, 46);
@@ -206,7 +206,7 @@
             // 
             txtNombre_DNI853.BorderStyle = BorderStyle.FixedSingle;
             txtNombre_DNI853.Font = new Font("Segoe UI", 10F);
-            txtNombre_DNI853.Location = new Point(1120, 1493);
+            txtNombre_DNI853.Location = new Point(1181, 1138);
             txtNombre_DNI853.Margin = new Padding(6);
             txtNombre_DNI853.Name = "txtNombre_DNI853";
             txtNombre_DNI853.Size = new Size(848, 52);
@@ -217,7 +217,7 @@
             lblNombre_DNI853.AutoSize = true;
             lblNombre_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblNombre_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblNombre_DNI853.Location = new Point(928, 1499);
+            lblNombre_DNI853.Location = new Point(989, 1144);
             lblNombre_DNI853.Margin = new Padding(6, 0, 6, 0);
             lblNombre_DNI853.Name = "lblNombre_DNI853";
             lblNombre_DNI853.Size = new Size(161, 46);
@@ -230,7 +230,7 @@
             lblCodProd_DNI853.AutoSize = true;
             lblCodProd_DNI853.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblCodProd_DNI853.ForeColor = Color.FromArgb(60, 60, 60);
-            lblCodProd_DNI853.Location = new Point(78, 1499);
+            lblCodProd_DNI853.Location = new Point(139, 1144);
             lblCodProd_DNI853.Margin = new Padding(6, 0, 6, 0);
             lblCodProd_DNI853.Name = "lblCodProd_DNI853";
             lblCodProd_DNI853.Size = new Size(187, 46);
@@ -265,7 +265,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvBitacora_DNI853.DefaultCellStyle = dataGridViewCellStyle2;
             dgvBitacora_DNI853.EnableHeadersVisualStyles = false;
-            dgvBitacora_DNI853.Location = new Point(63, 218);
+            dgvBitacora_DNI853.Location = new Point(106, 256);
             dgvBitacora_DNI853.Margin = new Padding(6);
             dgvBitacora_DNI853.MultiSelect = false;
             dgvBitacora_DNI853.Name = "dgvBitacora_DNI853";
@@ -273,7 +273,7 @@
             dgvBitacora_DNI853.RowHeadersVisible = false;
             dgvBitacora_DNI853.RowHeadersWidth = 102;
             dgvBitacora_DNI853.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBitacora_DNI853.Size = new Size(3972, 1163);
+            dgvBitacora_DNI853.Size = new Size(2347, 786);
             dgvBitacora_DNI853.TabIndex = 1;
             // 
             // lblTitulo_DNI853
@@ -295,10 +295,10 @@
             panelInferior_DNI853.Controls.Add(lblUsuarioValor_DNI853);
             panelInferior_DNI853.Controls.Add(lblUsuarioActivo_DNI853);
             panelInferior_DNI853.Dock = DockStyle.Bottom;
-            panelInferior_DNI853.Location = new Point(0, 2036);
+            panelInferior_DNI853.Location = new Point(0, 1747);
             panelInferior_DNI853.Margin = new Padding(6);
             panelInferior_DNI853.Name = "panelInferior_DNI853";
-            panelInferior_DNI853.Size = new Size(3844, 72);
+            panelInferior_DNI853.Size = new Size(3006, 72);
             panelInferior_DNI853.TabIndex = 1;
             // 
             // lblUsuarioValor_DNI853
@@ -331,7 +331,7 @@
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(240, 238, 235);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(3844, 2108);
+            ClientSize = new Size(3006, 1819);
             Controls.Add(panelInferior_DNI853);
             Controls.Add(panelContenedor_DNI853);
             Font = new Font("Segoe UI", 9F);
